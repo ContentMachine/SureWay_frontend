@@ -1,0 +1,24 @@
+.container {
+  border: 2px solid red;
+  height: var(--headerHeight);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 4rem;
+  font-family: "Montserrat";
+}
+
+.container > nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-right: 2rem;
+}
+
+.container > nav > a {
+  font-family: "Montserrat";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 150%;
+}

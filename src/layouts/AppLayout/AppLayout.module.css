@@ -1,0 +1,11 @@
+.container {
+  border: 2px solid red;
+  min-height: 100svh;
+  position: relative;
+}
+
+.container > header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
