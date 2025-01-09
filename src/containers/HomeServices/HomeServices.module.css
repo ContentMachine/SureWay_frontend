@@ -1,0 +1,59 @@
+.container {
+  display: flex;
+}
+
+.container > div {
+  flex: 1;
+  padding: 0px 0px 3rem 2rem;
+}
+
+.product > div:nth-child(1) {
+  position: relative;
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.product > h3 {
+  font-family: "Montserrat";
+  font-size: 33px;
+  font-weight: 300;
+  line-height: 48px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin-bottom: 1rem;
+  color: var(--black);
+  margin-right: 2rem;
+}
+
+.product > h3:not(.product:last-child > h3) {
+  color: var(--black);
+}
+.product:last-child > h3 {
+  color: var(--white);
+}
+
+.product > p {
+  font-family: "Montserrat";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin-bottom: 1rem;
+  margin-right: 2rem;
+  color: var(--grey2);
+}
+
+.product:nth-child(2) {
+  background-color: var(--gray-light);
+}
+
+.product:nth-child(3) {
+  background-color: var(--gray);
+}
+
+.product:nth-child(4) {
+  background-color: var(--gray-dark);
+}

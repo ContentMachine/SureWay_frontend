@@ -1,5 +1,4 @@
 .container {
-  border: 10px solid red;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -7,13 +6,14 @@
 }
 
 .container > div {
-  border: 3px solid blue;
   width: 100%;
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   height: 90vh;
+  transition: all 0.3s ease-in-out;
 }
 
 .container > div > img {
@@ -38,6 +38,7 @@
   text-decoration-skip-ink: none;
   width: 50%;
   color: var(--white);
+  margin-bottom: 2rem;
 }
 
 .active {

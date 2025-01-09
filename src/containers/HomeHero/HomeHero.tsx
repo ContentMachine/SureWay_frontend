@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import classes from "./HomeHero.module.css";
 import { activeToggler } from "@/helpers/activeHandlers";
+import Button from "@/components/Button/Button";
 
 const HomeHero = () => {
   // States
@@ -16,7 +17,7 @@ const HomeHero = () => {
 
       // if active index is less than the length of the home utils array
       setActiveIndex((prevState) => {
-        if (prevState <= utils?.length) {
+        if (prevState < utils?.length - 1) {
           return prevState + 1;
         } else {
           return 0;
@@ -39,18 +40,22 @@ const HomeHero = () => {
   console.log(activeIndex, "Active Index");
 
   return (
-    <section className={classes.container}>
-      {utils?.map((data) => {
-        return (
-          <div
-            key={data?.text}
-            className={data?.isActive ? classes.active : classes.inActive}
-          >
-            <h1>{data?.text}</h1>
-            <Image src={data?.image} alt={data?.text} />
-          </div>
-        );
-      })}
+    <section className={classes.outerContainer}>
+      <div className={classes.container}>
+        {utils?.map((data) => {
+          return (
+            <div
+              key={data?.text}
+              className={data?.isActive ? classes.active : classes.inActive}
+            >
+              <h1>{data?.text}</h1>
+              <Image src={data?.image} alt={data?.text} />
+
+              <Button>Shop</Button>
+            </div>
+          );
+        })}
+      </div>
     </section>
   );
 };

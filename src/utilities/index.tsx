@@ -3,4 +3,12 @@ export const routes = Object.freeze({
   CONTACT_US: "/contact-us",
   SURE_THINGS: "/sure-things",
   OUR_SERVICES: "/our-services",
+  BRANDING: "/branding",
+  ENGRAVING: "/engraving",
+  CUSTOM_MAGNETS: "/custom-magnets",
+  ORDER_PROCESSING: "order-processing",
+  COOL_STUFF: "cool-stuff",
+  BABY_STUFF: "baby-stuff",
+  GADGETS_AND_TECH: "gadgets-and-tech",
+  HOME_STUFF: "home-stuff",
 });
