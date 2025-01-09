@@ -3,3 +3,7 @@ export type navItemTypes = {
   route?: string;
   isActive?: boolean;
 };
+
+export type modalGenericType = {
+  [key: string]: boolean;
+};

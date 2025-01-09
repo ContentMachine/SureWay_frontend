@@ -88,6 +88,7 @@ const Header = () => {
               <div
                 className={classes.moreOptions}
                 onClick={() => activeToggler(i, navItems, setNavItems)}
+                key={route?.route}
               >
                 <span>{route?.title}</span>
                 <ArrowDown />
@@ -95,7 +96,11 @@ const Header = () => {
                 {route?.isActive && (
                   <div className={classes.children} ref={optionsRef}>
                     {route?.children?.map((data) => {
-                      return <Link href={data?.route}>{data?.title}</Link>;
+                      return (
+                        <Link href={data?.route} key={data?.route}>
+                          {data?.title}
+                        </Link>
+                      );
                     })}
                   </div>
                 )}

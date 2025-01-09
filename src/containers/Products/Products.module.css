@@ -1,0 +1,16 @@
+.container {
+  padding-block: calc(70px + 2rem);
+  padding-inline: 160px;
+  border: 2px solid red;
+  display: flex;
+  gap: 2rem;
+}
+
+.container > div:nth-child(1) {
+  width: 256px;
+  border: 2px solid red;
+}
+
+.container > div:nth-child(2) {
+  flex: 1;
+}

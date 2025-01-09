@@ -17,7 +17,7 @@ const ProductCard = () => {
         <p>₦170,000</p>
       </div>
 
-      <Button>Buy now</Button>
+      <Button>Add to cart</Button>
     </div>
   );
 };

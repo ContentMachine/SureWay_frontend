@@ -1,0 +1,23 @@
+.container {
+  max-width: 500px;
+  min-height: 400px;
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 1rem;
+  font-family: "Montserrat";
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 150%;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.container > form {
+  padding: 1rem;
+}

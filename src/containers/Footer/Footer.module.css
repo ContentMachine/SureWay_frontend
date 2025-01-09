@@ -1,0 +1,39 @@
+.container {
+  padding: 100px;
+  display: flex;
+  align-items: flex-start;
+  background: var(--black);
+  color: var(--white);
+  font-family: "Montserrat";
+}
+
+.container > div {
+  flex: 1;
+}
+
+.container > div > a,
+.container > div > h3,
+.container > div > h1,
+.container > div > p {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.container > div > h3 {
+  font-family: "Montserrat";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16px;
+  text-align: left;
+}
+
+.container > div > p,
+.container > div > a {
+  font-family: "Montserrat";
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 32px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
