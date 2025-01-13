@@ -6,6 +6,7 @@
   padding: 1rem 4rem;
   font-family: "Montserrat";
   color: var(--white);
+  background-color: var(--black);
 }
 
 .container > nav {

@@ -11,7 +11,6 @@ const ProductsListing = () => {
   return (
     <section className={classes.container}>
       <h4>Title</h4>
-      <p>Caption</p>
 
       <div className={classes.products}>
         <ProductCard />

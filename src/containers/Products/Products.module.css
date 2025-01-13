@@ -1,16 +1,23 @@
 .container {
   padding-block: calc(70px + 2rem);
   padding-inline: 160px;
-  border: 2px solid red;
+  border: 2px solid blue;
   display: flex;
+  align-items: flex-start;
   gap: 2rem;
+  position: relative;
+  min-height: 100vh;
 }
 
-.container > div:nth-child(1) {
+.container > section:nth-child(1) {
   width: 256px;
-  border: 2px solid red;
+  position: sticky;
+  top: 0px;
+  min-height: calc(100vh - var(--headerHeight) - 2rem);
+  position: relative;
 }
 
 .container > div:nth-child(2) {
   flex: 1;
+  border: 2px solid yellow;
 }

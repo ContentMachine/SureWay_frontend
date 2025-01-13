@@ -13,7 +13,7 @@ const headerRoutes = routeComponents?.filter((data) =>
 
 const Header = () => {
   // States
-  const [navBackground, setNavBackground] = useState("transparent");
+  const [navBackground, setNavBackground] = useState("#000");
   const [navItems, setNavItems] = useState(headerRoutes);
 
   // Refs

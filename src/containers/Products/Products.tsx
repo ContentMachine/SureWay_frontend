@@ -6,9 +6,7 @@ import ProductsSections from "../ProductsSections/ProductsSections";
 const Products = () => {
   return (
     <AppLayout className={classes.container}>
-      <div>
-        <ProductsSections />
-      </div>
+      <ProductsSections />
 
       <div>
         <ProductsListing />

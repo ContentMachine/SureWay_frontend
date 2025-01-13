@@ -3,6 +3,9 @@ import SectionsNav from "@/components/SectionsNav/SectionsNav";
 import { navItemTypes } from "@/utilities/types";
 import { useState } from "react";
 import classes from "./HomeProducts.module.css";
+import Button from "@/components/Button/Button";
+import { useRouter } from "next/navigation";
+import { routes } from "@/utilities";
 
 const HomeProducts = () => {
   // States
@@ -26,6 +29,9 @@ const HomeProducts = () => {
     },
   ]);
 
+  // Router
+  const router = useRouter();
+
   return (
     <section className={classes.container}>
       <SectionsNav navItems={navItems} setNavItems={setNavItems} />
@@ -39,6 +45,17 @@ const HomeProducts = () => {
         <ProductCard />
         <ProductCard />
         <ProductCard />
+      </div>
+
+      <div className={classes.buttonSection}>
+        <Button
+          type="secondary"
+          onClick={() => {
+            router.push(routes?.PRODUCTS);
+          }}
+        >
+          Show more
+        </Button>
       </div>
     </section>
   );
