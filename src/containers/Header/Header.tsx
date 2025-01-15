@@ -3,17 +3,21 @@ import classes from "./Header.module.css";
 import { routeComponents } from "@/utilities/routeComponents";
 import Cart from "@/assets/SvgIcons/Cart";
 import { routes } from "@/utilities";
-import { MutableRefObject, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ArrowDown from "@/assets/SvgIcons/ArrowDown";
 import { activeToggler } from "@/helpers/activeHandlers";
+
+type HeaderTypes = {
+  isDynamic?: boolean;
+};
 
 const headerRoutes = routeComponents?.filter((data) =>
   data?.properties?.includes("isHeaderRoute")
 );
 
-const Header = () => {
+const Header = ({ isDynamic }: HeaderTypes) => {
   // States
-  const [navBackground, setNavBackground] = useState("#000");
+  const [navBackground, setNavBackground] = useState("transparent");
   const [navItems, setNavItems] = useState(headerRoutes);
 
   // Refs
@@ -21,16 +25,20 @@ const Header = () => {
 
   // Utils
   const handleScroll = () => {
-    if (typeof window !== "undefined") {
+    if (typeof window === "undefined") {
       return;
     }
 
-    const currentScrollY = (window as any)?.scrollTop as number;
+    const currentScrollY = window.scrollY;
 
-    if ((currentScrollY as number) > 200) {
-      setNavBackground("#ffffff");
+    if (isDynamic) {
+      if ((currentScrollY as number) > 500) {
+        setNavBackground("#000");
+      } else {
+        setNavBackground("transparent");
+      }
     } else {
-      setNavBackground("transparent");
+      setNavBackground("#000");
     }
   };
 
@@ -39,21 +47,15 @@ const Header = () => {
     if (typeof window !== "undefined") {
       const container = window;
 
-      if (container) {
-        container.addEventListener("scroll", handleScroll);
-      }
+      container.addEventListener("scroll", handleScroll);
 
-      // Cleanup function
       return () => {
-        if (container) {
-          container.removeEventListener("scroll", handleScroll);
-        }
+        container.removeEventListener("scroll", handleScroll);
       };
     }
   }, []);
 
   useEffect(() => {
-    // Set all navItems to false so the options dropdown can close if they click outside the box
     if (typeof window !== "undefined") {
       const handleOptionsPopupBlur = (e: any) => {
         if (optionsRef && !optionsRef?.current?.contains(e?.target)) {

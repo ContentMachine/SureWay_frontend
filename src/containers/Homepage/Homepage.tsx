@@ -10,7 +10,7 @@ import HomeDiscount from "../HomeDiscount/HomeDiscount";
 
 const Homepage = () => {
   return (
-    <AppLayout className={classes.container}>
+    <AppLayout className={classes.container} isDynamic>
       <HomeHero />
       <HomeProductsSummary />
       <HomeProducts />

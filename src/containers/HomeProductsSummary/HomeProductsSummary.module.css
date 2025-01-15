@@ -16,11 +16,11 @@
   flex: 1;
 }
 
-.leftSection > div:nth-child(2) {
+.leftSection > div:nth-child(1) {
   display: flex;
 }
 
-.leftSection > div:nth-child(2) > div {
+.leftSection > div:nth-child(1) > div {
   flex: 1;
 }
 
@@ -29,6 +29,7 @@
   display: flex;
   align-items: center;
   position: relative;
+  cursor: pointer;
 }
 
 .leftSection > .featureCard > div:first-child {
@@ -88,7 +89,7 @@
 }
 
 .featureCard
-  > div:nth-child(2)
+  > div:nth-child(1)
   > p:not(
     .leftSection > div:nth-child(2) > .featureCard:nth-child(2) > div > p
   ) {
@@ -120,11 +121,11 @@
   margin-bottom: 1rem;
 }
 
-.leftSection > div:nth-child(2) > .featureCard:nth-child(1) {
+.leftSection > div:nth-child(1) > .featureCard:nth-child(1) {
   background: var(--gray);
 }
 
-.leftSection > div:nth-child(2) > .featureCard:nth-child(2) {
+.leftSection > div:nth-child(1) > .featureCard:nth-child(2) {
   background: var(--gray-dark);
   color: var(--white);
 }

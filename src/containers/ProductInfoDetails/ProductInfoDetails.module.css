@@ -1,0 +1,85 @@
+.container > h4 {
+  font-family: "Montserrat";
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 40px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin-bottom: 1.5rem;
+}
+
+.container > p:nth-child(2) {
+  font-family: "Montserrat";
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 48px;
+  letter-spacing: 0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin-bottom: 1.5rem;
+}
+
+.container > p:nth-child(3) {
+  font-family: "Montserrat";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.03em;
+  text-align: left;
+  text-decoration-style: solid;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  max-width: 536px;
+  margin-bottom: 2rem;
+}
+
+.infoSection {
+  margin: 2rem 0;
+  display: flex;
+  gap: 2rem;
+}
+
+.infoSection > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.infoSection > div > div:nth-child(1) {
+  background-color: var(--grey1);
+  width: 56px;
+  height: 56px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.infoSection > div > div:nth-child(2) > span {
+  display: block;
+}
+
+.infoSection > div > div:nth-child(2) > span:nth-child(1) {
+  font-family: "Montserrat";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin-bottom: 0.5rem;
+  color: var(--grey4);
+}
+
+.infoSection > div > div:nth-child(2) > span:nth-child(2) {
+  font-family: "Montserrat";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: var(--black);
+}

@@ -3,14 +3,14 @@ import classes from "./ProductsListing.module.css";
 
 type ProductsListingType = {
   title: string;
-  caption: string;
-  products: any[];
+  products?: any[];
+  id: string;
 };
 
-const ProductsListing = () => {
+const ProductsListing = ({ title, products, id }: ProductsListingType) => {
   return (
-    <section className={classes.container}>
-      <h4>Title</h4>
+    <section className={classes.container} id={id}>
+      <h4>{title || "Title"}</h4>
 
       <div className={classes.products}>
         <ProductCard />

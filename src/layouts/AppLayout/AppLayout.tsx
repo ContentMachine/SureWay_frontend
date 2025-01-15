@@ -11,9 +11,10 @@ import InqiryModalBody from "@/containers/InqiryModalBody/InqiryModalBody";
 type AppLayoutTypes = {
   children: React.ReactNode;
   className?: string;
+  isDynamic?: boolean;
 };
 
-const AppLayout = ({ children, className }: AppLayoutTypes) => {
+const AppLayout = ({ children, className, isDynamic }: AppLayoutTypes) => {
   // COntext
   const { modals, setModals } = useContext(AppContext);
   return (
@@ -23,7 +24,7 @@ const AppLayout = ({ children, className }: AppLayoutTypes) => {
       )}
 
       <main className={`${classes.container}`}>
-        <Header />
+        <Header isDynamic={isDynamic} />
         <section className={className}>{children}</section>
         <Footer />
       </main>

@@ -7,17 +7,9 @@ const HomeProductsSummary = () => {
     <section className={classes.container}>
       {/* Left section */}
       <div className={classes.leftSection}>
-        <div className={classes.featureCard}>
-          <div>{/* Image */}</div>
-          <div>
-            <h3>{productsSummary[0]?.title}</h3>
-            <p>{productsSummary[0]?.caption}</p>
-          </div>
-        </div>
-
         {/* Bottom */}
         <div>
-          {productsSummary?.slice(1, 3)?.map((data) => {
+          {productsSummary?.slice(0, 2)?.map((data) => {
             return (
               <div className={classes.featureCard} key={data?.title}>
                 <div>{/* Image */}</div>
@@ -28,6 +20,14 @@ const HomeProductsSummary = () => {
               </div>
             );
           })}
+        </div>
+
+        <div className={classes.featureCard}>
+          <div>{/* Image */}</div>
+          <div>
+            <h3>{productsSummary[2]?.title}</h3>
+            <p>{productsSummary[2]?.caption}</p>
+          </div>
         </div>
       </div>
 

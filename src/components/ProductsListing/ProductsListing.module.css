@@ -1,6 +1,5 @@
 .container {
   margin-bottom: 2rem;
-  border: 2px solid green;
 }
 
 .container > h4 {
@@ -21,6 +20,6 @@
   flex-wrap: wrap;
 }
 
-.products > div {
+.products > a {
   flex-basis: calc(25% - 1rem);
 }

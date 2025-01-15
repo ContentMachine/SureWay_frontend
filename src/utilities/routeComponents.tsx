@@ -1,4 +1,5 @@
 import { routes } from ".";
+import customMagnets1 from "../assets/Images/customMagnets1.svg";
 
 export const routeComponents = [
   {
@@ -14,8 +15,12 @@ export const routeComponents = [
     properties: ["isHeaderRoute"],
     children: [
       { title: "Branding", route: routes?.BRANDING },
-      { title: "Engraving", route: routes.ENGRAVING },
-      { title: "Custom Magnets", route: routes.CUSTOM_MAGNETS },
+      {
+        title: "Custom Car Magnets",
+        route: routes.CUSTOM_MAGNETS,
+      },
+      { title: "Engraved Artworks", route: routes.ENGRAVING },
+
       { title: "Order Processing", route: routes.ORDER_PROCESSING },
     ],
     isActive: false,

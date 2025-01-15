@@ -3,10 +3,11 @@ import classes from "./ProductCard.module.css";
 import productImage from "../../assets/Images/productImage.svg";
 import Image from "next/image";
 import Button from "../Button/Button";
+import Link from "next/link";
 
 const ProductCard = () => {
   return (
-    <div className={classes.container}>
+    <Link className={classes.container} href={`/products/id`}>
       <div>
         <Like />
       </div>
@@ -18,7 +19,7 @@ const ProductCard = () => {
       </div>
 
       <Button>Add to cart</Button>
-    </div>
+    </Link>
   );
 };
 

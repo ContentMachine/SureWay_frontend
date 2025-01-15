@@ -2,22 +2,24 @@ import productImage2 from "../assets/Images/productImage2.svg";
 
 export const productsSummary = [
   {
-    title: "Branding",
+    title: "Engraved Artworks",
+    caption: "If you're looking for something unique, this is the right place",
+    image: null,
+  },
+
+  {
+    title: "Custom Car Magnets",
+    caption: "Be creative with your own magnets",
+    image: null,
+  },
+
+  {
+    title: "Fridge Magnets",
     caption: "Brand Visibility",
     image: null,
   },
   {
-    title: "Engraving",
-    caption: "If you're looking for something unique, this is the right place",
-    image: null,
-  },
-  {
-    title: "Custom Magnets",
-    caption: "Be creative with your own magnets",
-    image: null,
-  },
-  {
-    title: "Order Processing",
+    title: "Occassions",
     caption: "Expand your reach by bringing your sales online",
     image: null,
   },
