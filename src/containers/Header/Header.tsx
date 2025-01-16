@@ -56,7 +56,7 @@ const Header = ({ isDynamic }: HeaderTypes) => {
   }, []);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && typeof document !== "undefined") {
       const handleOptionsPopupBlur = (e: any) => {
         if (optionsRef && !optionsRef?.current?.contains(e?.target)) {
           const navItemsCopy = navItems?.map((data) => {

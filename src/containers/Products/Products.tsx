@@ -9,16 +9,18 @@ import { useEffect } from "react";
 const Products = () => {
   // Utils
   const scrollToSection = (hash: string) => {
-    const element = document.getElementById(hash);
-    if (element) {
-      const topOffset = 70;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - topOffset;
+    if (typeof document !== "undefined") {
+      const element = document.getElementById(hash);
+      if (element) {
+        const topOffset = 70;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - topOffset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
     }
   };
 
