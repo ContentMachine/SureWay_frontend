@@ -4,21 +4,43 @@ import productImage from "../../assets/Images/productImage.svg";
 import Image from "next/image";
 import Button from "../Button/Button";
 import Link from "next/link";
+import { productType } from "@/utilities/types";
+import { useState } from "react";
 
-const ProductCard = () => {
+type ProductCardTypes = {
+  data: productType;
+};
+
+const ProductCard = ({ data }: ProductCardTypes) => {
+  // State
+  const [isHovering, setIsHovering] = useState(false);
+
   return (
-    <Link className={classes.container} href={`/products/id`}>
+    <Link
+      className={classes.container}
+      href={`/products/id`}
+      onMouseEnter={() => {
+        setIsHovering(true);
+      }}
+      onMouseLeave={() => {
+        setIsHovering(false);
+      }}
+    >
       <div>
         <Like />
       </div>
-      <Image src={productImage} alt="Product" />
+      <Image
+        src={isHovering ? data?.hoverImage : data?.image || productImage}
+        alt="Product"
+      />
+
       <div className={classes.textSection}>
-        <p>Magnets</p>
+        <p>{data?.title}</p>
         <p>Fridge magnets</p>
-        <p>₦170,000</p>
+        <p>₦{data?.price}</p>
       </div>
 
-      <Button>Add to cart</Button>
+      <Button>Buy</Button>
     </Link>
   );
 };

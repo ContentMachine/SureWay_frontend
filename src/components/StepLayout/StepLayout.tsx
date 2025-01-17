@@ -12,7 +12,6 @@ const StepLayout = ({ children, steps }: UserOnboardingLayoutProps) => {
   const updateSearchParams = useUpdateSearchPRams();
 
   // Steps
-
   const userStep = updateSearchParams("step", undefined, "get");
 
   return (

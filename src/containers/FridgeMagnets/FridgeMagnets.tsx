@@ -2,27 +2,48 @@
 
 import SectionsHero from "@/components/SectionsHero/SectionsHero";
 import AppLayout from "@/layouts/AppLayout/AppLayout";
-import useEffect from "react";
+import { useEffect, useState } from "react";
 import MagnetDimensions from "../MagnetDimensions/MagnetDimensions";
 import StepLayout from "@/components/StepLayout/StepLayout";
 import useUpdateSearchPRams from "@/hooks/useUpdateSearchParams";
+import MagnetSizes from "../MagnetSizes/MagnetSizes";
+import { magnetDataType } from "@/utilities/types";
+import MagnetCustomization from "../MagnetCustomization/MagnetCustomization";
 
 const FridgeMagnets = () => {
   // Hooks
   const updateSearchParams = useUpdateSearchPRams();
 
-  const params = new URLSearchParams(window?.location?.search);
-  const step = params.get("step");
+  const step = updateSearchParams("step", undefined, "get");
 
   // Utils
-  const steps = [1, 2, 3, 4];
+  const steps = [1, 2, 3];
+
+  // States
+  const [magnetData, setMagnetData] = useState<magnetDataType>({
+    shape: "",
+    dimension: "",
+    fullName: "",
+    email: "",
+    phone: "",
+    customText: "",
+    achievement: "",
+    image: null,
+  });
 
   // Effects
   useEffect(() => {
-    updateSearchParams("step", "1", "set");
+    if (typeof window !== undefined) {
+      updateSearchParams("step", "1", "set");
+    }
   }, []);
 
-  const container = step === "1" ? <MagnetDimensions /> : <div></div>;
+  const container =
+    (step as string) === "2" ? (
+      <MagnetCustomization data={magnetData} setData={setMagnetData} />
+    ) : (
+      <MagnetDimensions data={magnetData} setData={setMagnetData} />
+    );
 
   return (
     <AppLayout isDynamic>

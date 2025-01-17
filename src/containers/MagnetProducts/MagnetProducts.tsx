@@ -4,6 +4,8 @@ import classes from "./MagnetProducts.module.css";
 import SectionsNav from "@/components/SectionsNav/SectionsNav";
 import ProductCard from "@/components/ProductCard/ProductCard";
 import { useRouter } from "next/navigation";
+import ProductsListing from "@/components/ProductsListing/ProductsListing";
+import { valentinesProducts } from "@/utilities/products";
 
 const MagnetProducts = () => {
   // States
@@ -61,16 +63,7 @@ const MagnetProducts = () => {
 
       <SectionsNav navItems={navItems} setNavItems={setNavItems} />
 
-      <div className={classes.products}>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-      </div>
+      <ProductsListing products={valentinesProducts} />
     </section>
   );
 };

@@ -1,3 +1,5 @@
+"use client";
+
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
 const useUpdateSearchParams = () => {
@@ -10,20 +12,21 @@ const useUpdateSearchParams = () => {
     value: string | undefined,
     method: "set" | "delete" | "get"
   ) => {
-    const params = new URLSearchParams(searchParams.toString());
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(searchParams.toString());
 
-    if (method === "get") {
-      return params.get(key); // Simply return the value of the key
+      if (method === "get") {
+        return params.get(key);
+      }
+
+      if (method === "delete") {
+        params.delete(key);
+      } else if (value) {
+        params.set(key, value);
+      }
+
+      router.push(`${pathname}?${params.toString()}`);
     }
-
-    if (method === "delete") {
-      params.delete(key); // Delete the key from search params
-    } else if (value) {
-      params.set(key, value); // Add or update the key-value pair
-    }
-
-    // Push the new URL with updated search params
-    router.push(`${pathname}?${params.toString()}`);
   };
 
   return updateSearchParams;

@@ -25,16 +25,13 @@
 
 .body {
   width: 80%;
-  min-height: 70%;
   padding: 4rem 0;
-  border: 2px solid red;
 }
 
 .stepIndicator {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid red;
   max-width: 30%;
   margin-inline: auto;
 }

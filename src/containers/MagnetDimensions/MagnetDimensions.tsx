@@ -1,20 +1,23 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import classes from "./MagnetDimensions.module.css";
 import { magnetShapes } from "@/utilities/products";
 import Image from "next/image";
 import Button from "@/components/Button/Button";
 import { activeToggler } from "@/helpers/activeHandlers";
 import useUpdateSearchParams from "@/hooks/useUpdateSearchParams";
+import { magnetDataType } from "@/utilities/types";
+import MagnetSizes from "../MagnetSizes/MagnetSizes";
 
-const MagnetDimensions = () => {
+type MagnetDimensionsTypes = {
+  data: magnetDataType;
+  setData: Dispatch<SetStateAction<magnetDataType>>;
+};
+
+const MagnetDimensions = ({ data, setData }: MagnetDimensionsTypes) => {
   // States
   const [shapes, setShapes] = useState(
-    magnetShapes?.map((data, i) => {
-      if (i === 0) {
-        return { shape: data, isActive: true };
-      } else {
-        return { shape: data, isActive: false };
-      }
+    magnetShapes?.map((data) => {
+      return { image: data?.image, isActive: false, title: data?.title };
     })
   );
 
@@ -23,6 +26,15 @@ const MagnetDimensions = () => {
 
   // Hooks
   const updateSearchParams = useUpdateSearchParams();
+
+  // Effects
+  useEffect(() => {
+    if (activeShape) {
+      setData((prevState) => {
+        return { ...prevState, shape: activeShape?.title };
+      });
+    }
+  }, [activeShape]);
 
   return (
     <section className={classes.container}>
@@ -40,19 +52,25 @@ const MagnetDimensions = () => {
               className={data?.isActive ? classes.active : classes.inActive}
               onClick={() => activeToggler(i, shapes, setShapes)}
             >
-              <Image src={data?.shape} alt="Magnet Shapes" />
+              <Image src={data?.image} alt="Magnet Shapes" fill={false} />
+              <span>{data?.title}</span>
             </div>
           );
         })}
       </div>
-      <Button
-        disabled={!activeShape}
-        onClick={() => {
-          updateSearchParams("step", "2", "set");
-        }}
-      >
-        Next
-      </Button>
+
+      {data?.shape && <MagnetSizes data={data} setData={setData} />}
+
+      {data?.shape && data?.dimension && (
+        <Button
+          disabled={!data?.shape || !data?.dimension}
+          onClick={() => {
+            updateSearchParams("step", "2", "set");
+          }}
+        >
+          Next
+        </Button>
+      )}
     </section>
   );
 };

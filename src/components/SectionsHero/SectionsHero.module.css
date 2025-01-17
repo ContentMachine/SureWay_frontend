@@ -3,7 +3,7 @@
   padding-top: calc(var(--headerHeight) + 2rem);
   text-align: center;
   padding-bottom: 2rem;
-  background-image: url("../../assets/Images/magnets.jpg");
+  background-image: url("../../assets/Images/fridgeMagnetHeader.svg");
   position: relative;
   background-position: center center;
   background-repeat: no-repeat;
