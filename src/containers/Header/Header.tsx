@@ -6,6 +6,8 @@ import { routes } from "@/utilities";
 import { useEffect, useRef, useState } from "react";
 import ArrowDown from "@/assets/SvgIcons/ArrowDown";
 import { activeToggler } from "@/helpers/activeHandlers";
+import Image from "next/image";
+import logo from "../../assets/Images/logo.svg";
 
 type HeaderTypes = {
   isDynamic?: boolean;
@@ -81,7 +83,9 @@ const Header = ({ isDynamic }: HeaderTypes) => {
       className={classes.container}
       style={{ backgroundColor: navBackground }}
     >
-      <Link href={routes?.BASE_URL}>Logo</Link>
+      <Link href={routes?.BASE_URL}>
+        <Image src={logo} alt="Sureway Logo" />
+      </Link>
 
       <nav>
         {navItems?.map((route, i) => {

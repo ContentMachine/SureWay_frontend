@@ -1,26 +1,31 @@
 import Button from "@/components/Button/Button";
 import classes from "./MagnetsHeaderSection.module.css";
 import Image from "next/image";
-import magnetHeader from "../../assets/Images/magnetHeader.svg";
+import fridgeMagnet2 from "../../assets/Images/fridgeMagnet2.svg";
+
+const magnetSteps = [
+  "Pick a size, shape, and quantity",
+  "Upload a picture, logo, or design of your choice",
+  "Pay using our secure payment gateway",
+  "A member of our team will reach out and you to complete the order",
+];
 
 const MagnetsHeaderSection = () => {
   return (
     <section className={classes.container}>
-      <h4>
-        Make you grow, <br />
-        together
-      </h4>
-      <p>
-        Vous avez beaucoup à nous apprendre sur votre marché et votre offre. Des
-        infos précieuses qui méritent toute notre attention : parce qu’une
-        solution digitale, ça se construit ensemble. C’est pour cela qu’un
-        projet ne démarre jamais sans un vrai kick-off et que nous avons
-        développés des méthodologies de co-construction. Vous impliquer dans
-        chaque étape du projet, c’est vous en donner une maîtrise.
-      </p>
+      <div className={classes.steps}>
+        <h4>
+          Make the perfect magnets in <br /> <span>{magnetSteps?.length}</span>{" "}
+          Simple Steps
+        </h4>
+        <ol>
+          {magnetSteps?.map((data) => {
+            return <li key={data}>{data}</li>;
+          })}
+        </ol>
+      </div>
 
-      <Button>Create your Custom Magnet</Button>
-      <Image src={magnetHeader} alt="Magnet" />
+      <Image src={fridgeMagnet2} alt="Magnet" />
     </section>
   );
 };

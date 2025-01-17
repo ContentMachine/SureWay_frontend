@@ -1,6 +1,8 @@
 import { routeComponents } from "@/utilities/routeComponents";
 import classes from "./Footer.module.css";
 import Link from "next/link";
+import Image from "next/image";
+import logo from "../../assets/Images/logo.svg";
 
 const footerNavItems = routeComponents?.filter((data) => data?.children);
 
@@ -8,7 +10,7 @@ const Footer = () => {
   return (
     <footer className={classes.container}>
       <div>
-        <h1>Logo</h1>
+        <Image src={logo} alt="Sureway Logo" />
         <p>We help brands to amplify and inspire people.</p>
       </div>
 

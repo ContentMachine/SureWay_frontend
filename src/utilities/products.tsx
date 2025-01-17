@@ -1,4 +1,15 @@
+import { routes } from ".";
 import productImage2 from "../assets/Images/productImage2.svg";
+
+import fridgeMagnet1 from "../assets/Images/fridgeMagnet1.svg";
+import customMagnets from "../assets/Images/customMagnet1.svg";
+import carMegnets from "../assets/Images/carMagnet1.svg";
+
+import circle from "../assets/Images/Circle.svg";
+import rectangle from "../assets/Images/Rectangle.svg";
+import roundedRectange from "../assets/Images/Rounded Rectangle.svg";
+import roundedSquare from "../assets/Images/Rounded Square .svg";
+import square from "../assets/Images/Square.svg";
 
 export const productsSummary = [
   {
@@ -45,5 +56,41 @@ export const productsCta = [
     title: "Other Services",
     caption: "Elevate your business identity with tailored branding solutions.",
     image: productImage2,
+  },
+];
+
+export const magnetTypes = [
+  {
+    title: "Fridge Magnets",
+    caption: "Add a personal touch with custom engraving for any occasion.",
+    image: fridgeMagnet1,
+    route: routes.FRIDGE_MAGNETS,
+  },
+  {
+    title: "Car Magnets",
+    caption: "Turn your designs into fun and functional custom magnets.",
+    image: carMegnets,
+    route: routes.CAR_MAGNETS,
+  },
+  {
+    title: "Custom Magnets",
+    caption: "Elevate your business identity with tailored branding solutions.",
+    image: customMagnets,
+    route: routes.CUSTOM_MAGNETS,
+  },
+];
+
+export const magnetShapes = [
+  circle,
+  square,
+  rectangle,
+  roundedRectange,
+  roundedSquare,
+];
+
+export const maggnetSizes = [
+  {
+    type: "fridge",
+    dimensions: [""],
   },
 ];

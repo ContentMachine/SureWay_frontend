@@ -61,3 +61,8 @@
   margin-bottom: 1rem;
   color: var(--black);
 }
+
+.container > a > img {
+  width: 120px;
+  height: 90%;
+}

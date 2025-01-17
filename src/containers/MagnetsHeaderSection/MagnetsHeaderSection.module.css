@@ -1,7 +1,7 @@
 .container {
   padding-block: 150px;
+  padding-inline: 160px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 2rem;
   position: relative;
@@ -28,10 +28,47 @@
   width: 540px;
 }
 
-.container > img:nth-child(4) {
-  position: absolute;
+.container > img:last-child {
   left: 0;
   top: 0;
   bottom: 0;
   margin-block: auto;
+  height: 100%;
+  width: 100%;
+  width: 720px;
+  height: 589px;
+  order: 0;
+}
+
+.container > div {
+  flex: 1;
+  max-width: 1000px;
+  order: 1;
+}
+
+.steps > h4 {
+  font-family: "Montserrat";
+  font-size: 33px;
+  font-weight: 600;
+  line-height: 48px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin-bottom: 2rem;
+}
+
+.steps > h4 > span {
+  font-weight: 600;
+}
+
+.steps > ol > li {
+  font-family: "Montserrat";
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 150%;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin-bottom: 1rem;
+  margin-left: 20px;
 }
