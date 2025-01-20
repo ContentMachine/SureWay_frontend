@@ -1,3 +1,5 @@
+"use client";
+
 import { setAllModalsFalse } from "@/helpers/modalHandlers";
 import classes from "./Modal.module.css";
 import ReactDom from "react-dom";

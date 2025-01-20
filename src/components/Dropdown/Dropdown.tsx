@@ -39,17 +39,19 @@ const Dropdown = (props: DropdownProps) => {
   }, [isActive]);
 
   useEffect(() => {
-    const removeDropdownHandler = (e: any) => {
-      if (dropdownRef && !dropdownRef?.current?.contains(e.target)) {
-        setIsActive(false);
-      } else {
-      }
-    };
-    document.addEventListener("mousedown", removeDropdownHandler);
+    if (typeof document !== "undefined") {
+      const removeDropdownHandler = (e: any) => {
+        if (dropdownRef && !dropdownRef?.current?.contains(e.target)) {
+          setIsActive(false);
+        } else {
+        }
+      };
+      document.addEventListener("mousedown", removeDropdownHandler);
 
-    return () => {
-      document.removeEventListener("mousedown", removeDropdownHandler);
-    };
+      return () => {
+        document.removeEventListener("mousedown", removeDropdownHandler);
+      };
+    }
   }, []);
 
   useEffect(() => {
