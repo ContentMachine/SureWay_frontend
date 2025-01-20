@@ -100,7 +100,7 @@ export const magnetTypes = [
     title: "Custom Magnets",
     caption: "Elevate your business identity with tailored branding solutions.",
     image: customMagnets,
-    route: routes.CUSTOM_MAGNETS,
+    route: "#custom-magnets",
   },
 ];
 

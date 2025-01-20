@@ -9,6 +9,7 @@ import { valentineTexts } from "@/utilities/constants";
 import { magnetDataType } from "@/utilities/types";
 import { inputChangeHandler } from "@/helpers/inputChangeHandler";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import useUpdateSearchParams from "@/hooks/useUpdateSearchParams";
 
 type MagnetCustomizationTypes = {
   data: magnetDataType;
@@ -18,6 +19,9 @@ type MagnetCustomizationTypes = {
 const MagnetCustomization = ({ data, setData }: MagnetCustomizationTypes) => {
   // States
   const [customText, setCustomText] = useState("");
+
+  // Hooks
+  const updateSearchParams = useUpdateSearchParams();
 
   //   Effects
   useEffect(() => {
@@ -87,7 +91,14 @@ const MagnetCustomization = ({ data, setData }: MagnetCustomizationTypes) => {
           onChange={(e) => inputChangeHandler(e, setData)}
         />
         <FileUploadInput />
-        <Button>Preview & Pay</Button>
+        <Button
+          onClick={(e) => {
+            e.preventDefault();
+            updateSearchParams("step", "3", "set");
+          }}
+        >
+          Preview & Pay
+        </Button>
       </form>
     </section>
   );

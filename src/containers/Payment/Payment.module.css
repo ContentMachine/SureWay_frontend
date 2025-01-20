@@ -1,0 +1,39 @@
+.imageContainer {
+  width: 337px;
+  height: 337px;
+  position: relative;
+}
+
+.imageContainer > img {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 2rem;
+}
+
+.imageContainer > span {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat";
+  font-size: 50px;
+  font-weight: 600;
+  line-height: 140%;
+  margin-top: 1rem;
+}
+
+.container > form {
+  width: 80%;
+}
+
+.buttonSection {
+  display: flex;
+  gap: 1rem;
+  margin-top: 3rem;
+}

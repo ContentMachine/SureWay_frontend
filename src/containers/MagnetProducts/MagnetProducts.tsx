@@ -52,7 +52,7 @@ const MagnetProducts = () => {
   );
 
   return (
-    <section className={classes.container}>
+    <section className={classes.container} id="custom-magnets">
       <h4>Our Magnetic Products</h4>
       <p>
         Whether you're a DIY enthusiast, a professional, or simply looking to
@@ -62,7 +62,6 @@ const MagnetProducts = () => {
       </p>
 
       <SectionsNav navItems={navItems} setNavItems={setNavItems} />
-
       <ProductsListing products={valentinesProducts} />
     </section>
   );

@@ -1,19 +1,18 @@
 "use client";
 
-import SectionsHero from "@/components/SectionsHero/SectionsHero";
-import AppLayout from "@/layouts/AppLayout/AppLayout";
-import { useEffect, useState } from "react";
-import MagnetDimensions from "../MagnetDimensions/MagnetDimensions";
-import StepLayout from "@/components/StepLayout/StepLayout";
-import useUpdateSearchPRams from "@/hooks/useUpdateSearchParams";
-import MagnetSizes from "../MagnetSizes/MagnetSizes";
+import useUpdateSearchParams from "@/hooks/useUpdateSearchParams";
 import { magnetDataType } from "@/utilities/types";
+import React, { useEffect, useState } from "react";
 import MagnetCustomization from "../MagnetCustomization/MagnetCustomization";
 import MagnetPreviewAndPayment from "../MagnetPreviewAndPayment/MagnetPreviewAndPayment";
+import MagnetDimensions from "../MagnetDimensions/MagnetDimensions";
+import AppLayout from "@/layouts/AppLayout/AppLayout";
+import SectionsHero from "@/components/SectionsHero/SectionsHero";
+import StepLayout from "@/components/StepLayout/StepLayout";
 
-const FridgeMagnets = () => {
+const CarMagnets = () => {
   // Hooks
-  const updateSearchParams = useUpdateSearchPRams();
+  const updateSearchParams = useUpdateSearchParams();
 
   const step = updateSearchParams("step", undefined, "get");
 
@@ -35,7 +34,9 @@ const FridgeMagnets = () => {
   // Effects
   useEffect(() => {
     if (typeof window !== undefined) {
-      updateSearchParams("step", "1", "set");
+      if (!step) {
+        updateSearchParams("step", "1", "set");
+      }
     }
   }, []);
 
@@ -50,10 +51,10 @@ const FridgeMagnets = () => {
 
   return (
     <AppLayout isDynamic>
-      <SectionsHero title="Fridge Magnets" />
+      <SectionsHero title="Car Magnets" />
       <StepLayout steps={steps}>{container}</StepLayout>
     </AppLayout>
   );
 };
 
-export default FridgeMagnets;
+export default CarMagnets;

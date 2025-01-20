@@ -9,16 +9,17 @@ import { useState } from "react";
 
 type ProductCardTypes = {
   data: productType;
+  route?: string;
 };
 
-const ProductCard = ({ data }: ProductCardTypes) => {
+const ProductCard = ({ data, route }: ProductCardTypes) => {
   // State
   const [isHovering, setIsHovering] = useState(false);
 
   return (
     <Link
       className={classes.container}
-      href={`/products/id`}
+      href={route || `/products/id`}
       onMouseEnter={() => {
         setIsHovering(true);
       }}
@@ -29,10 +30,14 @@ const ProductCard = ({ data }: ProductCardTypes) => {
       <div>
         <Like />
       </div>
-      <Image
-        src={isHovering ? data?.hoverImage : data?.image || productImage}
-        alt="Product"
-      />
+
+      <div className={classes.image}>
+        {isHovering ? (
+          <Image src={data?.hoverImage || productImage} alt="Product" />
+        ) : (
+          <Image src={data?.image || productImage} alt="Product" />
+        )}
+      </div>
 
       <div className={classes.textSection}>
         <p>{data?.title}</p>

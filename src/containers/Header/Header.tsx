@@ -34,7 +34,7 @@ const Header = ({ isDynamic }: HeaderTypes) => {
     const currentScrollY = window.scrollY;
 
     if (isDynamic) {
-      if ((currentScrollY as number) > 500) {
+      if ((currentScrollY as number) > 200) {
         setNavBackground("#000");
       } else {
         setNavBackground("transparent");
