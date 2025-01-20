@@ -6,6 +6,8 @@ import classes from "./HomeProducts.module.css";
 import Button from "@/components/Button/Button";
 import { useRouter } from "next/navigation";
 import { routes } from "@/utilities";
+import ProductsListing from "@/components/ProductsListing/ProductsListing";
+import { valentinesProducts } from "@/utilities/products";
 
 const HomeProducts = () => {
   // States
@@ -37,14 +39,7 @@ const HomeProducts = () => {
       <SectionsNav navItems={navItems} setNavItems={setNavItems} />
 
       <div className={classes.products}>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        <ProductsListing products={valentinesProducts} />
       </div>
 
       <div className={classes.buttonSection}>
