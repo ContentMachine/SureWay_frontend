@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import classes from "./Dropdown.module.css";
+import Loader from "../Loader/Loader";
 
 export type DropdownProps = {
   title: string | React.ReactNode;
@@ -13,6 +14,7 @@ export type DropdownProps = {
   isRequired?: boolean;
   errorMessage?: string;
   onOpen?: () => void;
+  maxHeight?: string;
 };
 
 const Dropdown = (props: DropdownProps) => {
@@ -141,7 +143,7 @@ const Dropdown = (props: DropdownProps) => {
         {isActive && (
           <div
             className={classes.dropdownContent}
-            // onClick={props.onClick}
+            style={{ maxHeight: props.maxHeight || undefined }}
           >
             {props.options && props.options?.length > 8 && (
               <div className={classes.inputSection}>
@@ -185,7 +187,9 @@ const Dropdown = (props: DropdownProps) => {
               props.options.length === 0 ? (
               <p className={`${classes.dropdownItem2}`}>No matching Items</p>
             ) : (
-              <div className={classes.loadingContainer}>Loading....</div>
+              <div className={classes.loadingContainer}>
+                <Loader dimensions="25px" />
+              </div>
             )}
           </div>
         )}

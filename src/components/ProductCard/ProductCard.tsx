@@ -3,9 +3,13 @@ import classes from "./ProductCard.module.css";
 import productImage from "../../assets/Images/productImage.svg";
 import Image from "next/image";
 import Button from "../Button/Button";
-import Link from "next/link";
 import { productType } from "@/utilities/types";
-import { useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
+import Dropdown from "../Dropdown/Dropdown";
+import { MagnetContext } from "@/context/MagnetContext";
+import { useMagnetPrice } from "@/hooks/useMagnets";
+import { mutate } from "swr";
+import { formatCurrency } from "@/helpers/formatAmount";
 
 type ProductCardTypes = {
   data: productType;
@@ -16,10 +20,29 @@ const ProductCard = ({ data, route }: ProductCardTypes) => {
   // State
   const [isHovering, setIsHovering] = useState(false);
 
+  // States
+  const [size, setSize] = useState("10x10");
+
+  // Context
+  const { magnetSizes, magnetSizesIsLoading } = useContext(MagnetContext);
+
+  // Request
+  const { isLoading: magnetPriceIsLoading, data: magnetPrice } =
+    useMagnetPrice(size);
+
+  // Memo
+  const price = useMemo(() => magnetPrice?.data?.price, [magnetPrice]);
+
+  // Effects
+  useEffect(() => {
+    if (size) {
+      mutate(`/api/magnets/size/by-size/${size}`);
+    }
+  }, [size]);
+
   return (
-    <Link
+    <section
       className={classes.container}
-      href={route || `/products/id`}
       onMouseEnter={() => {
         setIsHovering(true);
       }}
@@ -42,11 +65,19 @@ const ProductCard = ({ data, route }: ProductCardTypes) => {
       <div className={classes.textSection}>
         <p>{data?.title}</p>
         <p>Fridge magnets</p>
-        <p>₦{data?.price}</p>
+        <p>₦{formatCurrency(price || 0)}</p>
+        <Dropdown
+          title="Select a size"
+          options={magnetSizes}
+          selected={size}
+          setSelected={setSize}
+          maxHeight="70px"
+          isLoading={magnetPriceIsLoading || magnetSizesIsLoading}
+        />
       </div>
 
-      <Button>Buy</Button>
-    </Link>
+      <Button disabled={!price || !size}>Buy</Button>
+    </section>
   );
 };
 

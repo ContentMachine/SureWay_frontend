@@ -16,10 +16,11 @@
 
 .products {
   display: flex;
+  align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
-.products > a {
-  flex-basis: calc(25% - 1rem);
+.products > section {
+  flex-basis: calc(25% - 1.5rem);
 }

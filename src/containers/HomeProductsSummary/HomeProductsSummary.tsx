@@ -1,6 +1,7 @@
 import Button from "@/components/Button/Button";
 import { productsSummary } from "@/utilities/products";
 import classes from "./HomeProductsSummary.module.css";
+import Image from "next/image";
 
 const HomeProductsSummary = () => {
   return (
@@ -9,10 +10,18 @@ const HomeProductsSummary = () => {
       <div className={classes.leftSection}>
         {/* Bottom */}
         <div>
-          {productsSummary?.slice(0, 2)?.map((data) => {
+          {productsSummary?.slice(0, 1)?.map((data) => {
             return (
               <div className={classes.featureCard} key={data?.title}>
-                <div>{/* Image */}</div>
+                <div>
+                  <Image
+                    src={data?.image as string}
+                    alt={data?.title}
+                    objectFit="contain"
+                    width={200}
+                    height={200}
+                  />
+                </div>
                 <div>
                   <h3>{data?.title}</h3>
                   <p>{data?.caption}</p>
@@ -23,7 +32,15 @@ const HomeProductsSummary = () => {
         </div>
 
         <div className={classes.featureCard}>
-          <div>{/* Image */}</div>
+          <div>
+            <Image
+              src={productsSummary[2]?.image as string}
+              alt={productsSummary[2].title}
+              objectFit="contain"
+              width={200}
+              height={200}
+            />
+          </div>
           <div>
             <h3>{productsSummary[2]?.title}</h3>
             <p>{productsSummary[2]?.caption}</p>
@@ -34,7 +51,15 @@ const HomeProductsSummary = () => {
       {/* Right section */}
       <div className={classes.rightSection}>
         <div className={classes.featureCard}>
-          <div>{/* Image */}</div>
+          <div>
+            <Image
+              src={productsSummary[3]?.image as string}
+              alt={productsSummary[3].title}
+              objectFit="contain"
+              width={400}
+              height={400}
+            />
+          </div>
           <div>
             <h3>{productsSummary[3]?.title}</h3>
             <p>{productsSummary[3]?.caption}</p>

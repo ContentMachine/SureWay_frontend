@@ -33,26 +33,33 @@ import valentines9Hover from "../assets/Images/Valentines 9_hover.svg";
 
 export const productsSummary = [
   {
-    title: "Engraved Artworks",
-    caption: "If you're looking for something unique, this is the right place",
-    image: null,
-  },
-
-  {
-    title: "Custom Car Magnets",
-    caption: "Be creative with your own magnets",
-    image: null,
+    title: "Engravings",
+    caption:
+      "What would you like to engrave, art, signs, personal items and more?",
+    image:
+      "https://res.cloudinary.com/dfilepe0f/image/upload/v1737468753/engravings_jn5zzb.png",
   },
 
   {
     title: "Fridge Magnets",
     caption: "Brand Visibility",
-    image: null,
+    image:
+      "https://res.cloudinary.com/dfilepe0f/image/upload/v1737468902/fridgeMagnets_lza5t6.svg",
   },
+
   {
-    title: "Occassions",
-    caption: "Expand your reach by bringing your sales online",
-    image: null,
+    title: "Custom Magnets",
+    caption:
+      "For the memories that matter, every magnet tells a story, a story that sticks",
+    image:
+      "https://res.cloudinary.com/dfilepe0f/image/upload/v1737468902/fridgeMagnets_lza5t6.svg",
+  },
+
+  {
+    title: "Sure Things",
+    caption: "The coolest and most necessary of items... coming soon!",
+    image:
+      "https://res.cloudinary.com/dfilepe0f/image/upload/v1737468918/sureThings_q5idzg.svg",
   },
 ];
 

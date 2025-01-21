@@ -34,6 +34,9 @@ const HomeProducts = () => {
   // Router
   const router = useRouter();
 
+  // Requests
+  // const {}
+
   return (
     <section className={classes.container}>
       <SectionsNav navItems={navItems} setNavItems={setNavItems} />
