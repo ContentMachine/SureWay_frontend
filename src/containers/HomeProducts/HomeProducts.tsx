@@ -1,7 +1,7 @@
 import ProductCard from "@/components/ProductCard/ProductCard";
 import SectionsNav from "@/components/SectionsNav/SectionsNav";
 import { magnetDataType, navItemTypes, productType } from "@/utilities/types";
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import classes from "./HomeProducts.module.css";
 import Button from "@/components/Button/Button";
 import { useRouter } from "next/navigation";
@@ -11,6 +11,7 @@ import { valentinesProducts } from "@/utilities/products";
 import { useMagnetCategories, useMagnets } from "@/hooks/useMagnets";
 import useUpdateSearchParams from "@/hooks/useUpdateSearchParams";
 import { mutate } from "swr";
+import Loader from "@/components/Loader/Loader";
 
 const HomeProducts = () => {
   // States
@@ -83,29 +84,31 @@ const HomeProducts = () => {
   }, [section]);
 
   return (
-    <section className={classes.container} id="custom-magnets">
-      <SectionsNav navItems={navItems} setNavItems={setNavItems} isRoute />
+    <Suspense fallback={<Loader />}>
+      <section className={classes.container} id="custom-magnets">
+        <SectionsNav navItems={navItems} setNavItems={setNavItems} isRoute />
 
-      <div className={classes.products}>
-        <ProductsListing
-          products={magnets}
-          loading={isLoading || magnetCategoriesIsLoading}
-        />
-      </div>
-
-      {magnets?.length > 10 && (
-        <div className={classes.buttonSection}>
-          <Button
-            type="secondary"
-            onClick={() => {
-              router.push(routes?.PRODUCTS);
-            }}
-          >
-            Show more
-          </Button>
+        <div className={classes.products}>
+          <ProductsListing
+            products={magnets}
+            loading={isLoading || magnetCategoriesIsLoading}
+          />
         </div>
-      )}
-    </section>
+
+        {magnets?.length > 10 && (
+          <div className={classes.buttonSection}>
+            <Button
+              type="secondary"
+              onClick={() => {
+                router.push(routes?.PRODUCTS);
+              }}
+            >
+              Show more
+            </Button>
+          </div>
+        )}
+      </section>
+    </Suspense>
   );
 };
 

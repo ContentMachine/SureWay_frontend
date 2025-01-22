@@ -1,12 +1,5 @@
-import { navItemTypes } from "@/utilities/types";
-import React, { useMemo, useState } from "react";
+import React from "react";
 import classes from "./MagnetProducts.module.css";
-import SectionsNav from "@/components/SectionsNav/SectionsNav";
-import ProductCard from "@/components/ProductCard/ProductCard";
-import { useRouter } from "next/navigation";
-import ProductsListing from "@/components/ProductsListing/ProductsListing";
-import { valentinesProducts } from "@/utilities/products";
-import useUpdateSearchParams from "@/hooks/useUpdateSearchParams";
 import HomeProducts from "../HomeProducts/HomeProducts";
 
 const MagnetProducts = () => {
