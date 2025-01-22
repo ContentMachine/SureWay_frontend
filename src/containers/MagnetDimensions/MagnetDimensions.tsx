@@ -1,3 +1,5 @@
+"use client";
+
 import { Dispatch, SetStateAction, Suspense, useEffect, useState } from "react";
 import classes from "./MagnetDimensions.module.css";
 import { magnetShapes } from "@/utilities/products";

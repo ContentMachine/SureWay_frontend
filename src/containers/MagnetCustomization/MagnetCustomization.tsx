@@ -1,3 +1,5 @@
+"use client";
+
 import Input from "@/components/Input/Input";
 import InqiryModalBody from "../InqiryModalBody/InqiryModalBody";
 import classes from "./MagnetCustomization.module.css";

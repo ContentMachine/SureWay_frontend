@@ -1,3 +1,5 @@
+"use client";
+
 import { Suspense } from "react";
 import classes from "./StepLayout.module.css";
 import useUpdateSearchPRams from "@/hooks/useUpdateSearchParams";
