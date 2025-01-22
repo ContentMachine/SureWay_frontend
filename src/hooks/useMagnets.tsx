@@ -28,3 +28,15 @@ export const useMagnetCategories = () => {
 
   return useGetHook(url, swrConfigs);
 };
+
+export const useMagnetTypes = () => {
+  const url = `/api/magnets/type/type`;
+
+  return useGetHook(url, swrConfigs);
+};
+
+export const useMagnetTypesBySlug = (slug: string) => {
+  const url = `/api/magnets/type/type/${slug}`;
+
+  return useGetHook(url, swrConfigs);
+};

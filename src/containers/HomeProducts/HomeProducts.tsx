@@ -83,7 +83,7 @@ const HomeProducts = () => {
   }, [section]);
 
   return (
-    <section className={classes.container}>
+    <section className={classes.container} id="custom-magnets">
       <SectionsNav navItems={navItems} setNavItems={setNavItems} isRoute />
 
       <div className={classes.products}>

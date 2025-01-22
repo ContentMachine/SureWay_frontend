@@ -8,6 +8,7 @@ import HomeProducts from "../HomeProducts/HomeProducts";
 import HomeServices from "../HomeServices/HomeServices";
 import HomeDiscount from "../HomeDiscount/HomeDiscount";
 import { useMagnets } from "@/hooks/useMagnets";
+import MagnetMagnetTypes from "../MagnetsMagnetTypes/MagnetMagnetTypes";
 
 const Homepage = () => {
   return (
@@ -15,8 +16,7 @@ const Homepage = () => {
       <HomeHero />
       <HomeProductsSummary />
       <HomeProducts />
-      <HomeServices />
-      <HomeDiscount />
+      <MagnetMagnetTypes />
     </AppLayout>
   );
 };

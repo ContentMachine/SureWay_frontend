@@ -15,6 +15,11 @@
   position: relative;
   text-align: right;
   margin-bottom: 1rem;
+  height: 500px;
+}
+
+.product > div:nth-child(1) > img {
+  height: 100%;
 }
 
 .product > div:nth-child(1) {

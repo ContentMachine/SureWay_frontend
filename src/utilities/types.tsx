@@ -28,3 +28,14 @@ export type productType = {
   _id: string;
   slug: string;
 };
+
+export type magnetTypeTypes = {
+  _id: string;
+  name: string;
+  type: string;
+  image: string;
+  description: string;
+  shapes: string[];
+  sizes: string[];
+  slug: string;
+};

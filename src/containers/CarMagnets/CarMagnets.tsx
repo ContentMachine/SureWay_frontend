@@ -9,12 +9,18 @@ import MagnetDimensions from "../MagnetDimensions/MagnetDimensions";
 import AppLayout from "@/layouts/AppLayout/AppLayout";
 import SectionsHero from "@/components/SectionsHero/SectionsHero";
 import StepLayout from "@/components/StepLayout/StepLayout";
+import { useParams } from "next/navigation";
+import { useMagnetTypesBySlug } from "@/hooks/useMagnets";
+import Loader from "@/components/Loader/Loader";
 
 const CarMagnets = () => {
   // Hooks
   const updateSearchParams = useUpdateSearchParams();
-
   const step = updateSearchParams("step", undefined, "get");
+  const { type } = useParams();
+
+  // Request
+  const { isLoading, data } = useMagnetTypesBySlug(type as string);
 
   // Utils
   const steps = [1, 2, 3];
@@ -51,8 +57,14 @@ const CarMagnets = () => {
 
   return (
     <AppLayout isDynamic>
-      <SectionsHero title="Car Magnets" />
-      <StepLayout steps={steps}>{container}</StepLayout>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <SectionsHero title="Car Magnets" />
+          <StepLayout steps={steps}>{container}</StepLayout>
+        </>
+      )}
     </AppLayout>
   );
 };
