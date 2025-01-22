@@ -1,8 +1,13 @@
+import Loader from "@/components/Loader/Loader";
 import CarMagnets from "@/containers/CarMagnets/CarMagnets";
-import React from "react";
+import React, { Suspense } from "react";
 
 const page = () => {
-  return <CarMagnets />;
+  return (
+    <Suspense fallback={<Loader />}>
+      <CarMagnets />
+    </Suspense>
+  );
 };
 
 export default page;

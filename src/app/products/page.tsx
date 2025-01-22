@@ -1,8 +1,13 @@
+import Loader from "@/components/Loader/Loader";
 import Products from "@/containers/Products/Products";
-import React from "react";
+import React, { Suspense } from "react";
 
 const page = () => {
-  return <Products />;
+  return (
+    <Suspense fallback={<Loader />}>
+      <Products />
+    </Suspense>
+  );
 };
 
 export default page;
