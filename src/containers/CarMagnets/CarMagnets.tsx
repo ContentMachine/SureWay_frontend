@@ -2,7 +2,7 @@
 
 import useUpdateSearchParams from "@/hooks/useUpdateSearchParams";
 import { magnetDataType } from "@/utilities/types";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import MagnetCustomization from "../MagnetCustomization/MagnetCustomization";
 import MagnetPreviewAndPayment from "../MagnetPreviewAndPayment/MagnetPreviewAndPayment";
 import MagnetDimensions from "../MagnetDimensions/MagnetDimensions";
@@ -56,16 +56,18 @@ const CarMagnets = () => {
     );
 
   return (
-    <AppLayout isDynamic>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
-          <SectionsHero title="Car Magnets" />
-          <StepLayout steps={steps}>{container}</StepLayout>
-        </>
-      )}
-    </AppLayout>
+    <Suspense fallback={<Loader />}>
+      <AppLayout isDynamic>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <SectionsHero title="Car Magnets" />
+            <StepLayout steps={steps}>{container}</StepLayout>
+          </>
+        )}
+      </AppLayout>
+    </Suspense>
   );
 };
 

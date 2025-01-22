@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, Suspense, useEffect, useState } from "react";
 import classes from "./MagnetDimensions.module.css";
 import { magnetShapes } from "@/utilities/products";
 import Image from "next/image";
@@ -7,6 +7,7 @@ import { activeToggler } from "@/helpers/activeHandlers";
 import useUpdateSearchParams from "@/hooks/useUpdateSearchParams";
 import { magnetDataType } from "@/utilities/types";
 import MagnetSizes from "../MagnetSizes/MagnetSizes";
+import Loader from "@/components/Loader/Loader";
 
 type MagnetDimensionsTypes = {
   data: magnetDataType;
@@ -37,41 +38,43 @@ const MagnetDimensions = ({ data, setData }: MagnetDimensionsTypes) => {
   }, [activeShape]);
 
   return (
-    <section className={classes.container}>
-      <h2>Select a Magnet Shape</h2>
-      <p>
-        Our custom fridge magnets come in 8 shapes and 3 sizes, perfect for any
-        occasion. Whether you need a single photo magnet as a gift or bulk
-        souvenir magnets for an event, SureWay has you covered!
-      </p>
-      <div className={classes.shapesContainer}>
-        {shapes?.map((data, i) => {
-          return (
-            <div
-              key={i}
-              className={data?.isActive ? classes.active : classes.inActive}
-              onClick={() => activeToggler(i, shapes, setShapes)}
-            >
-              <Image src={data?.image} alt="Magnet Shapes" fill={false} />
-              <span>{data?.title}</span>
-            </div>
-          );
-        })}
-      </div>
+    <Suspense fallback={<Loader />}>
+      <section className={classes.container}>
+        <h2>Select a Magnet Shape</h2>
+        <p>
+          Our custom fridge magnets come in 8 shapes and 3 sizes, perfect for
+          any occasion. Whether you need a single photo magnet as a gift or bulk
+          souvenir magnets for an event, SureWay has you covered!
+        </p>
+        <div className={classes.shapesContainer}>
+          {shapes?.map((data, i) => {
+            return (
+              <div
+                key={i}
+                className={data?.isActive ? classes.active : classes.inActive}
+                onClick={() => activeToggler(i, shapes, setShapes)}
+              >
+                <Image src={data?.image} alt="Magnet Shapes" fill={false} />
+                <span>{data?.title}</span>
+              </div>
+            );
+          })}
+        </div>
 
-      {data?.shape && <MagnetSizes data={data} setData={setData} />}
+        {data?.shape && <MagnetSizes data={data} setData={setData} />}
 
-      {data?.shape && data?.dimension && (
-        <Button
-          disabled={!data?.shape || !data?.dimension}
-          onClick={() => {
-            updateSearchParams("step", "2", "set");
-          }}
-        >
-          Next
-        </Button>
-      )}
-    </section>
+        {data?.shape && data?.dimension && (
+          <Button
+            disabled={!data?.shape || !data?.dimension}
+            onClick={() => {
+              updateSearchParams("step", "2", "set");
+            }}
+          >
+            Next
+          </Button>
+        )}
+      </section>
+    </Suspense>
   );
 };
 

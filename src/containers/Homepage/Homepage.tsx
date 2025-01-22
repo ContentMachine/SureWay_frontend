@@ -5,9 +5,6 @@ import classes from "./Homepage.module.css";
 import HomeHero from "../HomeHero/HomeHero";
 import HomeProductsSummary from "../HomeProductsSummary/HomeProductsSummary";
 import HomeProducts from "../HomeProducts/HomeProducts";
-import HomeServices from "../HomeServices/HomeServices";
-import HomeDiscount from "../HomeDiscount/HomeDiscount";
-import { useMagnets } from "@/hooks/useMagnets";
 import MagnetMagnetTypes from "../MagnetsMagnetTypes/MagnetMagnetTypes";
 
 const Homepage = () => {
