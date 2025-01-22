@@ -79,8 +79,6 @@ const HomeProducts = () => {
     if (section) {
       mutate(`/api/magnets/type/${section}`);
     }
-
-    console.log(section);
   }, [section]);
 
   return (

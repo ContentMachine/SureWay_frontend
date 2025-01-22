@@ -22,8 +22,6 @@ const MagnetMagnetTypes = () => {
     [magnetTypesData]
   );
 
-  console.log(magnetTypes, magnetTypesData, "MagnetTypes");
-
   return (
     <section className={classes.container}>
       {isLoading ? (
