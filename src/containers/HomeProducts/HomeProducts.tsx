@@ -1,4 +1,5 @@
-import ProductCard from "@/components/ProductCard/ProductCard";
+"use client";
+
 import SectionsNav from "@/components/SectionsNav/SectionsNav";
 import { magnetDataType, navItemTypes, productType } from "@/utilities/types";
 import { Suspense, useEffect, useMemo, useState } from "react";
