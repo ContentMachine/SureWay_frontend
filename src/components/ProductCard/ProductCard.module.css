@@ -5,7 +5,6 @@
   border-radius: 9px;
   min-width: 268px;
   overflow: hidden;
-  border: 2px solid red;
 }
 
 .container > div:nth-child(1) {
@@ -54,14 +53,10 @@
 }
 
 .textSection > p:nth-child(1) {
-  margin-bottom: 0.1rem;
-}
-
-.textSection > p:nth-child(2) {
   margin-bottom: 1rem;
 }
 
-.textSection > p:nth-child(3) {
+.textSection > p:nth-child(2) {
   margin-bottom: 1rem;
   font-family: "Montserrat";
   font-size: 24px;

@@ -3,6 +3,7 @@ export type navItemTypes = {
   route?: string;
   isActive?: boolean;
   description?: string;
+  id: string;
 };
 
 export type modalGenericType = {
@@ -21,8 +22,9 @@ export type magnetDataType = {
 };
 
 export type productType = {
-  title: string;
-  price: number | string;
+  name: string;
   image: File | string | null;
   hoverImage: File | string | null;
+  _id: string;
+  slug: string;
 };

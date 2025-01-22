@@ -20,7 +20,6 @@ const FileUploadInput = () => {
     e.preventDefault();
     e.stopPropagation();
     setIsDraggingOver(true);
-    console.log("File over");
   };
 
   // Handle drop
@@ -34,7 +33,6 @@ const FileUploadInput = () => {
       e.dataTransfer.clearData();
     }
 
-    console.log("File dropped");
     setIsDraggingOver(false);
   };
 

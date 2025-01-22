@@ -7,6 +7,7 @@ import HomeProductsSummary from "../HomeProductsSummary/HomeProductsSummary";
 import HomeProducts from "../HomeProducts/HomeProducts";
 import HomeServices from "../HomeServices/HomeServices";
 import HomeDiscount from "../HomeDiscount/HomeDiscount";
+import { useMagnets } from "@/hooks/useMagnets";
 
 const Homepage = () => {
   return (

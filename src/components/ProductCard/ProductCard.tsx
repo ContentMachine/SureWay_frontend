@@ -56,22 +56,32 @@ const ProductCard = ({ data, route }: ProductCardTypes) => {
 
       <div className={classes.image}>
         {isHovering ? (
-          <Image src={data?.hoverImage || productImage} alt="Product" />
+          <Image
+            src={data?.hoverImage || productImage}
+            alt="Product"
+            width={100}
+            height={380}
+          />
         ) : (
-          <Image src={data?.image || productImage} alt="Product" />
+          <Image
+            src={data?.image || productImage}
+            alt="Product"
+            // layout="responsive"
+            width={100}
+            height={380}
+          />
         )}
       </div>
 
       <div className={classes.textSection}>
-        <p>{data?.title}</p>
-        <p>Fridge magnets</p>
+        <p>{data?.name}</p>
         <p>₦{formatCurrency(price || 0)}</p>
         <Dropdown
           title="Select a size"
           options={magnetSizes}
           selected={size}
           setSelected={setSize}
-          maxHeight="70px"
+          maxHeight="120px"
           isLoading={magnetPriceIsLoading || magnetSizesIsLoading}
         />
       </div>

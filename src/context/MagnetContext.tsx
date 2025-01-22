@@ -23,8 +23,6 @@ const MagnetContextProvider = ({ children }: MagnegContextProviderTypes) => {
   // Memo
   const magnetSizes = useMemo(() => magnetSizesData?.data, [magnetSizesData]);
 
-  console.log(magnetSizes, "Context");
-
   return (
     <MagnetContext.Provider value={{ magnetSizes, magnetSizesIsLoading }}>
       {children}

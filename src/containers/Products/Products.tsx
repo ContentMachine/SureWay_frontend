@@ -30,8 +30,6 @@ const Products = () => {
       const hash = window.location.hash.substring(1);
       if (hash) {
         scrollToSection(hash);
-
-        console.log("Hash has changed");
       }
     };
 
@@ -43,10 +41,10 @@ const Products = () => {
       <ProductsSections />
 
       <div>
-        <ProductsListing title="Cool Stuff" id={"cool-stuff"} />
+        {/* <ProductsListing title="Cool Stuff" id={"cool-stuff"} />
         <ProductsListing title="Baby Stuff" id={"baby-stuff"} />
         <ProductsListing title="Gadgets & Tech" id={"gadgets-and-tech"} />
-        <ProductsListing title="Home Stuff" id={"home-stuff"} />
+        <ProductsListing title="Home Stuff" id={"home-stuff"} /> */}
       </div>
     </AppLayout>
   );

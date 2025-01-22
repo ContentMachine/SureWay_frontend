@@ -25,7 +25,7 @@ const useUpdateSearchParams = () => {
         params.set(key, value);
       }
 
-      router.push(`${pathname}?${params.toString()}`);
+      router.push(`${pathname}?${params.toString()}`, { scroll: false });
     }
   };
 

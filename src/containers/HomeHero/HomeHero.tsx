@@ -37,8 +37,6 @@ const HomeHero = () => {
     }
   }, [activeIndex]);
 
-  console.log(activeIndex, "Active Index");
-
   return (
     <section className={classes.outerContainer}>
       <div className={classes.container}>

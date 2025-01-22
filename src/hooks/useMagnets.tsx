@@ -17,8 +17,14 @@ export const useMagnetPrice = (size?: string) => {
   return useGetHook(url, swrConfigs);
 };
 
-export const useMagnets = (type?: string) => {
-  const url = type ? `/api/magnets/type/all` : `/api/magnets/type/${type}`;
+export const useMagnets = (category?: string) => {
+  const url = `/api/magnets/category/categories/${category || "all"}`;
+
+  return useGetHook(url, swrConfigs);
+};
+
+export const useMagnetCategories = () => {
+  const url = `/api/magnets/category/categories`;
 
   return useGetHook(url, swrConfigs);
 };

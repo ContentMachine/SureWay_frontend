@@ -2,8 +2,12 @@ import Button from "@/components/Button/Button";
 import { productsSummary } from "@/utilities/products";
 import classes from "./HomeProductsSummary.module.css";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { routes } from "@/utilities";
 
 const HomeProductsSummary = () => {
+  // Router
+  const router = useRouter();
   return (
     <section className={classes.container}>
       {/* Left section */}
@@ -44,6 +48,13 @@ const HomeProductsSummary = () => {
           <div>
             <h3>{productsSummary[2]?.title}</h3>
             <p>{productsSummary[2]?.caption}</p>
+            <Button
+              onClick={() => {
+                router.push(routes?.MAGNETS);
+              }}
+            >
+              Shop Now
+            </Button>
           </div>
         </div>
       </div>
@@ -63,7 +74,7 @@ const HomeProductsSummary = () => {
           <div>
             <h3>{productsSummary[3]?.title}</h3>
             <p>{productsSummary[3]?.caption}</p>
-            <Button type="secondary">Shop Now</Button>
+            <Button>Shop Now</Button>
           </div>
         </div>
       </div>
