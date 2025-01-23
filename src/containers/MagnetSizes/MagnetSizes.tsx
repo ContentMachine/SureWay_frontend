@@ -7,9 +7,10 @@ import { magnetSizes } from "@/utilities/products";
 type MagnetSizesTypes = {
   data: magnetDataType;
   setData: Dispatch<SetStateAction<magnetDataType>>;
+  sizes: string[];
 };
 
-const MagnetSizes = ({ data, setData }: MagnetSizesTypes) => {
+const MagnetSizes = ({ data, setData, sizes }: MagnetSizesTypes) => {
   // Memos
   const selectedShapeSizes = useMemo(
     () => magnetSizes?.find((size) => size?.shape === data?.shape),
@@ -39,8 +40,8 @@ const MagnetSizes = ({ data, setData }: MagnetSizesTypes) => {
 
       <Dropdown
         title="Select a magnet size"
-        options={selectedShapeSizes?.dimensions}
-        selected={dimension}
+        options={sizes}
+        selected={dimension || data?.dimension}
         setSelected={setDimension}
       />
     </section>

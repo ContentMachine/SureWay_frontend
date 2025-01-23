@@ -39,3 +39,7 @@
 .body > div {
   flex-basis: 50%;
 }
+
+.loader {
+  flex: 100%;
+}

@@ -19,7 +19,9 @@ const headerRoutes = routeComponents?.filter((data) =>
 
 const Header = ({ isDynamic }: HeaderTypes) => {
   // States
-  const [navBackground, setNavBackground] = useState("transparent");
+  const [navBackground, setNavBackground] = useState(
+    isDynamic ? "#000" : "transparent"
+  );
   const [navItems, setNavItems] = useState(headerRoutes);
 
   // Refs

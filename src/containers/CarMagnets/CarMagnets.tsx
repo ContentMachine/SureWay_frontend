@@ -1,8 +1,12 @@
 "use client";
 
 import useUpdateSearchParams from "@/hooks/useUpdateSearchParams";
-import { magnetDataType } from "@/utilities/types";
-import React, { Suspense, useEffect, useState } from "react";
+import {
+  magnetDataType,
+  magnetTypeTypes,
+  requestType,
+} from "@/utilities/types";
+import React, { Suspense, useEffect, useMemo, useState } from "react";
 import MagnetCustomization from "../MagnetCustomization/MagnetCustomization";
 import MagnetPreviewAndPayment from "../MagnetPreviewAndPayment/MagnetPreviewAndPayment";
 import MagnetDimensions from "../MagnetDimensions/MagnetDimensions";
@@ -10,17 +14,42 @@ import AppLayout from "@/layouts/AppLayout/AppLayout";
 import SectionsHero from "@/components/SectionsHero/SectionsHero";
 import StepLayout from "@/components/StepLayout/StepLayout";
 import { useParams } from "next/navigation";
-import { useMagnetTypesBySlug } from "@/hooks/useMagnets";
+import {
+  useMagnetSizes,
+  useMagnetSubmission,
+  useMagnetTypesBySlug,
+} from "@/hooks/useMagnets";
 import Loader from "@/components/Loader/Loader";
+import { requestHandler } from "@/helpers/requestHandler";
+import { mutate } from "swr";
 
 const CarMagnets = () => {
   // Hooks
-  const updateSearchParams = useUpdateSearchParams();
+  const { updateSearchParams, updateConcurrentSearchParams } =
+    useUpdateSearchParams();
   const step = updateSearchParams("step", undefined, "get");
+  const orderId = updateSearchParams("order-id", undefined, "get");
+
   const { type } = useParams();
 
   // Request
-  const { isLoading, data } = useMagnetTypesBySlug(type as string);
+  const { isLoading, data: magnetInfoData } = useMagnetTypesBySlug(
+    type as string
+  );
+  const { isLoading: magnetSubmissionIsLoading, data: magnetSubmissionData } =
+    useMagnetSubmission(orderId as string);
+
+  console.log(magnetInfoData, "dataaa", type);
+
+  // Memo
+  const magnetInfo: magnetTypeTypes = useMemo(
+    () => magnetInfoData?.data,
+    [magnetInfoData]
+  );
+  const magnetSubmission: magnetDataType = useMemo(
+    () => magnetSubmissionData?.data,
+    [magnetSubmissionData]
+  );
 
   // Utils
   const steps = [1, 2, 3];
@@ -36,33 +65,127 @@ const CarMagnets = () => {
     achievement: "",
     image: null,
   });
+  const [magnetDataFormdata, setMagnetDatFormdata] = useState(new FormData());
+  const [requestState, setRequestState] = useState<requestType>({
+    isLoading: false,
+    data: null,
+    error: null,
+  });
+
+  const submitForm = () => {
+    requestHandler({
+      url: "/api/magnets/submit-magnet",
+      data: magnetDataFormdata,
+      method: "POST",
+      isMultipart: true,
+      state: requestState,
+      setState: setRequestState,
+      successFunction(res) {
+        updateConcurrentSearchParams(
+          {
+            step: "3",
+            "order-id": res?.data?._id,
+          },
+          "set"
+        );
+      },
+    });
+  };
+
+  const editFormSubmission = () => {
+    requestHandler({
+      url: `/api/magnets/submit-magnet/${orderId}`,
+      data: magnetDataFormdata,
+      method: "PUT",
+      isMultipart: true,
+      state: requestState,
+      setState: setRequestState,
+      successFunction(res) {
+        updateConcurrentSearchParams(
+          {
+            step: "3",
+            "order-id": res?.data?._id,
+          },
+          "set"
+        );
+      },
+    });
+  };
 
   // Effects
   useEffect(() => {
     if (typeof window !== undefined) {
-      if (!step) {
-        updateSearchParams("step", "1", "set");
-      }
+      updateSearchParams("step", "1", "set");
     }
   }, []);
 
+  useEffect(() => {
+    const testFormdata = new FormData();
+
+    testFormdata.append("email", magnetData?.email);
+    testFormdata.append("phone", magnetData?.phone);
+    testFormdata.append("customText", magnetData?.customText);
+    testFormdata.append("achievement", magnetData?.achievement);
+    testFormdata.append("shape", magnetData?.shape);
+    testFormdata.append("dimension", magnetData?.dimension);
+    testFormdata.append("fullName", magnetData?.fullName);
+    testFormdata.append("image", magnetData?.image as any);
+
+    setMagnetDatFormdata(testFormdata);
+  }, [magnetData]);
+
+  useEffect(() => {
+    if (orderId) {
+      mutate(`/api/magnets/submit-magnet/${orderId}`);
+    }
+  }, [orderId, step]);
+
+  useEffect(() => {
+    if (magnetSubmissionData?.data) {
+      setMagnetData({
+        shape: magnetSubmission?.shape,
+        dimension: magnetSubmission?.dimension,
+        achievement: magnetSubmission?.achievement,
+        customText: magnetSubmission?.customText,
+        email: magnetSubmission?.email,
+        fullName: magnetSubmission?.fullName,
+        image: magnetSubmission?.image,
+        phone: magnetSubmission?.phone,
+      });
+    }
+  }, [magnetSubmissionData?.data]);
+
+  console.log(magnetSubmission, magnetSubmission?.fullName, magnetData);
+
   const container =
     (step as string) === "2" ? (
-      <MagnetCustomization data={magnetData} setData={setMagnetData} />
+      <MagnetCustomization
+        data={magnetData}
+        setData={setMagnetData}
+        onSubmit={submitForm}
+        onUpdate={editFormSubmission}
+        loading={requestState?.isLoading}
+      />
     ) : (step as string) === "3" ? (
-      <MagnetPreviewAndPayment />
+      <MagnetPreviewAndPayment data={magnetData} setData={setMagnetData} />
     ) : (
-      <MagnetDimensions data={magnetData} setData={setMagnetData} />
+      <MagnetDimensions
+        data={magnetData}
+        setData={setMagnetData}
+        magnetInfo={magnetInfo}
+      />
     );
 
   return (
     <Suspense fallback={<Loader />}>
       <AppLayout isDynamic>
-        {isLoading ? (
-          <Loader />
+        {isLoading || magnetSubmissionIsLoading ? (
+          <div style={{ paddingTop: "70px" }}>
+            <Loader />
+          </div>
         ) : (
           <>
-            <SectionsHero title="Car Magnets" />
+            <SectionsHero title={magnetInfo?.name || "Magnet"} />
             <StepLayout steps={steps}>{container}</StepLayout>
           </>
         )}

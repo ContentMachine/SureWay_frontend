@@ -124,9 +124,9 @@ export const magnetShapes = [
   {
     image: roundedRectange,
     shape: shapes.rectangle,
-    title: "Rounded Rectangle",
+    title: "Rounded-Rectangle",
   },
-  { image: roundedSquare, shape: shapes.rectangle, title: "Rounded Square" },
+  { image: roundedSquare, shape: shapes.rectangle, title: "Rounded-Square" },
 ];
 
 export const magnetSizes = [

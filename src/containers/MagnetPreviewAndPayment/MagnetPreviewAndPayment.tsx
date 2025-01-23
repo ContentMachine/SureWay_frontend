@@ -1,8 +1,31 @@
 import classes from "./MagnetPreviewAndPayment.module.css";
 import MagnetPreview from "../MagnetPreview/MagnetPreview";
 import Payment from "../Payment/Payment";
+import { magnetDataType } from "@/utilities/types";
+import { Dispatch, SetStateAction, useMemo, useState } from "react";
+import { useMagnetPrice } from "@/hooks/useMagnets";
+import Loader from "@/components/Loader/Loader";
 
-const MagnetPreviewAndPayment = () => {
+type MagnetPreviewAndPaymentTypes = {
+  data: magnetDataType;
+  setData: Dispatch<SetStateAction<magnetDataType>>;
+};
+
+const MagnetPreviewAndPayment = ({
+  data: magnetFormData,
+  setData,
+}: MagnetPreviewAndPaymentTypes) => {
+  // Requests
+  const { isLoading, data } = useMagnetPrice(magnetFormData?.dimension);
+
+  // Memo
+  const magnetPrice = useMemo(() => data?.data, [data]);
+
+  // States
+  const [price, setPrice] = useState(0);
+
+  console.log(price, "Price");
+
   return (
     <section className={classes.container}>
       <h2>Preview & Payments</h2>
@@ -13,8 +36,21 @@ const MagnetPreviewAndPayment = () => {
         the rest to us!
       </p>
       <div className={classes.body}>
-        <MagnetPreview />
-        <Payment />
+        {isLoading ? (
+          <div className={classes.loader}>
+            <Loader />
+          </div>
+        ) : (
+          <>
+            <MagnetPreview
+              data={magnetFormData}
+              setData={setData}
+              price={magnetPrice?.price}
+              setPrice={setPrice}
+            />
+            <Payment data={magnetFormData} setData={setData} price={price} />
+          </>
+        )}
       </div>
     </section>
   );

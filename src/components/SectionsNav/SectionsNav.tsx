@@ -21,7 +21,7 @@ const SectionsNav = ({
   isRoute,
 }: SectionsNavTypes) => {
   // Hooks
-  const updateSearchParams = useUpdateSearchParams();
+  const { updateSearchParams } = useUpdateSearchParams();
 
   return (
     <Suspense fallback={<Loader />}>

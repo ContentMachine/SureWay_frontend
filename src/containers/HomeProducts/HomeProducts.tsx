@@ -19,7 +19,7 @@ const HomeProducts = () => {
   const [navItems, setNavItems] = useState<navItemTypes[]>([]);
 
   // Hooks
-  const updateSearchParams = useUpdateSearchParams();
+  const { updateSearchParams } = useUpdateSearchParams();
 
   // Router
   const router = useRouter();

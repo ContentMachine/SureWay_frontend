@@ -1,27 +1,82 @@
-import React, { useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import classes from "./MagnetPreview.module.css";
 import Image from "next/image";
 import { magnetShapes } from "@/utilities/products";
+import { magnetDataType } from "@/utilities/types";
+import { formatCurrency } from "@/helpers/formatAmount";
+import { useMagnetPriceByQuantity } from "@/hooks/useMagnets";
+import { mutate } from "swr";
+import Loader from "@/components/Loader/Loader";
 
-const MagnetPreview = () => {
+type MagnetPreviewTypes = {
+  data: magnetDataType;
+  setData: Dispatch<SetStateAction<magnetDataType>>;
+  price: number;
+  setPrice: Dispatch<SetStateAction<number>>;
+};
+
+const MagnetPreview = ({
+  data: magnetData,
+  setData,
+  price,
+  setPrice,
+}: MagnetPreviewTypes) => {
   // States
   const [quantity, setQuantity] = useState(1);
+  const [quantityState, setQuantityState] = useState(1);
 
-  //   Utils
-  const price = 3000;
-  const subTotal = price * quantity;
-  const estimatedTax = 0.05 * price;
-  const shipping = 0;
-  const total = subTotal + estimatedTax + shipping;
+  // Requests
+  const { isLoading, data: magnetPriceByQuantityData } =
+    useMagnetPriceByQuantity(magnetData?.dimension, quantityState);
+
+  // Memos
+  const magnetPriceByQuantity = useMemo(
+    () => magnetPriceByQuantityData?.data,
+    [magnetPriceByQuantityData]
+  );
+
+  const selectedShape = magnetShapes?.find(
+    (data) => data?.title?.toLowerCase() === magnetData?.shape?.toLowerCase()
+  );
+
+  // Effects
+  useEffect(() => {
+    if (magnetData?.dimension && quantity) {
+      const timeout = setTimeout(() => {
+        setQuantityState(quantity);
+        mutate(
+          `/api/magnets/size/by-size/${magnetData?.dimension}/${quantity}`
+        );
+      }, 1000);
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+  }, [magnetData?.dimension, quantity]);
+
+  useEffect(() => {
+    if (magnetPriceByQuantityData) {
+      setPrice(magnetPriceByQuantityData?.data?.total);
+    }
+  }, [magnetPriceByQuantityData]);
 
   return (
     <div className={classes.productDetails}>
       <h4>Summary</h4>
       <div className={classes.productNameAndPrice}>
-        <Image src={magnetShapes[0].image} alt="Product" />
-        <span>12 x 12 Circular Magnet</span>
+        <Image src={selectedShape?.image} alt="Product" />
         <span>
-          #{price} {quantity > 1 && `x ${quantity} pieces`}
+          {magnetData?.dimension} {magnetData?.shape} Magnet
+        </span>
+        <span>
+          ₦{formatCurrency(price)} {quantity > 1 && `x ${quantity} pieces`}
         </span>
       </div>
 
@@ -63,40 +118,57 @@ const MagnetPreview = () => {
       <div className={classes.productInfo}>
         <div className={classes.info}>
           <p>Custom Text</p>
-          <p>Ezimorah Tobenna</p>
+          <p>{magnetData?.customText || "N/A"}</p>
         </div>
 
         <div className={classes.info}>
           <p>What you are trying to achieve</p>
-          <p>Ezimorah Tobenna</p>
+          <p>{magnetData?.achievement || "N/A"}</p>
         </div>
 
         <div className={classes.info}>
           <p>Custom Image</p>
-          <p>Ezimorah Tobenna</p>
+          {magnetData?.image ? (
+            <Image
+              src={magnetData?.image as string}
+              alt={`${magnetData?.dimension} magnet`}
+              width={300}
+              height={300}
+            />
+          ) : (
+            <p>N/A</p>
+          )}
         </div>
       </div>
 
       <div className={classes.paymentInformation}>
-        <div className={classes.paymentInfo}>
-          <p>Subtotal</p>
-          <p>#{subTotal}</p>
-        </div>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <div className={classes.paymentInfo}>
+              <p>Subtotal</p>
+              <p>₦{formatCurrency(magnetPriceByQuantity?.subTotal) || "N/A"}</p>
+            </div>
 
-        <div className={classes.paymentInfo2}>
-          <p>Estimated Tax</p>
-          <p>#{estimatedTax}</p>
-        </div>
+            <div className={classes.paymentInfo2}>
+              <p>Estimated Tax</p>
+              <p>
+                ₦{formatCurrency(magnetPriceByQuantity?.estimatedTax) || "N?A"}
+              </p>
+            </div>
 
-        <div className={classes.paymentInfo2}>
-          <p>Estimated shipping & Handling</p>
-          <p>#{shipping}</p>
-        </div>
+            <div className={classes.paymentInfo2}>
+              <p>Estimated customization cost</p>
+              <p>₦{formatCurrency(magnetPriceByQuantity?.shipping) || "N/A"}</p>
+            </div>
 
-        <div className={classes.paymentInfo}>
-          <p>Total</p>
-          <p>#{total}</p>
-        </div>
+            <div className={classes.paymentInfo}>
+              <p>Total</p>
+              <p>₦{formatCurrency(magnetPriceByQuantity?.total) || "N/A"}</p>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

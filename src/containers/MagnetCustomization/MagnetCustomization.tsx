@@ -11,20 +11,32 @@ import { valentineTexts } from "@/utilities/constants";
 import { magnetDataType } from "@/utilities/types";
 import { inputChangeHandler } from "@/helpers/inputChangeHandler";
 import { Dispatch, SetStateAction, Suspense, useEffect, useState } from "react";
-import useUpdateSearchParams from "@/hooks/useUpdateSearchParams";
 import Loader from "@/components/Loader/Loader";
+import { magnetShapes } from "@/utilities/products";
+import useUpdateSearchParams from "@/hooks/useUpdateSearchParams";
 
 type MagnetCustomizationTypes = {
   data: magnetDataType;
   setData: Dispatch<SetStateAction<magnetDataType>>;
+  onSubmit: () => void;
+  onUpdate: () => void;
+  loading: boolean;
 };
 
-const MagnetCustomization = ({ data, setData }: MagnetCustomizationTypes) => {
+const MagnetCustomization = ({
+  data,
+  setData,
+  onSubmit,
+  loading,
+  onUpdate,
+}: MagnetCustomizationTypes) => {
   // States
   const [customText, setCustomText] = useState("");
+  const [files, setFiles] = useState<File[]>([]);
 
   // Hooks
-  const updateSearchParams = useUpdateSearchParams();
+  const { updateSearchParams } = useUpdateSearchParams();
+  const orderId = updateSearchParams("order-id", undefined, "get");
 
   //   Effects
   useEffect(() => {
@@ -33,7 +45,13 @@ const MagnetCustomization = ({ data, setData }: MagnetCustomizationTypes) => {
         return { ...prevState, customText };
       });
     }
-  }, [customText]);
+
+    if (files.length > 0) {
+      setData((prevState) => {
+        return { ...prevState, image: files[0] };
+      });
+    }
+  }, [customText, files]);
 
   return (
     <Suspense fallback={<Loader />}>
@@ -73,7 +91,7 @@ const MagnetCustomization = ({ data, setData }: MagnetCustomizationTypes) => {
             label="What text would you like to see on your custom magnet"
             title="Select a text"
             options={valentineTexts}
-            selected={customText}
+            selected={customText || data?.customText}
             setSelected={setCustomText}
           />
           {customText === "Other" && (
@@ -94,12 +112,27 @@ const MagnetCustomization = ({ data, setData }: MagnetCustomizationTypes) => {
             value={data?.achievement}
             onChange={(e) => inputChangeHandler(e, setData)}
           />
-          <FileUploadInput />
+
+          <FileUploadInput files={files} setFiles={setFiles} />
+
           <Button
             onClick={(e) => {
               e.preventDefault();
-              updateSearchParams("step", "3", "set");
+
+              if (orderId) {
+                onUpdate();
+              } else {
+                onSubmit();
+              }
             }}
+            disabled={
+              !data?.fullName ||
+              !data?.email ||
+              !data?.phone ||
+              !data?.customText ||
+              !data?.achievement
+            }
+            loading={loading}
           >
             Preview & Pay
           </Button>

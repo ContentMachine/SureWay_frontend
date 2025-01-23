@@ -18,7 +18,8 @@ export type magnetDataType = {
   phone: string;
   customText: string;
   achievement: string;
-  image: File | null;
+  image: File | string | null;
+  _id?: string;
 };
 
 export type productType = {
@@ -38,4 +39,27 @@ export type magnetTypeTypes = {
   shapes: string[];
   sizes: string[];
   slug: string;
+};
+
+export type shapesType = {
+  image: string;
+  shape: string;
+  title: string;
+  isActive?: boolean;
+};
+
+export type requestType = {
+  isLoading: boolean;
+  data: any;
+  error: any;
+  id?: string;
+};
+
+export type priceStructure = {
+  estimatedTax: number;
+  price: number;
+  shipping: number;
+  size: string;
+  subTotal: number;
+  total: number;
 };

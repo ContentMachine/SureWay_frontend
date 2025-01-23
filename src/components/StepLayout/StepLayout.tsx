@@ -13,7 +13,7 @@ type UserOnboardingLayoutProps = {
 
 const StepLayout = ({ children, steps }: UserOnboardingLayoutProps) => {
   // Hooks
-  const updateSearchParams = useUpdateSearchPRams();
+  const { updateSearchParams } = useUpdateSearchPRams();
 
   // Steps
   const userStep = updateSearchParams("step", undefined, "get");

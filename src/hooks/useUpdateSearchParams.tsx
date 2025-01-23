@@ -29,7 +29,30 @@ const useUpdateSearchParams = () => {
     }
   };
 
-  return updateSearchParams;
+  const updateConcurrentSearchParams = (
+    updates: { [key: string]: string | undefined },
+    method: "set" | "delete" | "get"
+  ) => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(searchParams.toString());
+
+      Object.entries(updates).forEach(([key, value]) => {
+        if (method === "get") {
+          return params.get(key); // Fetching a value for a specific key
+        }
+
+        if (method === "delete") {
+          params.delete(key);
+        } else if (value !== undefined) {
+          params.set(key, value);
+        }
+      });
+
+      router.push(`${pathname}?${params.toString()}`, { scroll: false });
+    }
+  };
+
+  return { updateSearchParams, updateConcurrentSearchParams };
 };
 
 export default useUpdateSearchParams;

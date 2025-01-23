@@ -3,17 +3,19 @@
 import classes from "./FileUploadInput.module.css";
 import upload from "../../assets/Images/upload.svg";
 import Image from "next/image";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import Close from "@/assets/SvgIcons/Close";
 
-const FileUploadInput = () => {
+type FileUploadInputTypes = {
+  files: File[];
+  setFiles: Dispatch<SetStateAction<File[]>>;
+};
+
+const FileUploadInput = ({ files, setFiles }: FileUploadInputTypes) => {
   // States
-  const [fileName, setFileName] = useState("");
   const [isDraggingOver, setIsDraggingOver] = useState(false);
 
   // Utils
-
-  const [files, setFiles] = useState<File[]>([]);
 
   // Handle drag over
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
@@ -78,11 +80,11 @@ const FileUploadInput = () => {
 
       {files?.length > 0 && (
         <div className={classes.uploaded}>
-          <h4>Uploaded Files</h4>
+          <h4>Uploaded File</h4>
 
-          {files?.map((data) => {
+          {files?.map((data, i) => {
             return (
-              <div>
+              <div key={i}>
                 <span>{data?.name}</span>
                 <Close onClick={() => filterFiles(data?.name)} />
               </div>

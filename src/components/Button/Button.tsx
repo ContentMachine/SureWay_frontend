@@ -1,3 +1,4 @@
+import Loader from "../Loader/Loader";
 import classes from "./Button.module.css";
 import React from "react";
 
@@ -36,7 +37,7 @@ const Button = ({
       onClick={onClick}
       disabled={disabled}
     >
-      {loading ? "Loading..." : children}
+      {loading ? <Loader dimensions="20px" /> : children}
       {icon && <span className={classes.icon}>{icon}</span>}
     </button>
   );
