@@ -1,0 +1,67 @@
+.container {
+  padding: 2rem 160px;
+}
+
+.shapesContainer {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.shapesContainer > div {
+  flex: 1;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  border: 2px solid red;
+}
+
+.shapesContainer > div.inActive {
+  border: 3px solid var(--gray);
+}
+
+.shapesContainer > div.active {
+  border: 3px solid var(--green);
+}
+
+.shapesContainer > div > img {
+  height: 180px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.shapesContainer > div > span {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.container > h2 {
+  font-family: "Montserrat";
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  letter-spacing: -0.05em;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.container > p,
+.shapesContainer > div > span {
+  font-family: "Montserrat";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  text-align: center;
+  color: var(--gray-dark);
+}
+
+.container > p {
+  margin-bottom: 2rem;
+}
+
+.container > button {
+  margin-inline: auto;
+  margin-top: 1rem;
+}

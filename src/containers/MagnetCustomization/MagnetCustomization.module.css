@@ -1,0 +1,39 @@
+.container {
+  min-height: 300px;
+  margin-top: 2rem;
+}
+
+.container > h2 {
+  font-family: "Montserrat";
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  letter-spacing: -0.05em;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.container > p {
+  font-family: "Montserrat";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  text-align: center;
+  color: var(--gray-dark);
+  width: 70%;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+.body {
+  width: 600px;
+  margin-inline: auto;
+  margin-top: 2rem;
+}
+
+.body > button {
+  margin-inline: auto;
+  margin-top: 2rem;
+}

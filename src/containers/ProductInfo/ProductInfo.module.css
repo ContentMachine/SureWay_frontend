@@ -1,0 +1,27 @@
+.container {
+  padding-top: calc(var(--headerHeight) + 2rem);
+  min-height: 100vh;
+  padding-inline: 160px;
+}
+
+.topSection {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.topSection > div {
+  flex: 1;
+}
+
+.topSection > div:nth-child(1) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topSection > div:nth-child(1) > img {
+  width: 413.12px;
+  height: 516px;
+}

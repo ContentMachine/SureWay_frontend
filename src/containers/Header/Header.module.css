@@ -1,0 +1,90 @@
+.container {
+  height: var(--headerHeight);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 4rem;
+  font-family: "Montserrat";
+  color: var(--white);
+  background-color: var(--black);
+  transition: all 0.2s ease-in-out;
+}
+
+.container > nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-right: 1rem;
+}
+
+.container > nav > a,
+.container > nav > div {
+  font-family: "Montserrat";
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 150%;
+  color: var(--white);
+}
+
+.moreOptions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.moreOptions > svg {
+  flex-shrink: 0;
+}
+
+.children {
+  position: absolute;
+  min-width: 200px;
+  min-height: 100px;
+  top: 130%;
+  padding: 1rem;
+  border-radius: 8px;
+  background: var(--white);
+}
+
+.children > a {
+  display: block;
+  font-family: "Montserrat";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.09px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin-bottom: 1rem;
+  color: var(--black);
+}
+
+.container > a > img {
+  width: 100px;
+  height: 90%;
+}
+
+.container > svg {
+  display: none;
+}
+
+@media screen and (max-width: 767px) and (max-width: 1024px) {
+  .container {
+    padding: 1rem 1.5rem;
+  }
+
+  .container > nav {
+    display: none;
+  }
+
+  .container > a > img {
+    width: 100px;
+    height: 80%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+}

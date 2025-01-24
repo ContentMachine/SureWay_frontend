@@ -1,0 +1,93 @@
+.button {
+  display: flex;
+  padding: 16px 32px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: "Montserrat";
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 22.8px;
+  letter-spacing: -0.02em;
+  text-align: center;
+
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0px 67.49px 84.37px 0px #a6a6a61a;
+  border-radius: 12px;
+  min-width: 100px;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+.primary {
+  background: var(--yellow);
+  border: none;
+  color: var(--white);
+}
+
+.primary:active {
+  background-color: var(--activePrimaryBlue);
+  color: var(--white);
+}
+
+.secondary {
+  background: transparent;
+  border: 1.5px solid var(--yellow);
+  color: var(--yellow);
+}
+
+.secondary:active {
+  border: 1px solid var(--secondaryActive);
+  color: var(--secondaryActive);
+}
+
+.tertiary {
+  background-color: var(--skyBlue2);
+  color: var(--buttonTextBlue);
+  border: 0.5px solid var(--skyBlue3);
+}
+
+.tertiary:active {
+  background: var(--tertiaryButtonActive);
+}
+
+.invalid {
+  border: 1px solid var(--red);
+  color: var(--red);
+  background: none;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--buttonIdonBg);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.button:disabled {
+  background-color: var(--grey2);
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .button {
+    font-size: 14px;
+    line-height: 23px;
+    padding: 16px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .button {
+    font-size: 14px;
+    line-height: 23px;
+    padding: 16px;
+  }
+}

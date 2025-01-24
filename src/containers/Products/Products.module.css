@@ -1,0 +1,21 @@
+.container {
+  padding-block: calc(70px + 2rem);
+  padding-inline: 160px;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  min-height: 100vh;
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+.container > section:nth-child(1) {
+  width: 256px;
+  position: sticky;
+  top: var(--headerHeight);
+  min-height: calc(100vh - var(--headerHeight) - 2rem);
+}
+
+.container > div:nth-child(2) {
+  flex: 1;
+}

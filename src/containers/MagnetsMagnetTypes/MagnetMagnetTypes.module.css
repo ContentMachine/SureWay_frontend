@@ -1,0 +1,81 @@
+.container {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  padding-top: var(--headerHeight);
+}
+
+.container > div {
+  flex: 1;
+  padding: 0px 0px 3rem 0rem;
+  overflow: hidden;
+}
+
+.product > div:nth-child(1) {
+  position: relative;
+  text-align: right;
+  margin-bottom: 1rem;
+  height: 280px;
+}
+
+.product > div:nth-child(1) > img {
+  height: 100%;
+}
+
+.product > div:nth-child(1) {
+  position: relative;
+}
+
+.product > div:nth-child(1) > img {
+  height: 100%;
+  width: 100%;
+}
+
+.product > h3 {
+  font-family: "Montserrat";
+  font-size: 33px;
+  font-weight: 600;
+  line-height: 48px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin-bottom: 1rem;
+  color: var(--black);
+  margin-right: 2rem;
+  margin-left: 1rem;
+}
+
+.product > h3:not(.product:last-child > h3) {
+  color: var(--black);
+}
+
+.product > p {
+  font-family: "Montserrat";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin-bottom: 1rem;
+  margin-right: 2rem;
+  color: var(--grey2);
+  margin-left: 1rem;
+}
+
+.product > button {
+  /* margin-left: 1rem; */
+  margin: auto;
+}
+
+.product:nth-child(2) {
+  background-color: var(--gray-light);
+}
+
+.product:nth-child(3) {
+  background-color: var(--gray);
+}
+
+.product:nth-child(4) {
+  background-color: var(--gray-dark);
+}
