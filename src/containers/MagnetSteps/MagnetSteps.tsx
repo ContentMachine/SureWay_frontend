@@ -18,8 +18,8 @@ const MagnetSteps = () => {
           Simple Steps
         </h4>
         <ol>
-          {magnetSteps?.map((data) => {
-            return <li key={data}>{data}</li>;
+          {magnetSteps?.map((data, i) => {
+            return <li key={i}>{data}</li>;
           })}
         </ol>
       </div>

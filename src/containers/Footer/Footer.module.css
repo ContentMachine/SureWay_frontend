@@ -37,3 +37,20 @@
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
 }
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 32px;
+
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+  .container {
+    padding: 32px;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}

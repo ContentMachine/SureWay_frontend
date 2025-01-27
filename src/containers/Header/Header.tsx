@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import classes from "./Header.module.css";
 import { routeComponents } from "@/utilities/routeComponents";
@@ -9,6 +11,7 @@ import { activeToggler } from "@/helpers/activeHandlers";
 import Image from "next/image";
 import logo from "../../assets/Images/logo.svg";
 import HamburgerIcon from "@/assets/SvgIcons/HamburgerIcon";
+import Sidenav from "../Sidenav/Sidenav";
 
 type HeaderTypes = {
   isDynamic?: boolean;
@@ -27,6 +30,7 @@ const Header = ({ isDynamic }: HeaderTypes) => {
 
   // Refs
   const optionsRef = useRef<HTMLDivElement | null>(null);
+  const sideNavRef = useRef<HTMLDivElement | null>(null);
 
   // Utils
   const handleScroll = () => {
@@ -44,6 +48,18 @@ const Header = ({ isDynamic }: HeaderTypes) => {
       }
     } else {
       setNavBackground("#000");
+    }
+  };
+
+  const handleSidenavOpen = () => {
+    if (sideNavRef?.current) {
+      sideNavRef.current.style.width = "100vw";
+    }
+  };
+
+  const handleSidenavClose = () => {
+    if (sideNavRef?.current) {
+      sideNavRef.current.style.width = "0%";
     }
   };
 
@@ -97,16 +113,16 @@ const Header = ({ isDynamic }: HeaderTypes) => {
               <div
                 className={classes.moreOptions}
                 onClick={() => activeToggler(i, navItems, setNavItems)}
-                key={route?.route}
+                key={i}
               >
                 <span>{route?.title}</span>
                 <ArrowDown />
 
                 {route?.isActive && (
                   <div className={classes.children} ref={optionsRef}>
-                    {route?.children?.map((data) => {
+                    {route?.children?.map((data, j) => {
                       return (
-                        <Link href={data?.route} key={data?.route}>
+                        <Link href={data?.route} key={j}>
                           {data?.title}
                         </Link>
                       );
@@ -124,7 +140,11 @@ const Header = ({ isDynamic }: HeaderTypes) => {
         })}
       </nav>
 
-      <HamburgerIcon />
+      <HamburgerIcon onClick={handleSidenavOpen} />
+
+      <div className={classes.sidenav} ref={sideNavRef}>
+        <Sidenav onClose={handleSidenavClose} />
+      </div>
     </header>
   );
 };

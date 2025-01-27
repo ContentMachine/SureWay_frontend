@@ -2,13 +2,17 @@ import { homeHeroUtils } from "@/utilities/homeHeroUtils";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import classes from "./HomeHero.module.css";
-import { activeToggler } from "@/helpers/activeHandlers";
+import { activeToggler, activeTogglerRestAll } from "@/helpers/activeHandlers";
 import Button from "@/components/Button/Button";
+import { useRouter } from "next/navigation";
 
 const HomeHero = () => {
   // States
   const [utils, setUtils] = useState(homeHeroUtils);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // Router
+  const router = useRouter();
 
   //   Effects
   useEffect(() => {
@@ -33,23 +37,32 @@ const HomeHero = () => {
 
   useEffect(() => {
     if (utils?.length) {
-      activeToggler(activeIndex, utils, setUtils);
+      activeTogglerRestAll(activeIndex, utils, setUtils);
     }
   }, [activeIndex]);
 
   return (
     <section className={classes.outerContainer}>
       <div className={classes.container}>
-        {utils?.map((data) => {
+        {utils?.map((data, i) => {
           return (
             <div
-              key={data?.text}
+              key={i}
               className={data?.isActive ? classes.active : classes.inActive}
             >
               <h1>{data?.text}</h1>
-              <Image src={data?.image} alt={data?.text} />
+              <Image
+                src={
+                  "https://res.cloudinary.com/dfilepe0f/image/upload/v1737991356/Sureway_Hero_Banner_2_1_1_s0px40.gif"
+                }
+                width={1000}
+                height={1000}
+                alt={data?.text}
+              />
 
-              <Button>Shop</Button>
+              <Button onClick={() => router.push("#custom-magnets")}>
+                Shop
+              </Button>
             </div>
           );
         })}

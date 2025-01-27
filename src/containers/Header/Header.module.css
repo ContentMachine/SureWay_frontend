@@ -8,6 +8,7 @@
   color: var(--white);
   background-color: var(--black);
   transition: all 0.2s ease-in-out;
+  position: absolute;
 }
 
 .container > nav {
@@ -71,6 +72,18 @@
   display: none;
 }
 
+.sidenav {
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  background-color: var(--yellow);
+  overflow: hidden;
+  width: 0%;
+  transition: all 0.2s ease-in-out;
+}
+
 @media screen and (max-width: 767px) and (max-width: 1024px) {
   .container {
     padding: 1rem 1.5rem;
@@ -81,10 +94,34 @@
   }
 
   .container > a > img {
-    width: 100px;
-    height: 80%;
+    width: 80px;
+    height: 50%;
+    box-sizing: border-box;
+  }
+
+  .container > svg {
+    display: block;
+    margin-left: auto;
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+  .container {
+    padding: 1rem 1.5rem;
+  }
+
+  .container > nav {
+    display: none;
+  }
+
+  .container > a > img {
+    width: 80px;
+    height: 50%;
+    box-sizing: border-box;
+  }
+
+  .container > svg {
+    display: block;
+    margin-left: auto;
+  }
 }

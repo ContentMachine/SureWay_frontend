@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import UseSWRConfigProvider from "@/config/SWRConfig";
 import MagnetContextProvider from "@/context/MagnetContext";
+import AppContextProvider from "@/context/AppContext";
+import { ToastContextProvider } from "@/context/ToastContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +30,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <UseSWRConfigProvider>
-          <MagnetContextProvider>{children}</MagnetContextProvider>
+          <ToastContextProvider>
+            <AppContextProvider>
+              <MagnetContextProvider>{children}</MagnetContextProvider>
+            </AppContextProvider>
+          </ToastContextProvider>
         </UseSWRConfigProvider>
       </body>
     </html>

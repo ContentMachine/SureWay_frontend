@@ -50,3 +50,43 @@
   color: var(--white);
   z-index: 1;
 }
+
+@media screen and (max-width: 767px) {
+  .container {
+    min-height: 100px;
+    background-image: url("../../assets/Images/fridgeMagnetHeader.svg");
+    position: relative;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .container > h2 {
+    font-family: "Agbalumo";
+    position: relative;
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 150%;
+    letter-spacing: auto;
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+  .container {
+    min-height: 100px;
+    background-image: url("../../assets/Images/fridgeMagnetHeader.svg");
+    position: relative;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .container > h2 {
+    font-family: "Agbalumo";
+    position: relative;
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 150%;
+    letter-spacing: auto;
+  }
+}

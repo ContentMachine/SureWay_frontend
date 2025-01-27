@@ -26,7 +26,7 @@ const ProductsSections = () => {
   return (
     <section className={classes.container}>
       <Input placeholder="Search for any item" />
-      {sections?.children?.map((data) => {
+      {sections?.children?.map((data, i) => {
         const id = data?.route?.replace("/", "");
 
         return (
@@ -35,6 +35,7 @@ const ProductsSections = () => {
             className={
               data?.route?.includes(hash) ? classes.active : classes.inActive
             }
+            key={i}
           >
             {data?.title}
           </p>

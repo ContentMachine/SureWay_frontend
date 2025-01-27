@@ -108,6 +108,7 @@
   overflow-y: none;
   display: flex;
   align-items: flex-start;
+  padding: 3rem 160px;
 }
 
 .children > div:nth-child(1) {
@@ -157,12 +158,14 @@
     justify-content: center;
     min-height: calc((100vh - 98px));
     padding: 1rem;
+    border: 2px solid red;
   }
 
   .body {
     width: 100%;
     min-height: 70%;
     padding: 2rem 0;
+    border: 2px solid red;
   }
 
   .step > span {
@@ -174,17 +177,14 @@
 
   .children {
     margin-top: 40px;
+    padding: 2rem 0px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .header {
-    position: sticky;
-    top: 0;
     height: 49px;
-    background: var(--white);
-    z-index: 2;
-    padding: 0.5rem 1rem;
+    z-index: 10;
   }
 
   .header > img {
@@ -192,27 +192,73 @@
     width: 35px;
   }
 
+  .stepIndicator {
+    max-width: 90%;
+  }
+
   .step:nth-child(1) {
-    width: 26px;
+    width: 44px;
   }
 
   .innerContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: calc((100vh - 98px));
+    min-height: calc((100vh - 70px));
     padding: 1rem;
   }
 
   .body {
-    width: 100%;
     min-height: 70%;
-    padding: 2rem 0;
+    padding: 1rem 0;
   }
 
   .step > span {
-    width: 24px;
-    height: 24px;
+    width: 44px;
+    height: 44px;
+    font-size: 14px;
+    line-height: 23px;
+  }
+
+  .children {
+    margin-top: 40px;
+    padding: 2rem 0px;
+  }
+
+  .carouselSection {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+  .header {
+    height: 49px;
+    z-index: 10;
+  }
+
+  .header > img {
+    height: 35px;
+    width: 35px;
+  }
+
+  .stepIndicator {
+    max-width: 90%;
+  }
+
+  .step:nth-child(1) {
+    width: 44px;
+  }
+
+  .innerContainer {
+    min-height: calc((100vh - 70px));
+    padding: 1rem;
+  }
+
+  .body {
+    min-height: 70%;
+    padding: 1rem 0;
+  }
+
+  .step > span {
+    width: 44px;
+    height: 44px;
     font-size: 14px;
     line-height: 23px;
   }

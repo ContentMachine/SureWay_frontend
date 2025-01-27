@@ -13,4 +13,6 @@
 
 .container > section {
   min-height: calc(100vh - var(--headerHeight));
+  overflow-y: auto;
+  position: relative;
 }

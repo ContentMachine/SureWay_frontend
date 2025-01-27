@@ -31,3 +31,49 @@
   max-width: 50%;
   margin: auto;
 }
+
+@media screen and (max-width: 767px) {
+  .container {
+    min-height: 300px;
+    margin-top: 2rem;
+  }
+
+  .container > h2 {
+    font-size: 32px;
+    margin-bottom: 1rem;
+  }
+
+  .container > p {
+    font-size: 16px;
+    color: var(--gray-dark);
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .container > div:nth-child(3) {
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+  .container {
+    min-height: 300px;
+    margin-top: 2rem;
+  }
+
+  .container > h2 {
+    font-size: 32px;
+    margin-bottom: 1rem;
+  }
+
+  .container > p {
+    font-size: 16px;
+    color: var(--gray-dark);
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .container > div:nth-child(3) {
+    max-width: 100%;
+  }
+}

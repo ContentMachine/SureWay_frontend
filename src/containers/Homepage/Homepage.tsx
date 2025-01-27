@@ -6,14 +6,17 @@ import HomeHero from "../HomeHero/HomeHero";
 import HomeProductsSummary from "../HomeProductsSummary/HomeProductsSummary";
 import HomeProducts from "../HomeProducts/HomeProducts";
 import MagnetMagnetTypes from "../MagnetsMagnetTypes/MagnetMagnetTypes";
+import HomeMagnetTypes from "../HomeMagnetTypes/HomeMagnetTypes";
+import ContactUs from "../ContactUs/ContactUs";
 
 const Homepage = () => {
   return (
     <AppLayout className={classes.container} isDynamic>
       <HomeHero />
       <HomeProductsSummary />
+      <ContactUs />
       <HomeProducts />
-      <MagnetMagnetTypes />
+      <HomeMagnetTypes />
     </AppLayout>
   );
 };

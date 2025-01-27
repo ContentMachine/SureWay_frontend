@@ -8,7 +8,6 @@ import Button from "@/components/Button/Button";
 import { useRouter } from "next/navigation";
 import { routes } from "@/utilities";
 import ProductsListing from "@/components/ProductsListing/ProductsListing";
-import { valentinesProducts } from "@/utilities/products";
 import { useMagnetCategories, useMagnets } from "@/hooks/useMagnets";
 import useUpdateSearchParams from "@/hooks/useUpdateSearchParams";
 import { mutate } from "swr";
@@ -85,6 +84,15 @@ const HomeProducts = () => {
   return (
     <Suspense fallback={<Loader />}>
       <section className={classes.container} id="custom-magnets">
+        <div className={classes.header}>
+          <h4>Our Custom Magnets</h4>
+          <p>
+            Discover high-quality custom magnets to decorate your space or gift
+            to someone special. Shop unique designs or personalize your own
+            today!
+          </p>
+        </div>
+
         <SectionsNav navItems={navItems} setNavItems={setNavItems} isRoute />
 
         <div className={classes.products}>

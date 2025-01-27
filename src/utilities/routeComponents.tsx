@@ -26,6 +26,19 @@ export const routeComponents = [
     isActive: false,
   },
   {
+    title: "Legal",
+    route: routes.OUR_SERVICES,
+    properties: null,
+    children: [
+      {
+        title: "Privacy Policy",
+        route: routes.PRIVACY_POLICY,
+      },
+      { title: "Terms and Conditions", route: routes.TERMS_AND_CONDITIONS },
+    ],
+    isActive: false,
+  },
+  {
     title: "Contact Us",
     route: routes.CONTACT_US,
     properties: ["isHeaderRoute"],

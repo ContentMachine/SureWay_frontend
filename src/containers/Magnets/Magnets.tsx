@@ -6,6 +6,7 @@ import MagnetsHeaderSection from "../MagnetsHeaderSection/MagnetsHeaderSection";
 import MagnetMagnetTypes from "../MagnetsMagnetTypes/MagnetMagnetTypes";
 import MagnetProducts from "../MagnetProducts/MagnetProducts";
 import MagnetsCustomMagnets from "../MagnetsCustomMagnets/MagnetsCustomMagnets";
+import ContactUs from "../ContactUs/ContactUs";
 
 const Magnets = () => {
   return (
@@ -13,6 +14,7 @@ const Magnets = () => {
       <MagnetMagnetTypes />
       <MagnetsHeaderSection />
       <MagnetProducts />
+      <ContactUs />
       <MagnetsCustomMagnets />
     </AppLayout>
   );

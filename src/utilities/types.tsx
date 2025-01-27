@@ -64,3 +64,9 @@ export type priceStructure = {
   subTotal: number;
   total: number;
 };
+
+export type legalNoticesType = {
+  title: string;
+  list?: string[];
+  paragraph: { text?: string; list?: string[] | null }[];
+};

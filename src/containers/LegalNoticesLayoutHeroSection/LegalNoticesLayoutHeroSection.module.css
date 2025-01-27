@@ -1,0 +1,73 @@
+.container {
+  background: linear-gradient(180deg, #fafcff -21.37%, #f0f6ff 100%);
+  min-height: 65vh;
+  clip-path: ellipse(130% 70% at 50% 30%);
+  text-align: center;
+  margin-top: 44px;
+  border: 2px solid red;
+}
+
+.container > p {
+  font-family: "Rethink Sans";
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.16em;
+  text-align: center;
+  color: var(--blue);
+  margin-bottom: 20px;
+}
+
+.container > h1 {
+  font-family: "Rethink Sans";
+  font-size: 72px;
+  color: var(--black);
+  width: 805px;
+  margin: auto;
+  font-weight: 500;
+  line-height: 86.4px;
+  letter-spacing: -0.04em;
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    min-height: 65vh;
+    margin-top: 44px;
+  }
+
+  .container > p {
+    font-size: 14px;
+    line-height: 16.8px;
+    letter-spacing: 0.16em;
+    margin-bottom: 18px;
+  }
+
+  .container > h1 {
+    width: 90%;
+    font-size: 40px;
+    line-height: 50px;
+    letter-spacing: -0.03em;
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+  .container {
+    min-height: 65vh;
+    margin-top: 44px;
+  }
+
+  .container > p {
+    font-size: 14px;
+    line-height: 16.8px;
+    letter-spacing: 0.16em;
+    margin-bottom: 18px;
+  }
+
+  .container > h1 {
+    width: 90%;
+    font-size: 40px;
+    line-height: 50px;
+    letter-spacing: -0.03em;
+  }
+}

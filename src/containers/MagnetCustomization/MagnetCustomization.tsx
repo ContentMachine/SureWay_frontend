@@ -107,7 +107,6 @@ const MagnetCustomization = ({
 
           <TextArea
             label="Tell us what you are trying to achieve"
-            isRequired
             name="achievement"
             value={data?.achievement}
             onChange={(e) => inputChangeHandler(e, setData)}
@@ -129,8 +128,7 @@ const MagnetCustomization = ({
               !data?.fullName ||
               !data?.email ||
               !data?.phone ||
-              !data?.customText ||
-              !data?.achievement
+              !data?.customText
             }
             loading={loading}
           >

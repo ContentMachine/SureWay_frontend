@@ -1,0 +1,49 @@
+.container > div:nth-child(1) {
+  padding: 1.5rem 1rem;
+  text-align: right;
+}
+
+.container > nav {
+  padding: 1rem;
+}
+
+.container > nav > div,
+.container > nav > a {
+  font-family: "Montserrat";
+  color: var(--black);
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 150%;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.moreOptions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.moreOptions > svg {
+  fill: var(--black);
+}
+
+.children {
+  font-family: "Montserrat";
+  color: var(--black);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 150%;
+  text-align: left;
+  max-height: 0px;
+  overflow: hidden;
+  transition: 0.2s ease-in-out;
+  flex-basis: 100%;
+}
+
+.children > a {
+  display: block;
+  margin-bottom: 0.5rem;
+}

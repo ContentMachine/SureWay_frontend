@@ -9,9 +9,9 @@ const HomeServices = () => {
   const router = useRouter();
   return (
     <section className={classes.container}>
-      {productsCta?.map((data) => {
+      {productsCta?.map((data, i) => {
         return (
-          <div className={classes.product} key={data?.title}>
+          <div className={classes.product} key={i}>
             <div>
               <Image src={data?.image} alt={data?.title} />
             </div>

@@ -43,3 +43,57 @@
 .loader {
   flex: 100%;
 }
+
+@media screen and (max-width: 767px) {
+  .container {
+    min-height: 300px;
+    margin-top: 2rem;
+  }
+
+  .container > h2 {
+    font-size: 32px;
+    margin-bottom: 1rem;
+  }
+
+  .container > p {
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .body {
+    gap: 2rem;
+    flex-direction: column;
+  }
+
+  .body > div {
+    flex-basis: 100%;
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+  .container {
+    min-height: 300px;
+    margin-top: 2rem;
+  }
+
+  .container > h2 {
+    font-size: 32px;
+    margin-bottom: 1rem;
+  }
+
+  .container > p {
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .body {
+    gap: 2rem;
+    flex-direction: column;
+  }
+
+  .body > div {
+    flex-basis: 100%;
+  }
+}

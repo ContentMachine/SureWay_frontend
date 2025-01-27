@@ -25,6 +25,8 @@ import Loader from "@/components/Loader/Loader";
 import { requestHandler } from "@/helpers/requestHandler";
 import { mutate } from "swr";
 import { MagnetContext } from "@/context/MagnetContext";
+import { useToast } from "@/context/ToastContext";
+import useError from "@/hooks/useError";
 
 const CarMagnets = () => {
   // Hooks
@@ -32,6 +34,8 @@ const CarMagnets = () => {
     useUpdateSearchParams();
   const step = updateSearchParams("step", undefined, "get");
   const orderId = updateSearchParams("order-id", undefined, "get");
+  const { showToast } = useToast();
+  const { errorFlowFunction } = useError();
 
   // Router
   const pathname = usePathname();
@@ -78,6 +82,10 @@ const CarMagnets = () => {
       state: requestState,
       setState: setRequestState,
       successFunction(res) {
+        showToast(
+          "Your order has been booked successfully, Please complete payment",
+          "success"
+        );
         updateConcurrentSearchParams(
           {
             step: "3",
@@ -85,6 +93,9 @@ const CarMagnets = () => {
           },
           "set"
         );
+      },
+      errorFunction(err) {
+        console.log(err);
       },
     });
   };
@@ -98,6 +109,10 @@ const CarMagnets = () => {
       state: requestState,
       setState: setRequestState,
       successFunction(res) {
+        showToast(
+          "Your order has been edited successfully, Please complete payment",
+          "success"
+        );
         updateConcurrentSearchParams(
           {
             step: "3",

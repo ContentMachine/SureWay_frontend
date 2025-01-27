@@ -1,6 +1,6 @@
 export const routes = Object.freeze({
   BASE_URL: "/",
-  CONTACT_US: "/contact-us",
+  CONTACT_US: "#contact-us",
   SURE_THINGS: "/sure-things",
   OUR_SERVICES: "/our-services",
   BRANDING: "/branding",
@@ -16,4 +16,6 @@ export const routes = Object.freeze({
   FRIDGE_MAGNETS: "/magnets/fridge-magnets",
   CAR_MAGNETS: "/magnets/car-magnets",
   PHOTO_MAGNETS: `/magnets/phot0-magnets`,
+  PRIVACY_POLICY: "/privacy-policy",
+  TERMS_AND_CONDITIONS: "/terms-and-conditions",
 });

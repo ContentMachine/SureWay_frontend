@@ -14,9 +14,9 @@ const Footer = () => {
         <p>We help brands to amplify and inspire people.</p>
       </div>
 
-      {footerNavItems?.map((data) => {
+      {footerNavItems?.map((data, i) => {
         return (
-          <div key={data?.title}>
+          <div key={i}>
             <h3>{data?.title}</h3>
             {data?.children?.map((child) => {
               return (

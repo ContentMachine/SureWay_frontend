@@ -14,9 +14,9 @@ const HomeProductsSummary = () => {
       <div className={classes.leftSection}>
         {/* Bottom */}
         <div>
-          {productsSummary?.slice(0, 1)?.map((data) => {
+          {productsSummary?.slice(0, 1)?.map((data, i) => {
             return (
-              <div className={classes.featureCard} key={data?.title}>
+              <div className={classes.featureCard} key={i}>
                 <div>
                   <Image
                     src={data?.image as string}

@@ -72,3 +72,125 @@
   margin-bottom: 1rem;
   margin-left: 20px;
 }
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding-block: 32px;
+    padding-inline: 16px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    position: relative;
+  }
+
+  .steps {
+    order: 0;
+  }
+
+  .steps > h4 {
+    font-size: 32px;
+    line-height: 150%;
+    text-align: center;
+  }
+
+  .steps > ol {
+    font-size: 17px;
+    line-height: 30px;
+    text-align: center;
+    width: auto;
+  }
+
+  .container > img:last-child {
+    margin-block: auto;
+    height: 100%;
+    width: 100%;
+    width: 100%;
+    height: auto;
+    order: 1;
+  }
+
+  .container > div {
+    flex: 1;
+    max-width: 100%;
+    order: 1;
+  }
+
+  .steps > h4 {
+    font-size: 33px;
+    font-weight: 600;
+    line-height: 48px;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .steps > ol > li {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 150%;
+    text-align: left;
+    margin-bottom: 1rem;
+    margin-left: 20px;
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+  .container {
+    padding-block: 32px;
+    padding-inline: 16px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    position: relative;
+  }
+
+  .steps {
+    order: 0;
+  }
+
+  .steps > h4 {
+    font-size: 32px;
+    line-height: 150%;
+    text-align: center;
+  }
+
+  .steps > ol {
+    font-size: 17px;
+    line-height: 30px;
+    text-align: center;
+    width: auto;
+  }
+
+  .container > img:last-child {
+    margin-block: auto;
+    height: 100%;
+    width: 100%;
+    width: 100%;
+    height: auto;
+    order: 1;
+  }
+
+  .container > div {
+    flex: 1;
+    max-width: 100%;
+    order: 1;
+  }
+
+  .steps > h4 {
+    font-size: 33px;
+    font-weight: 600;
+    line-height: 48px;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .steps > ol > li {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 150%;
+    text-align: left;
+    margin-bottom: 1rem;
+    margin-left: 20px;
+  }
+}

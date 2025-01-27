@@ -34,15 +34,15 @@ export const activeTogglerRestAll = (
   const stateCopy = initState.map((data: any, i: number) => {
     if (!id) {
       if (i === index) {
-        return { ...data, isActive: !data.isActive };
+        return { ...data, isActive: true };
       } else {
-        return { ...data };
+        return { ...data, isActive: false };
       }
     } else {
       if (data.id === id) {
-        return { ...data, isActive: !data.isActive };
+        return { ...data, isActive: true };
       } else {
-        return { ...data };
+        return { ...data, isActive: false };
       }
     }
   });

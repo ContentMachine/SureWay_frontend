@@ -6,6 +6,7 @@ import useUpdateSearchPRams from "@/hooks/useUpdateSearchParams";
 import Loader from "../Loader/Loader";
 import carousel1 from "../../assets/Images/fridgeMagnetHeader.svg";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 type UserOnboardingLayoutProps = {
   children: React.ReactNode;
@@ -21,6 +22,9 @@ const StepLayout = ({
 }: UserOnboardingLayoutProps) => {
   // Hooks
   const { updateSearchParams } = useUpdateSearchPRams();
+
+  // Router
+  const pathname = usePathname();
 
   // Steps
   const userStep = updateSearchParams("step", undefined, "get");
@@ -98,7 +102,14 @@ const StepLayout = ({
               })}
             </div>
             <div className={classes.children}>
-              <div className={classes.carouselSection}>
+              <div
+                className={classes.carouselSection}
+                style={
+                  pathname?.includes("car")
+                    ? { display: "flex" }
+                    : { display: "none" }
+                }
+              >
                 {carousel?.map((data) => {
                   return (
                     <Image
