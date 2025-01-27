@@ -50,12 +50,10 @@ const MagnetDimensions = ({
       shape.toLowerCase()
     );
     const memoizedShapes = magnetShapes.filter((datum) =>
-      lowerCaseShapes.some((shape) => shape.includes(datum.title.toLowerCase()))
+      lowerCaseShapes.some((shape) => shape === datum.title.toLowerCase())
     );
 
     setShapes(memoizedShapes as any);
-
-    console.log(memoizedShapes, "memoo");
   }, [magnetInfo]);
 
   useEffect(() => memoizeShapes(), [memoizeShapes]);

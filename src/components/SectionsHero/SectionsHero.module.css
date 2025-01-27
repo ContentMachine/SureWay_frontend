@@ -22,15 +22,31 @@
     rgba(24, 24, 24, 0.5)
   );
   height: 100%;
+  z-index: 0;
 }
 
-.container > h2 {
+.container > p {
   font-family: "Montserrat";
-  font-size: 5rem;
+  font-size: 1.5rem;
   font-weight: 600;
   line-height: 150%;
   letter-spacing: -0.01em;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   color: var(--black);
+  max-width: 70%;
+  margin: auto;
+}
+
+.container > h2 {
+  font-family: "Agbalumo";
+  position: relative;
+  font-size: 5rem;
+  font-weight: 600;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: var(--white);
+  z-index: 1;
 }

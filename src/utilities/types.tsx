@@ -39,6 +39,7 @@ export type magnetTypeTypes = {
   shapes: string[];
   sizes: string[];
   slug: string;
+  bannerImage: string;
 };
 
 export type shapesType = {

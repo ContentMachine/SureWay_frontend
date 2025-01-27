@@ -25,7 +25,7 @@ const ProductCard = ({ data, route }: ProductCardTypes) => {
   const router = useRouter();
 
   // States
-  const [size, setSize] = useState("10x10");
+  const [size, setSize] = useState("10cmx10cm");
 
   // Context
   const { magnetSizes, magnetSizesIsLoading, setMagnetData } =

@@ -20,11 +20,7 @@ import AppLayout from "@/layouts/AppLayout/AppLayout";
 import SectionsHero from "@/components/SectionsHero/SectionsHero";
 import StepLayout from "@/components/StepLayout/StepLayout";
 import { useParams, usePathname } from "next/navigation";
-import {
-  useMagnetSizes,
-  useMagnetSubmission,
-  useMagnetTypesBySlug,
-} from "@/hooks/useMagnets";
+import { useMagnetSubmission, useMagnetTypesBySlug } from "@/hooks/useMagnets";
 import Loader from "@/components/Loader/Loader";
 import { requestHandler } from "@/helpers/requestHandler";
 import { mutate } from "swr";
@@ -185,8 +181,15 @@ const CarMagnets = () => {
           </div>
         ) : (
           <>
-            <SectionsHero title={magnetInfo?.name || "Magnet"} />
-            <StepLayout steps={steps}>{container}</StepLayout>
+            <SectionsHero
+              title={magnetInfo?.name || "Magnet"}
+              bannerImage={magnetInfo?.bannerImage}
+            />
+            <div>
+              <StepLayout caption={magnetInfo?.description} steps={steps}>
+                {container}
+              </StepLayout>
+            </div>
           </>
         )}
       </AppLayout>
