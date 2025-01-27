@@ -19,7 +19,6 @@ const InqiryModalBody = () => {
         <Input label="Phone Number" type="phone" isRequired />
         <Input label="Brand Name" isRequired />
         <TextArea label="Tell us what you are trying to achieve" isRequired />
-        <FileUploadInput />
         <Button>Submit</Button>
       </form>
     </section>
