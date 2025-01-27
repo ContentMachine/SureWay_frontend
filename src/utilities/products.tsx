@@ -13,7 +13,7 @@ import square from "../assets/Images/Square.svg";
 
 import customBordered from "../assets/Images/customBordered.svg";
 import custom from "../assets/Images/custom.svg";
-import squareRectangle from "../assets/Images/square:rectangle.svg";
+import squareRectangle from "../assets/Images/square_rectangle.svg";
 import rounded from "../assets/Images/rounded.svg";
 
 export const productsSummary = [
