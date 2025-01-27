@@ -52,9 +52,7 @@ const HomeHero = () => {
             >
               <h1>{data?.text}</h1>
               <Image
-                src={
-                  "https://res.cloudinary.com/dfilepe0f/image/upload/v1737991356/Sureway_Hero_Banner_2_1_1_s0px40.gif"
-                }
+                src={data?.image}
                 width={1000}
                 height={1000}
                 alt={data?.text}

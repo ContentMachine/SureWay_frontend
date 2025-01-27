@@ -3,7 +3,6 @@ import classes from "./InqiryModalBody.module.css";
 import Close from "@/assets/SvgIcons/Close";
 import Button from "@/components/Button/Button";
 import TextArea from "@/components/Textarea/TextArea";
-import FileUploadInput from "@/components/FileUploadInput/FileUploadInput";
 
 const InqiryModalBody = () => {
   return (
