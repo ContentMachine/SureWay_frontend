@@ -30,8 +30,8 @@
 }
 
 .primary:active {
-  background-color: var(--activePrimaryBlue);
-  color: var(--white);
+  background-color: var(--yellow-dark);
+  color: var(--black);
 }
 
 .secondary {
