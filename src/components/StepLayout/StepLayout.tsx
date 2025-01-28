@@ -33,17 +33,17 @@ const StepLayout = ({
   const [carousel, setCarousel] = useState([
     {
       image:
-        "https://res.cloudinary.com/dfilepe0f/image/upload/v1737737989/Rio_SureWay_ztc8i3.svg",
+        "https://res.cloudinary.com/dfilepe0f/image/upload/v1738081765/Kia_Rio_T_B_lmkve7.svg",
       isActive: true,
     },
     {
       image:
-        "https://res.cloudinary.com/dfilepe0f/image/upload/v1737737989/Rio_T_B_poahfh.svg",
+        "https://res.cloudinary.com/dfilepe0f/image/upload/v1738081764/Kia_Rio_SureWay_wzfvba.svg",
       isActive: false,
     },
     {
       image:
-        "https://res.cloudinary.com/dfilepe0f/image/upload/v1737737989/Rio_RWM_j2uauz.svg",
+        "https://res.cloudinary.com/dfilepe0f/image/upload/v1738081763/Kia_Rio_Roll_With_Me_bxgkso.svg",
       isActive: false,
     },
   ]);
