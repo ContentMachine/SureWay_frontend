@@ -1,3 +1,4 @@
+import { CircularProgress } from "@mui/material";
 import Loader from "../Loader/Loader";
 import classes from "./Button.module.css";
 import React from "react";
@@ -37,7 +38,15 @@ const Button = ({
       onClick={onClick}
       disabled={disabled}
     >
-      {loading ? <Loader dimensions="20px" /> : children}
+      {loading ? (
+        <CircularProgress
+          size="2rem"
+          color="inherit"
+          style={{ color: "#000" }}
+        />
+      ) : (
+        children
+      )}
       {icon && <span className={classes.icon}>{icon}</span>}
     </button>
   );

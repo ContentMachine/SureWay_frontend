@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import classes from "./Dropdown.module.css";
 import Loader from "../Loader/Loader";
+import { CircularProgress } from "@mui/material";
 
 export type DropdownProps = {
   title: string | React.ReactNode;
@@ -188,7 +189,11 @@ const Dropdown = (props: DropdownProps) => {
               <p className={`${classes.dropdownItem2}`}>No matching Items</p>
             ) : (
               <div className={classes.loadingContainer}>
-                <Loader dimensions="25px" />
+                <CircularProgress
+                  size="2rem"
+                  color="inherit"
+                  style={{ color: "#e5c300" }}
+                />
               </div>
             )}
           </div>

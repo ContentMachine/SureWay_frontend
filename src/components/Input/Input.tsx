@@ -93,7 +93,7 @@ const Input = ({
       </span>
       {(invalid || inValidCondition) && (
         <span className={classes.errorMessage}>
-          {errorMessage || "*invalid"}{" "}
+          {errorMessage || `Please enter a valid ${label?.toLowerCase()}`}{" "}
         </span>
       )}
       {tip && <span className={classes.tip}>{tip}</span>}
