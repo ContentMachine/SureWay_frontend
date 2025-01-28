@@ -95,7 +95,7 @@ const CarMagnets = () => {
         );
       },
       errorFunction(err) {
-        console.log(err);
+        errorFlowFunction(err);
       },
     });
   };
@@ -118,8 +118,12 @@ const CarMagnets = () => {
             step: "3",
             "order-id": res?.data?._id,
           },
-          "set"
+          "set",
+          true
         );
+      },
+      errorFunction(err) {
+        errorFlowFunction(err);
       },
     });
   };

@@ -8,9 +8,10 @@ type MagnetSizesTypes = {
   data: magnetDataType;
   setData: Dispatch<SetStateAction<magnetDataType>>;
   sizes: string[];
+  loading?: boolean;
 };
 
-const MagnetSizes = ({ data, setData, sizes }: MagnetSizesTypes) => {
+const MagnetSizes = ({ data, setData, sizes, loading }: MagnetSizesTypes) => {
   // Memos
   const selectedShapeSizes = useMemo(
     () => magnetSizes?.find((size) => size?.shape === data?.shape),
@@ -30,7 +31,7 @@ const MagnetSizes = ({ data, setData, sizes }: MagnetSizesTypes) => {
   }, [dimension]);
 
   return (
-    <section className={classes.container}>
+    <section className={classes.container} id="magnet-sizes">
       <h2>Select a Magnet Size</h2>
       <p>
         Our custom fridge magnets come in 8 shapes and 3 sizes, perfect for any
@@ -43,6 +44,7 @@ const MagnetSizes = ({ data, setData, sizes }: MagnetSizesTypes) => {
         options={sizes}
         selected={dimension || data?.dimension}
         setSelected={setDimension}
+        isLoading={loading}
       />
     </section>
   );

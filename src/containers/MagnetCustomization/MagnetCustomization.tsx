@@ -12,8 +12,8 @@ import { magnetDataType } from "@/utilities/types";
 import { inputChangeHandler } from "@/helpers/inputChangeHandler";
 import { Dispatch, SetStateAction, Suspense, useEffect, useState } from "react";
 import Loader from "@/components/Loader/Loader";
-import { magnetShapes } from "@/utilities/products";
 import useUpdateSearchParams from "@/hooks/useUpdateSearchParams";
+import { usePathname } from "next/navigation";
 
 type MagnetCustomizationTypes = {
   data: magnetDataType;
@@ -37,6 +37,9 @@ const MagnetCustomization = ({
   // Hooks
   const { updateSearchParams } = useUpdateSearchParams();
   const orderId = updateSearchParams("order-id", undefined, "get");
+
+  // Router
+  const pathname = usePathname();
 
   //   Effects
   useEffect(() => {
@@ -87,13 +90,15 @@ const MagnetCustomization = ({
             value={data?.phone}
             onChange={(e) => inputChangeHandler(e, setData)}
           />
-          <Dropdown
-            label="What text would you like to see on your custom magnet"
-            title="Select a text"
-            options={valentineTexts}
-            selected={customText || data?.customText}
-            setSelected={setCustomText}
-          />
+          {pathname.includes("custom") && (
+            <Dropdown
+              label="What text would you like to see on your custom magnet"
+              title="Select a text"
+              options={valentineTexts}
+              selected={customText || data?.customText}
+              setSelected={setCustomText}
+            />
+          )}
           {customText === "Other" && (
             <Input
               label="Please Type in your Custom Text"
@@ -124,12 +129,7 @@ const MagnetCustomization = ({
                 onSubmit();
               }
             }}
-            disabled={
-              !data?.fullName ||
-              !data?.email ||
-              !data?.phone ||
-              !data?.customText
-            }
+            disabled={!data?.fullName || !data?.email || !data?.phone}
             loading={loading}
           >
             Preview & Pay

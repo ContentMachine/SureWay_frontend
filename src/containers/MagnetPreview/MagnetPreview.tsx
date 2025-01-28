@@ -80,7 +80,12 @@ const MagnetPreview = ({
       <h4>Summary</h4>
       <div className={classes.productNameAndPrice}>
         {selectedShape ? (
-          <Image src={selectedShape?.image} alt="Product" />
+          <Image
+            src={selectedShape?.image}
+            alt="Product"
+            width={40}
+            height={40}
+          />
         ) : null}
         <span className={classes.itemName}>
           {magnetData?.dimension}{" "}

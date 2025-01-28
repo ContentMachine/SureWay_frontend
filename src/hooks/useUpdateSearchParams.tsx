@@ -10,7 +10,8 @@ const useUpdateSearchParams = () => {
   const updateSearchParams = (
     key: string,
     value: string | undefined,
-    method: "set" | "delete" | "get"
+    method: "set" | "delete" | "get",
+    scroll?: boolean
   ) => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(searchParams.toString());
@@ -25,13 +26,16 @@ const useUpdateSearchParams = () => {
         params.set(key, value);
       }
 
-      router.push(`${pathname}?${params.toString()}`, { scroll: false });
+      router.push(`${pathname}?${params.toString()}`, {
+        scroll: scroll || false,
+      });
     }
   };
 
   const updateConcurrentSearchParams = (
     updates: { [key: string]: string | undefined },
-    method: "set" | "delete" | "get"
+    method: "set" | "delete" | "get",
+    scroll?: boolean
   ) => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(searchParams.toString());
@@ -48,7 +52,9 @@ const useUpdateSearchParams = () => {
         }
       });
 
-      router.push(`${pathname}?${params.toString()}`, { scroll: false });
+      router.push(`${pathname}?${params.toString()}`, {
+        scroll: scroll || false,
+      });
     }
   };
 

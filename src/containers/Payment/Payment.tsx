@@ -48,7 +48,6 @@ const Payment = ({ data, setData, price }: PaymentTypes) => {
       orderId: orderId,
     },
     text: "Pay",
-
     onSuccess: () => {
       showToast("Thanks for buying your magnet from Sureway", "success");
       router.push(`${routes.MAGNETS}#custom-magnets`);
@@ -63,6 +62,8 @@ const Payment = ({ data, setData, price }: PaymentTypes) => {
           <Image
             src={selectedShape?.image}
             alt={selectedShape?.title as string}
+            width={337}
+            height={337}
           />
           <span>12 x 12</span>
         </div>

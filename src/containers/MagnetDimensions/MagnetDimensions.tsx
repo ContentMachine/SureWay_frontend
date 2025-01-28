@@ -20,6 +20,7 @@ import MagnetSizes from "../MagnetSizes/MagnetSizes";
 import Loader from "@/components/Loader/Loader";
 import { useMagnetSizes } from "@/hooks/useMagnets";
 import { mutate } from "swr";
+import { useRouter } from "next/navigation";
 
 type MagnetDimensionsTypes = {
   data: magnetDataType;
@@ -40,12 +41,15 @@ const MagnetDimensions = ({
 
   // Router
   const shape = updateSearchParams("shape", undefined, "get");
+  const router = useRouter();
 
   // Utils
   const activeShape = shapes?.find((data) => data?.isActive);
 
   // Requests
-  const { isLoading, data: magnetSizesData } = useMagnetSizes(shape as string);
+  const { isLoading, data: magnetSizesData } = useMagnetSizes(
+    (shape as string) || data?.shape
+  );
 
   // Memo
   const memoizeShapes = useCallback(() => {
@@ -72,7 +76,7 @@ const MagnetDimensions = ({
   useEffect(() => {
     if (activeShape) {
       setData((prevState) => {
-        return { ...prevState, shape: activeShape?.title };
+        return { ...prevState, shape: activeShape?.title?.toLowerCase() };
       });
     }
   }, [activeShape]);
@@ -88,8 +92,10 @@ const MagnetDimensions = ({
   useEffect(() => {
     if (shape) {
       mutate(`/api/magnets/size/sizes/${shape}`);
+    } else {
+      mutate(`/api/magnets/size/sizes/${data?.shape}`);
     }
-  }, [shape]);
+  }, [shape, data?.shape]);
 
   return (
     <Suspense fallback={<Loader />}>
@@ -112,12 +118,17 @@ const MagnetDimensions = ({
                         ? classes.active
                         : classes.inActive
                     }
-                    onClick={() => activeToggler(i, shapes, setShapes)}
+                    onClick={() => {
+                      activeToggler(i, shapes, setShapes);
+                      router.push("#magnet-sizes");
+                    }}
                   >
                     <Image
                       src={shape?.image}
                       alt="Magnet Shapes"
                       fill={false}
+                      height={200}
+                      width={200}
                     />
                     <span>{shape?.title}</span>
                   </div>
@@ -132,7 +143,8 @@ const MagnetDimensions = ({
             <MagnetSizes
               data={data}
               setData={setData}
-              sizes={shape ? magnetSizes : magnetInfo?.sizes}
+              sizes={magnetSizes}
+              loading={isLoading}
             />
           </>
         )}
@@ -141,7 +153,7 @@ const MagnetDimensions = ({
           <Button
             disabled={!data?.shape || !data?.dimension}
             onClick={() => {
-              updateSearchParams("step", "2", "set");
+              updateSearchParams("step", "2", "set", true);
             }}
           >
             Next

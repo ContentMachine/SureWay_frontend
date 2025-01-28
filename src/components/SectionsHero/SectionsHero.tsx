@@ -14,6 +14,8 @@ const SectionsHero = ({ title, bannerImage }: SectionsHeroTypes) => {
           bannerImage ||
           "https://res.cloudinary.com/dfilepe0f/image/upload/v1737384952/magnets_exiisb.jpg"
         })`,
+        // backgroundPosition: "center center",
+        // backgroundSize: "cover",
       }}
     >
       <div></div>

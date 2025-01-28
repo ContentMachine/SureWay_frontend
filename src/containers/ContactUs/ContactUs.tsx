@@ -9,6 +9,7 @@ import Image from "next/image";
 import { requestHandler } from "@/helpers/requestHandler";
 import { inputChangeHandler } from "@/helpers/inputChangeHandler";
 import { useToast } from "@/context/ToastContext";
+import useError from "@/hooks/useError";
 
 const ContactUs = () => {
   // States
@@ -28,6 +29,9 @@ const ContactUs = () => {
 
   // Context
   const { showToast } = useToast();
+
+  // Hooks
+  const { errorFlowFunction } = useError();
 
   // Effects
   useEffect(() => {
@@ -56,6 +60,9 @@ const ContactUs = () => {
           assistance: "",
         });
         setAssistance("");
+      },
+      errorFunction(err) {
+        errorFlowFunction(err);
       },
     });
   };

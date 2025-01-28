@@ -5,17 +5,6 @@ import fridgeMagnet1 from "../assets/Images/fridgeMagnet1.svg";
 import customMagnets from "../assets/Images/customMagnet1.svg";
 import carMegnets from "../assets/Images/carMagnet1.svg";
 
-import circle from "../assets/Images/Circle.svg";
-import rectangle from "../assets/Images/Rectangle.svg";
-import roundedRectange from "../assets/Images/Rounded Rectangle.svg";
-import roundedSquare from "../assets/Images/Rounded Square .svg";
-import square from "../assets/Images/Square.svg";
-
-import customBordered from "../assets/Images/customBordered.svg";
-import custom from "../assets/Images/custom.svg";
-import squareRectangle from "../assets/Images/square_rectangle.svg";
-import rounded from "../assets/Images/rounded.svg";
-
 export const productsSummary = [
   {
     title: "Engravings",
@@ -104,26 +93,62 @@ export const shapes = {
   customBordered: "custom-bordered",
   squareRectangle: "square-rectangle",
   rounded: "rounded",
+  roundedRectangle: "rounded-rectangle",
+  roundedSquare: "rounded-square",
 };
 
 export const magnetShapes = [
-  { image: circle, shape: shapes.circle, title: "Circle" },
-  { image: square, spage: shapes.square, title: "Square" },
-  { image: rectangle, shape: shapes.rectangle, title: "Rectangle" },
   {
-    image: roundedRectange,
+    image:
+      "https://res.cloudinary.com/dfilepe0f/image/upload/v1738068531/Circle_aplofq.svg",
+    shape: shapes.circle,
+    title: "Circle",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dfilepe0f/image/upload/v1738068531/Square_rtzt9q.svg",
+    spage: shapes.square,
+    title: "Square",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dfilepe0f/image/upload/v1738068531/Rectangle_oogjn8.svg",
+    shape: shapes.rectangle,
+    title: "Rectangle",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dfilepe0f/image/upload/v1738068531/Rectangle_Rounded_v4uhjl.svg",
     shape: shapes.rectangle,
     title: "Rounded-Rectangle",
   },
   {
-    image: squareRectangle,
-    shape: shapes.squareRectangle,
-    title: "Square-rectangle",
+    image:
+      "https://res.cloudinary.com/dfilepe0f/image/upload/v1738068536/Square_Rounded_p6w2jy.svg",
+    shape: shapes.roundedSquare,
+    title: "Rounded-Square",
   },
-  { image: custom, shape: shapes.custom, title: "Custom" },
-  { image: rounded, shape: shapes.rounded, title: "Rounded" },
   {
-    image: customBordered,
+    image:
+      "https://res.cloudinary.com/dfilepe0f/image/upload/v1738068793/square_rectangle_cvvdlb.svg",
+    shape: shapes.squareRectangle,
+    title: "Square/rectangle",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dfilepe0f/image/upload/v1738068792/custom_f5orns.svg",
+    shape: shapes.custom,
+    title: "Custom",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dfilepe0f/image/upload/v1738068793/rounded_b3xqey.svg",
+    shape: shapes.rounded,
+    title: "Rounded",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dfilepe0f/image/upload/v1738068793/customBordered_nqgxmz.svg",
     shape: shapes.customBordered,
     title: "Custom-bordered",
   },

@@ -12,7 +12,7 @@
 }
 
 .container > section {
-  min-height: calc(100vh - var(--headerHeight));
+  min-height: calc(100svh - var(--headerHeight));
   overflow-y: auto;
   position: relative;
 }

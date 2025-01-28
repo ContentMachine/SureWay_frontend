@@ -6,6 +6,7 @@ import classes from "./SectionsNav.module.css";
 import { navItemTypes } from "@/utilities/types";
 import useUpdateSearchParams from "@/hooks/useUpdateSearchParams";
 import Loader from "../Loader/Loader";
+import { capitalizeEachWord } from "@/helpers/capitalize";
 
 type SectionsNavTypes = {
   navItems: navItemTypes[];
@@ -46,7 +47,7 @@ const SectionsNav = ({
                   : classes.noButton
               }`}
             >
-              {navItem.title}
+              {capitalizeEachWord(navItem.title)}
             </div>
           );
         })}

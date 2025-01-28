@@ -5,6 +5,7 @@ import { activeToggler } from "@/helpers/activeHandlers";
 import ArrowDown from "@/assets/SvgIcons/ArrowDown";
 import Link from "next/link";
 import Close from "@/assets/SvgIcons/Close";
+import { routes } from "@/utilities";
 
 type SidenavTypes = {
   onClose: () => void;
@@ -25,6 +26,7 @@ const Sidenav = ({ onClose }: SidenavTypes) => {
         <Close onClick={onClose} />
       </div>
       <nav>
+        <Link href={routes?.BASE_URL}>Home</Link>
         {navItems?.map((route, i) => {
           if (route.children) {
             return (
