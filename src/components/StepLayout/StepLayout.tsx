@@ -120,6 +120,7 @@ const StepLayout = ({
                       className={
                         data?.isActive ? classes.active : classes.inActive
                       }
+                      key={data?.image}
                     />
                   );
                 })}

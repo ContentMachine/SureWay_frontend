@@ -6,8 +6,6 @@ import React, { Dispatch, SetStateAction, useMemo, useState } from "react";
 import { createContext } from "react";
 
 type MagnetContextValuesTypes = {
-  magnetSizes: string[];
-  magnetSizesIsLoading: boolean;
   magnetData: magnetDataType;
   setMagnetData: Dispatch<SetStateAction<magnetDataType>>;
 };
@@ -19,10 +17,6 @@ type MagnegContextProviderTypes = {
 export const MagnetContext = createContext({} as MagnetContextValuesTypes);
 
 const MagnetContextProvider = ({ children }: MagnegContextProviderTypes) => {
-  // Requests
-  const { data: magnetSizesData, isLoading: magnetSizesIsLoading } =
-    useMagnetSizes();
-
   // States
   const [magnetData, setMagnetData] = useState<magnetDataType>({
     shape: "",
@@ -35,14 +29,9 @@ const MagnetContextProvider = ({ children }: MagnegContextProviderTypes) => {
     image: null,
   });
 
-  // Memo
-  const magnetSizes = useMemo(() => magnetSizesData?.data, [magnetSizesData]);
-
   return (
     <MagnetContext.Provider
       value={{
-        magnetSizes,
-        magnetSizesIsLoading,
         magnetData,
         setMagnetData,
       }}

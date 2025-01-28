@@ -18,6 +18,8 @@ import useUpdateSearchParams from "@/hooks/useUpdateSearchParams";
 import { magnetDataType, magnetTypeTypes, shapesType } from "@/utilities/types";
 import MagnetSizes from "../MagnetSizes/MagnetSizes";
 import Loader from "@/components/Loader/Loader";
+import { useMagnetSizes } from "@/hooks/useMagnets";
+import { mutate } from "swr";
 
 type MagnetDimensionsTypes = {
   data: magnetDataType;
@@ -33,11 +35,17 @@ const MagnetDimensions = ({
   // States
   const [shapes, setShapes] = useState<shapesType[]>([]);
 
+  // Hooks
+  const { updateSearchParams } = useUpdateSearchParams();
+
+  // Router
+  const shape = updateSearchParams("shape", undefined, "get");
+
   // Utils
   const activeShape = shapes?.find((data) => data?.isActive);
 
-  // Hooks
-  const { updateSearchParams } = useUpdateSearchParams();
+  // Requests
+  const { isLoading, data: magnetSizesData } = useMagnetSizes(shape as string);
 
   // Memo
   const memoizeShapes = useCallback(() => {
@@ -56,9 +64,11 @@ const MagnetDimensions = ({
     setShapes(memoizedShapes as any);
   }, [magnetInfo]);
 
-  useEffect(() => memoizeShapes(), [memoizeShapes]);
+  const magnetSizes = useMemo(() => magnetSizesData?.data, [magnetSizesData]);
 
   // Effects
+  useEffect(() => memoizeShapes(), [memoizeShapes]);
+
   useEffect(() => {
     if (activeShape) {
       setData((prevState) => {
@@ -75,7 +85,11 @@ const MagnetDimensions = ({
     }
   }, [magnetInfo?.shapes]);
 
-  console.log(magnetInfo?.shapes, "Shapes");
+  useEffect(() => {
+    if (shape) {
+      mutate(`/api/magnets/size/sizes/${shape}`);
+    }
+  }, [shape]);
 
   return (
     <Suspense fallback={<Loader />}>
@@ -118,7 +132,7 @@ const MagnetDimensions = ({
             <MagnetSizes
               data={data}
               setData={setData}
-              sizes={magnetInfo?.sizes}
+              sizes={shape ? magnetSizes : magnetInfo?.sizes}
             />
           </>
         )}

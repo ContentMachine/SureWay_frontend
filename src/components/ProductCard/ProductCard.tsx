@@ -7,7 +7,7 @@ import { productType } from "@/utilities/types";
 import { useContext, useEffect, useMemo, useState } from "react";
 import Dropdown from "../Dropdown/Dropdown";
 import { MagnetContext } from "@/context/MagnetContext";
-import { useMagnetPrice } from "@/hooks/useMagnets";
+import { useMagnetPrice, useMagnetSizes } from "@/hooks/useMagnets";
 import { mutate } from "swr";
 import { formatCurrency } from "@/helpers/formatAmount";
 import { useRouter } from "next/navigation";
@@ -28,27 +28,34 @@ const ProductCard = ({ data, route }: ProductCardTypes) => {
   const [size, setSize] = useState("10cmx10cm");
 
   // Context
-  const { magnetSizes, magnetSizesIsLoading, setMagnetData } =
-    useContext(MagnetContext);
+  const { setMagnetData } = useContext(MagnetContext);
 
   // Request
   const { isLoading: magnetPriceIsLoading, data: magnetPrice } =
     useMagnetPrice(size);
 
+  const { isLoading: magnetShapeIsLoading, data: magnetShapeData } =
+    useMagnetSizes(data?.shape);
+
   // Memo
   const price = useMemo(() => magnetPrice?.data?.price, [magnetPrice]);
+  const shapes = useMemo(() => magnetShapeData?.data, [magnetShapeData]);
 
   // Effects
   useEffect(() => {
     if (size) {
       mutate(`/api/magnets/size/by-size/${size}`);
     }
-  }, [size]);
+
+    if (data?.shape) {
+      mutate(`/api/magnets/size/sizes/${data?.shape}`);
+    }
+  }, [size, data?.shape]);
 
   useEffect(() => {
     if (size) {
       setMagnetData((prevState) => {
-        return { ...prevState, dimension: size };
+        return { ...prevState, dimension: size, shape: data?.shape || "" };
       });
     }
   }, [size]);
@@ -91,16 +98,18 @@ const ProductCard = ({ data, route }: ProductCardTypes) => {
         <p>₦{formatCurrency(price || 0)}</p>
         <Dropdown
           title="Select a size"
-          options={magnetSizes}
+          options={shapes}
           selected={size}
           setSelected={setSize}
           maxHeight="120px"
-          isLoading={magnetPriceIsLoading || magnetSizesIsLoading}
+          isLoading={magnetPriceIsLoading || magnetShapeIsLoading}
         />
       </div>
 
       <Button
-        onClick={() => router.push("/magnets/custom-magnets")}
+        onClick={() =>
+          router.push(`/magnets/custom-magnets?shape=${data?.shape}`)
+        }
         disabled={!price || !size}
       >
         Buy

@@ -28,6 +28,7 @@ export type productType = {
   hoverImage: File | string | null;
   _id: string;
   slug: string;
+  shape: string;
 };
 
 export type magnetTypeTypes = {

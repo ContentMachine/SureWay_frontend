@@ -5,8 +5,8 @@ export const swrConfigs: SWRConfiguration = {
   revalidateOnFocus: false,
 };
 
-export const useMagnetSizes = () => {
-  const url = `/api/magnets/size/sizes`;
+export const useMagnetSizes = (shape: string) => {
+  const url = shape ? `/api/magnets/size/sizes/${shape}` : null;
 
   return useGetHook(url, swrConfigs);
 };
