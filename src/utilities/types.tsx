@@ -29,6 +29,7 @@ export type productType = {
   _id: string;
   slug: string;
   shape: string;
+  category: string;
 };
 
 export type magnetTypeTypes = {

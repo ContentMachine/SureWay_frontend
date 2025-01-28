@@ -97,12 +97,12 @@ const HomeProducts = () => {
 
         <div className={classes.products}>
           <ProductsListing
-            products={magnets}
+            products={magnets?.slice(0, 16)}
             loading={isLoading || magnetCategoriesIsLoading}
           />
         </div>
 
-        {magnets?.length > 10 && (
+        {magnets?.length > 15 && (
           <div className={classes.buttonSection}>
             <Button
               type="secondary"

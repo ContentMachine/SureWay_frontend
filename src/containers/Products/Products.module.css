@@ -19,3 +19,18 @@
 .container > div:nth-child(2) {
   flex: 1;
 }
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding-inline: 24px;
+    gap: 0rem;
+  }
+
+  .container > section:nth-child(1) {
+    display: none;
+  }
+
+  .container > div:nth-child(1) {
+    flex: 1;
+  }
+}
