@@ -214,6 +214,7 @@ const CarMagnets = () => {
             <SectionsHero
               title={magnetInfo?.name || "Magnet"}
               bannerImage={magnetInfo?.bannerImage}
+              mobileBannerImage={magnetInfo?.mobileBannerImage}
             />
             <div>
               <StepLayout caption={magnetInfo?.description} steps={steps}>

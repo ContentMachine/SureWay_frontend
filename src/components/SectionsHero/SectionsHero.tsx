@@ -3,15 +3,25 @@ import classes from "./SectionsHero.module.css";
 type SectionsHeroTypes = {
   title: string;
   bannerImage?: string;
+  mobileBannerImage?: string;
 };
 
-const SectionsHero = ({ title, bannerImage }: SectionsHeroTypes) => {
+const SectionsHero = ({
+  title,
+  bannerImage,
+  mobileBannerImage,
+}: SectionsHeroTypes) => {
+  // Utils
+  const isMobile = typeof window !== "undefined" && window?.innerHeight;
+
+  const image = isMobile ? mobileBannerImage : bannerImage;
+
   return (
     <section
       className={classes.container}
       style={{
         backgroundImage: `url(${
-          bannerImage ||
+          image ||
           "https://res.cloudinary.com/dfilepe0f/image/upload/v1737384952/magnets_exiisb.jpg"
         })`,
         // backgroundPosition: "center center",

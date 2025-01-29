@@ -45,7 +45,7 @@ const SectionsNav = ({
                   : type === "tertiary"
                   ? classes.tertiary
                   : classes.noButton
-              }`}
+              } ${navItem?.isBordered ? classes.bordered : undefined}`}
             >
               {capitalizeEachWord(navItem.title)}
             </div>

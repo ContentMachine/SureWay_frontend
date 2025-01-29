@@ -4,6 +4,7 @@ export type navItemTypes = {
   isActive?: boolean;
   description?: string;
   id: string;
+  isBordered?: boolean;
 };
 
 export type modalGenericType = {
@@ -42,6 +43,7 @@ export type magnetTypeTypes = {
   sizes: string[];
   slug: string;
   bannerImage: string;
+  mobileBannerImage: string;
 };
 
 export type shapesType = {
