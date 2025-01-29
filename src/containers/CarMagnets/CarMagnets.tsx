@@ -131,8 +131,18 @@ const CarMagnets = () => {
 
   // Effects
   useEffect(() => {
-    if (typeof window !== undefined && type !== "custom-magnets") {
+    if (
+      typeof window !== undefined &&
+      type !== "custom-magnets" &&
+      !magnetData?.shape &&
+      !magnetData?.dimension
+    ) {
       updateSearchParams("step", "1", "set");
+    }
+
+    if (typeof window !== "undefined") {
+      if (type !== "custom-magnets") {
+      }
     }
   }, []);
 
@@ -159,7 +169,7 @@ const CarMagnets = () => {
   }, [orderId, step]);
 
   useEffect(() => {
-    if (magnetSubmissionData?.data) {
+    if (magnetSubmissionData?.data && orderId && step === "1") {
       setMagnetData({
         shape: magnetSubmission?.shape,
         dimension: magnetSubmission?.dimension,

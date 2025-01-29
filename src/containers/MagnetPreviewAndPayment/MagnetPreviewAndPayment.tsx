@@ -36,8 +36,6 @@ const MagnetPreviewAndPayment = ({
   // States
   const [price, setPrice] = useState(0);
 
-  console.log(magnetPrice?.price, "This issie");
-
   return (
     <section className={classes.container}>
       <h2>Preview & Payments</h2>

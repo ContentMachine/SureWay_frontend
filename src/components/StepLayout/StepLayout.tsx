@@ -4,7 +4,6 @@ import { Suspense, useEffect, useMemo, useState } from "react";
 import classes from "./StepLayout.module.css";
 import useUpdateSearchPRams from "@/hooks/useUpdateSearchParams";
 import Loader from "../Loader/Loader";
-import carousel1 from "../../assets/Images/fridgeMagnetHeader.svg";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
@@ -83,7 +82,9 @@ const StepLayout = ({
       <section className={classes.container}>
         <div className={classes.innerContainer}>
           <div className={classes.body}>
-            <p>{caption}</p>
+            <p>
+              Make memorable gifts and souvenirs in {steps?.length} simple steps
+            </p>
             <div className={classes.stepIndicator}>
               {steps.map((data) => {
                 return (

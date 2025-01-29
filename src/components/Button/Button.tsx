@@ -40,7 +40,7 @@ const Button = ({
     >
       {loading ? (
         <CircularProgress
-          size="2rem"
+          size="1rem"
           color="inherit"
           style={{ color: "#000" }}
         />

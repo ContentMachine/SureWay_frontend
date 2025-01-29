@@ -14,6 +14,8 @@ import { Dispatch, SetStateAction, Suspense, useEffect, useState } from "react";
 import Loader from "@/components/Loader/Loader";
 import useUpdateSearchParams from "@/hooks/useUpdateSearchParams";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
+import Close from "@/assets/SvgIcons/Close";
 
 type MagnetCustomizationTypes = {
   data: magnetDataType;
@@ -59,7 +61,7 @@ const MagnetCustomization = ({
   return (
     <Suspense fallback={<Loader />}>
       <section className={classes.container}>
-        <h2>Customize your Magnet</h2>
+        <h2>Customise your Magnet</h2>
         <p>
           Our custom fridge magnets come in 8 shapes and 3 sizes, perfect for
           any occasion. Whether you need a single photo magnet as a gift or bulk
@@ -103,7 +105,6 @@ const MagnetCustomization = ({
             <Input
               label="Please Type in your Custom Text"
               type="text"
-              isRequired
               name="customText"
               value={data?.customText}
               onChange={(e) => inputChangeHandler(e, setData)}
@@ -117,7 +118,30 @@ const MagnetCustomization = ({
             onChange={(e) => inputChangeHandler(e, setData)}
           />
 
-          <FileUploadInput files={files} setFiles={setFiles} />
+          {data?.image && typeof data?.image === "string" ? (
+            <div className={classes.image}>
+              <label>Image</label>
+              <div>
+                <span>
+                  <Close
+                    onClick={() =>
+                      setData((prevState) => {
+                        return { ...prevState, image: null };
+                      })
+                    }
+                  />
+                </span>
+                <Image
+                  src={data?.image}
+                  alt={data?.fullName}
+                  width={337}
+                  height={337}
+                />
+              </div>
+            </div>
+          ) : (
+            <FileUploadInput files={files} setFiles={setFiles} />
+          )}
 
           <Button
             onClick={(e) => {

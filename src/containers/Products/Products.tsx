@@ -73,8 +73,6 @@ const Products = () => {
     }
   }, [data?.data]);
 
-  console.log(data?.data, magnetsByCategory);
-
   return (
     <AppLayout className={classes.container}>
       {/* <ProductsSections /> */}

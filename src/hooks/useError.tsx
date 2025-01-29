@@ -8,8 +8,6 @@ const useError = () => {
   const errorFlowFunction = (err: any) => {
     showToast(
       err?.response?.data?.message ||
-        err?.response?.data ||
-        err?.response ||
         "An error occured, please try again in few minutes",
       "error"
     );

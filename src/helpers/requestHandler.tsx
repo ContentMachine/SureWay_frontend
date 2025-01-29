@@ -72,8 +72,6 @@ export async function requestHandler({
       }
       if (successFunction) {
         successFunction(res);
-
-        console.log(res, "response");
       }
     })
     .catch((err) => {

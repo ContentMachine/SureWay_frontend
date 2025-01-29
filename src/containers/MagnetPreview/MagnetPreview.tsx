@@ -51,8 +51,6 @@ const MagnetPreview = ({
     (data) => data?.title?.toLowerCase() === magnetData?.shape?.toLowerCase()
   );
 
-  console.log(magnetPriceByQuantityData, "Haha");
-
   // Effects
   useEffect(() => {
     if (price && quantity) {
@@ -66,8 +64,6 @@ const MagnetPreview = ({
       };
     }
   }, [price, quantity]);
-
-  console.log(selectedShape, magnetData, "Shape");
 
   useEffect(() => {
     if (magnetPriceByQuantityData) {

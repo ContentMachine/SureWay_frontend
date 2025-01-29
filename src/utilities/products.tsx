@@ -30,7 +30,7 @@ export const productsSummary = [
   },
 
   {
-    title: "Sure Things",
+    title: "Sure Things (Coming soon)",
     caption: "The coolest and most necessary of items... coming soon!",
     image:
       "https://res.cloudinary.com/dfilepe0f/image/upload/v1737724700/Sure_Things_u5evai.svg",

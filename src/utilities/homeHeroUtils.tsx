@@ -1,7 +1,3 @@
-import image1 from "../assets/Images/heroImage.svg";
-import image2 from "../assets/Images/heroImage.svg";
-import image3 from "../assets/Images/heroImage.svg";
-
 export const homeHeroUtils = [
   {
     text: "We help brands to amplify and inspire people.",
@@ -16,7 +12,7 @@ export const homeHeroUtils = [
     isActive: false,
   },
   {
-    text: "We are the sureway of getting things done",
+    text: "Live life the SureWay",
     image:
       "https://res.cloudinary.com/dfilepe0f/image/upload/v1737993912/IMG_8470_qyygzo.png",
     isActive: false,

@@ -10,7 +10,6 @@ const useGetHook = (url: string | null, props?: SWRConfiguration) => {
 
   useEffect(() => {
     if (error) {
-      console.error(error);
       errorFlowFunction(error);
     }
   }, [error]);
