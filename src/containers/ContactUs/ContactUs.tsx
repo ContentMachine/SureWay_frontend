@@ -70,7 +70,12 @@ const ContactUs = () => {
   return (
     <section className={classes.container} id="contact-us">
       <div className={classes.imageSection}>
-        <Image src={contactUsMemoji} alt="COntact Us" />
+        <Image
+          src="https://res.cloudinary.com/dfilepe0f/image/upload/v1738168079/Contact_Us_fdvduf.svg"
+          alt="COntact Us"
+          width={500}
+          height={500}
+        />
         <h4>Need Help?</h4>
         <p>
           Feel free to fill on our data capture form and a member of our team
