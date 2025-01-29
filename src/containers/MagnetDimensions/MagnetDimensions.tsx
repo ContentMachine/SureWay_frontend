@@ -18,9 +18,12 @@ import useUpdateSearchParams from "@/hooks/useUpdateSearchParams";
 import { magnetDataType, magnetTypeTypes, shapesType } from "@/utilities/types";
 import MagnetSizes from "../MagnetSizes/MagnetSizes";
 import Loader from "@/components/Loader/Loader";
-import { useMagnetSizes } from "@/hooks/useMagnets";
+import {
+  useDimensionsByTypeAndShape,
+  useShapesByType,
+} from "@/hooks/useMagnets";
 import { mutate } from "swr";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 type MagnetDimensionsTypes = {
   data: magnetDataType;
@@ -42,33 +45,40 @@ const MagnetDimensions = ({
   // Router
   const shape = updateSearchParams("shape", undefined, "get");
   const router = useRouter();
+  const { type } = useParams();
 
   // Utils
   const activeShape = shapes?.find((data) => data?.isActive);
+  const separatedType = (type as string)?.split("-")[0];
 
   // Requests
-  const { isLoading, data: magnetSizesData } = useMagnetSizes(
+  const { isLoading, data: magnetSizesData } = useDimensionsByTypeAndShape(
+    separatedType,
     (shape as string) || data?.shape
   );
+  const { data: shapesData } = useShapesByType((type as string)?.split("-")[0]);
 
   // Memo
   const memoizeShapes = useCallback(() => {
-    if (!magnetInfo?.shapes || !magnetShapes) {
+    if (!shapesData?.data?.shapes || !magnetShapes) {
       setShapes([]);
       return;
     }
 
-    const lowerCaseShapes = magnetInfo.shapes.map((shape) =>
+    const lowerCaseShapes = shapesData?.data.shapes.map((shape: string) =>
       shape.toLowerCase()
     );
     const memoizedShapes = magnetShapes.filter((datum) =>
-      lowerCaseShapes.some((shape) => shape === datum.title.toLowerCase())
+      lowerCaseShapes?.some((shape: any) => shape === datum.title.toLowerCase())
     );
 
     setShapes(memoizedShapes as any);
-  }, [magnetInfo]);
+  }, [shapesData]);
 
-  const magnetSizes = useMemo(() => magnetSizesData?.data, [magnetSizesData]);
+  const magnetSizes = useMemo(
+    () => magnetSizesData?.data?.dimensions,
+    [magnetSizesData]
+  );
 
   // Effects
   useEffect(() => memoizeShapes(), [memoizeShapes]);
@@ -82,31 +92,24 @@ const MagnetDimensions = ({
   }, [activeShape]);
 
   useEffect(() => {
-    if (magnetInfo?.shapes?.length < 1) {
-      setData((prevState) => {
-        return { ...prevState, shape: "none" };
-      });
-    }
-  }, [magnetInfo?.shapes]);
-
-  useEffect(() => {
     if (shape) {
-      mutate(`/api/magnets/size/sizes/${shape}`);
+      mutate(`/api/magnets/size/by-type/${separatedType}/${shape}`);
     } else {
-      mutate(`/api/magnets/size/sizes/${data?.shape}`);
+      mutate(`/api/magnets/size/by-type/${separatedType}/${data?.shape}`);
     }
   }, [shape, data?.shape]);
 
   return (
     <Suspense fallback={<Loader />}>
       <section className={classes.container}>
-        {shapes?.length > 0 && (
+        {shapes?.length > 0 && type !== "custom-magnets" && (
           <>
             <h2>Select a Magnet Shape</h2>
             <p>
-              Our custom fridge magnets come in 8 shapes and 3 sizes, perfect
-              for any occasion. Whether you need a single photo magnet as a gift
-              or bulk souvenir magnets for an event, SureWay has you covered!
+              Our custom fridge magnets come in {shapes?.length || "some"}{" "}
+              shapes and {magnetSizes?.length || "several"} sizes, perfect for
+              any occasion. Whether you need a single photo magnet as a gift or
+              bulk souvenir magnets for an event, SureWay has you covered!
             </p>
             <div className={classes.shapesContainer}>
               {shapes?.map((shape, i) => {
@@ -121,6 +124,9 @@ const MagnetDimensions = ({
                     onClick={() => {
                       activeToggler(i, shapes, setShapes);
                       router.push("#magnet-sizes");
+                      setData((prevState) => {
+                        return { ...prevState, dimension: "" };
+                      });
                     }}
                   >
                     <Image
@@ -130,7 +136,7 @@ const MagnetDimensions = ({
                       height={200}
                       width={200}
                     />
-                    <span>{shape?.title}</span>
+                    <span>{shape?.title?.replaceAll("-", " ")}</span>
                   </div>
                 );
               })}

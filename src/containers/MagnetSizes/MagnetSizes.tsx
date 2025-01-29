@@ -34,9 +34,8 @@ const MagnetSizes = ({ data, setData, sizes, loading }: MagnetSizesTypes) => {
     <section className={classes.container} id="magnet-sizes">
       <h2>Select a Magnet Size</h2>
       <p>
-        Our custom fridge magnets come in 8 shapes and 3 sizes, perfect for any
-        occasion. Whether you need a single photo magnet as a gift or bulk
-        souvenir magnets for an event, SureWay has you covered!
+        10cm x 10cm is about the size of your palm, whereas 30cm x 30cm is
+        approximately the size of a large dinner plate.
       </p>
 
       <Dropdown

@@ -132,7 +132,7 @@ export const magnetShapes = [
     image:
       "https://res.cloudinary.com/dfilepe0f/image/upload/v1738068793/square_rectangle_cvvdlb.svg",
     shape: shapes.squareRectangle,
-    title: "Square/rectangle",
+    title: "Square-or-rectangle",
   },
   {
     image:

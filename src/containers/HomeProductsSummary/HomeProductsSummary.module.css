@@ -25,6 +25,7 @@
 .leftSection > div:nth-child(1) {
   display: flex;
   gap: 2rem;
+  order: 1;
 }
 
 .featureCard {

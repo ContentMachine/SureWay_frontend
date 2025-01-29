@@ -65,7 +65,7 @@ const Payment = ({ data, setData, price }: PaymentTypes) => {
             width={337}
             height={337}
           />
-          <span>12 x 12</span>
+          {/* <span>12 x 12</span> */}
         </div>
       )}
 

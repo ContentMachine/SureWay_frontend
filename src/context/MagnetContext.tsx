@@ -1,6 +1,5 @@
 "use client";
 
-import { useMagnetSizes } from "@/hooks/useMagnets";
 import { magnetDataType } from "@/utilities/types";
 import React, { Dispatch, SetStateAction, useMemo, useState } from "react";
 import { createContext } from "react";

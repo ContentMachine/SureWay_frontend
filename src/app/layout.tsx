@@ -5,6 +5,7 @@ import UseSWRConfigProvider from "@/config/SWRConfig";
 import MagnetContextProvider from "@/context/MagnetContext";
 import AppContextProvider from "@/context/AppContext";
 import { ToastContextProvider } from "@/context/ToastContext";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -48,6 +49,12 @@ export default function RootLayout({
         />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
+
+      <Script
+        strategy="lazyOnload"
+        src="https://embed.tawk.to/679a2978825083258e0cffe6/1iip340b1"
+      />
+
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <UseSWRConfigProvider>
           <ToastContextProvider>

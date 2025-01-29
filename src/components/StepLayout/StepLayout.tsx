@@ -105,7 +105,7 @@ const StepLayout = ({
               <div
                 className={classes.carouselSection}
                 style={
-                  pathname?.includes("car")
+                  pathname?.includes("car") && userStep === "1"
                     ? { display: "flex" }
                     : { display: "none" }
                 }

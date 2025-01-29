@@ -7,7 +7,10 @@ import { productType } from "@/utilities/types";
 import { useContext, useEffect, useMemo, useState } from "react";
 import Dropdown from "../Dropdown/Dropdown";
 import { MagnetContext } from "@/context/MagnetContext";
-import { useMagnetPrice, useMagnetSizes } from "@/hooks/useMagnets";
+import {
+  useDimensionsByTypeAndShape,
+  usePriceByTypeShapeAndDimension,
+} from "@/hooks/useMagnets";
 import { mutate } from "swr";
 import { formatCurrency } from "@/helpers/formatAmount";
 import { useRouter } from "next/navigation";
@@ -25,40 +28,51 @@ const ProductCard = ({ data, route }: ProductCardTypes) => {
   const router = useRouter();
 
   // States
-  const [size, setSize] = useState("10cmx10cm");
+  const [size, setSize] = useState("");
 
   // Context
   const { setMagnetData } = useContext(MagnetContext);
 
-  // Request
-  const { isLoading: magnetPriceIsLoading, data: magnetPrice } =
-    useMagnetPrice(size);
+  const { isLoading: magnetDimensionsIsLoading, data: magnetDimensionsData } =
+    useDimensionsByTypeAndShape("custom", data?.shape);
 
-  const { isLoading: magnetShapeIsLoading, data: magnetShapeData } =
-    useMagnetSizes(data?.shape);
+  const { data: magnetPriceData } = usePriceByTypeShapeAndDimension(
+    "custom",
+    data?.shape,
+    size
+  );
 
   // Memo
-  const price = useMemo(() => magnetPrice?.data?.price, [magnetPrice]);
-  const shapes = useMemo(() => magnetShapeData?.data, [magnetShapeData]);
+  const price = useMemo(() => magnetPriceData?.data?.price, [magnetPriceData]);
+  const dimensions = useMemo(
+    () => magnetDimensionsData?.data?.dimensions,
+    [magnetDimensionsData]
+  );
 
   // Effects
   useEffect(() => {
     if (size) {
-      mutate(`/api/magnets/size/by-size/${size}`);
-    }
-
-    if (data?.shape) {
-      mutate(`/api/magnets/size/sizes/${data?.shape}`);
+      mutate(`/api/magnets/size/by-type/custom/${data?.shape}/${size}`);
     }
   }, [size, data?.shape]);
 
   useEffect(() => {
     if (size) {
       setMagnetData((prevState) => {
-        return { ...prevState, dimension: size, shape: data?.shape || "" };
+        return {
+          ...prevState,
+          dimension: size,
+          shape: data?.shape || "custom",
+        };
       });
     }
   }, [size]);
+
+  useEffect(() => {
+    if (dimensions?.length > 0 && !size) {
+      setSize(dimensions[0]);
+    }
+  }, [dimensions]);
 
   return (
     <section
@@ -86,7 +100,6 @@ const ProductCard = ({ data, route }: ProductCardTypes) => {
           <Image
             src={data?.image || productImage}
             alt="Product"
-            // layout="responsive"
             width={100}
             height={380}
           />
@@ -98,17 +111,17 @@ const ProductCard = ({ data, route }: ProductCardTypes) => {
         <p>₦{formatCurrency(price || 0)}</p>
         <Dropdown
           title="Select a size"
-          options={shapes}
+          options={dimensions}
           selected={size}
           setSelected={setSize}
           maxHeight="120px"
-          isLoading={magnetPriceIsLoading || magnetShapeIsLoading}
+          isLoading={magnetDimensionsIsLoading}
         />
       </div>
 
       <Button
         onClick={() =>
-          router.push(`/magnets/custom-magnets?shape=${data?.shape}`)
+          router.push(`/magnets/custom-magnets?shape=${data?.shape}&step=2`)
         }
         disabled={!price || !size}
       >

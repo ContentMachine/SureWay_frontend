@@ -46,6 +46,7 @@ const CarMagnets = () => {
   const { isLoading, data: magnetInfoData } = useMagnetTypesBySlug(
     type as string
   );
+
   const { isLoading: magnetSubmissionIsLoading, data: magnetSubmissionData } =
     useMagnetSubmission(orderId as string);
 
@@ -130,7 +131,7 @@ const CarMagnets = () => {
 
   // Effects
   useEffect(() => {
-    if (typeof window !== undefined) {
+    if (typeof window !== undefined && type !== "custom-magnets") {
       updateSearchParams("step", "1", "set");
     }
   }, []);

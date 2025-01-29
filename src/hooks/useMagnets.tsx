@@ -5,21 +5,11 @@ export const swrConfigs: SWRConfiguration = {
   revalidateOnFocus: false,
 };
 
-export const useMagnetSizes = (shape: string) => {
-  const url = shape ? `/api/magnets/size/sizes/${shape}` : null;
-
-  return useGetHook(url, swrConfigs);
-};
-
-export const useMagnetPrice = (size?: string) => {
-  const url = size ? `/api/magnets/size/by-size/${size}` : null;
-
-  return useGetHook(url, swrConfigs);
-};
-
-export const useMagnetPriceByQuantity = (size: string, quantity: number) => {
+export const useMagnetPriceByQuantity = (price: string, quantity: number) => {
   const url =
-    size && quantity ? `/api/magnets/size/by-size/${size}/${quantity}` : null;
+    price && quantity
+      ? `/api/magnets/price/by-quantity/${price}/${quantity}`
+      : null;
 
   return useGetHook(url, swrConfigs);
 };
@@ -50,6 +40,32 @@ export const useMagnetTypesBySlug = (slug: string) => {
 
 export const useMagnetSubmission = (id: string) => {
   const url = id ? `/api/magnets/submit-magnet/${id}` : null;
+
+  return useGetHook(url, swrConfigs);
+};
+
+export const useShapesByType = (type: string) => {
+  const url = type ? `/api/magnets/size/by-type/${type}` : null;
+
+  return useGetHook(url, swrConfigs);
+};
+
+export const useDimensionsByTypeAndShape = (type: string, shape: string) => {
+  const url =
+    type && shape ? `/api/magnets/size/by-type/${type}/${shape}` : null;
+
+  return useGetHook(url, swrConfigs);
+};
+
+export const usePriceByTypeShapeAndDimension = (
+  type: string,
+  shape: string,
+  dimension: string
+) => {
+  const url =
+    type && shape && dimension
+      ? `/api/magnets/size/by-type/${type}/${shape}/${dimension}`
+      : null;
 
   return useGetHook(url, swrConfigs);
 };

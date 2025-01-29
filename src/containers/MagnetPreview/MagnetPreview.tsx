@@ -39,7 +39,7 @@ const MagnetPreview = ({
 
   // Requests
   const { isLoading, data: magnetPriceByQuantityData } =
-    useMagnetPriceByQuantity(magnetData?.dimension, quantityState);
+    useMagnetPriceByQuantity(String(price), quantityState);
 
   // Memos
   const magnetPriceByQuantity = useMemo(
@@ -51,21 +51,21 @@ const MagnetPreview = ({
     (data) => data?.title?.toLowerCase() === magnetData?.shape?.toLowerCase()
   );
 
+  console.log(magnetPriceByQuantityData, "Haha");
+
   // Effects
   useEffect(() => {
-    if (magnetData?.dimension && quantity) {
+    if (price && quantity) {
       const timeout = setTimeout(() => {
         setQuantityState(quantity);
-        mutate(
-          `/api/magnets/size/by-size/${magnetData?.dimension}/${quantity}`
-        );
+        mutate(`/api/magnets/price/by-quantity/${price}/${quantity}`);
       }, 1000);
 
       return () => {
         clearTimeout(timeout);
       };
     }
-  }, [magnetData?.dimension, quantity]);
+  }, [price, quantity]);
 
   console.log(selectedShape, magnetData, "Shape");
 

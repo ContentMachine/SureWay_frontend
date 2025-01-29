@@ -2,9 +2,13 @@ import classes from "./MagnetPreviewAndPayment.module.css";
 import MagnetPreview from "../MagnetPreview/MagnetPreview";
 import Payment from "../Payment/Payment";
 import { magnetDataType } from "@/utilities/types";
-import { Dispatch, SetStateAction, useMemo, useState } from "react";
-import { useMagnetPrice } from "@/hooks/useMagnets";
+import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
+import {
+  useMagnetPrice,
+  usePriceByTypeShapeAndDimension,
+} from "@/hooks/useMagnets";
 import Loader from "@/components/Loader/Loader";
+import { useParams, usePathname } from "next/navigation";
 
 type MagnetPreviewAndPaymentTypes = {
   data: magnetDataType;
@@ -15,14 +19,24 @@ const MagnetPreviewAndPayment = ({
   data: magnetFormData,
   setData,
 }: MagnetPreviewAndPaymentTypes) => {
+  // ROuter
+  const { type } = useParams();
+  const separatedType = (type as string)?.split("-")[0];
+
   // Requests
-  const { isLoading, data } = useMagnetPrice(magnetFormData?.dimension);
+  const { isLoading, data } = usePriceByTypeShapeAndDimension(
+    separatedType,
+    magnetFormData?.shape,
+    magnetFormData?.dimension
+  );
 
   // Memo
   const magnetPrice = useMemo(() => data?.data, [data]);
 
   // States
   const [price, setPrice] = useState(0);
+
+  console.log(magnetPrice?.price, "This issie");
 
   return (
     <section className={classes.container}>
