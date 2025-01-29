@@ -3,10 +3,7 @@ import MagnetPreview from "../MagnetPreview/MagnetPreview";
 import Payment from "../Payment/Payment";
 import { magnetDataType } from "@/utilities/types";
 import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
-import {
-  useMagnetPrice,
-  usePriceByTypeShapeAndDimension,
-} from "@/hooks/useMagnets";
+import { usePriceByTypeShapeAndDimension } from "@/hooks/useMagnets";
 import Loader from "@/components/Loader/Loader";
 import { useParams, usePathname } from "next/navigation";
 
