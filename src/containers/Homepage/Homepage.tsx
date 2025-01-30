@@ -5,7 +5,6 @@ import classes from "./Homepage.module.css";
 import HomeHero from "../HomeHero/HomeHero";
 import HomeProductsSummary from "../HomeProductsSummary/HomeProductsSummary";
 import HomeProducts from "../HomeProducts/HomeProducts";
-import MagnetMagnetTypes from "../MagnetsMagnetTypes/MagnetMagnetTypes";
 import HomeMagnetTypes from "../HomeMagnetTypes/HomeMagnetTypes";
 import ContactUs from "../ContactUs/ContactUs";
 import Button from "@/components/Button/Button";
@@ -55,10 +54,8 @@ const Homepage = () => {
             }}
           />
           <p>
-            We're excited to have you here! To help you get started, we'll take
-            you on a quick tour of our store. You'll learn how to browse
-            products, add items to your cart, and complete your purchase with
-            ease.
+            To help you get started, this tour will show you how to browse
+            products, add items to your cart, and purchase with ease
           </p>
           <Button
             onClick={() => {

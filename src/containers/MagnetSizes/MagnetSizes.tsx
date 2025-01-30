@@ -3,6 +3,7 @@ import classes from "./MagnetSizes.module.css";
 import { magnetDataType } from "@/utilities/types";
 import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
 import { magnetSizes } from "@/utilities/products";
+import { usePathname } from "next/navigation";
 
 type MagnetSizesTypes = {
   data: magnetDataType;
@@ -12,14 +13,11 @@ type MagnetSizesTypes = {
 };
 
 const MagnetSizes = ({ data, setData, sizes, loading }: MagnetSizesTypes) => {
-  // Memos
-  const selectedShapeSizes = useMemo(
-    () => magnetSizes?.find((size) => size?.shape === data?.shape),
-    [data]
-  );
-
   // States
   const [dimension, setDimension] = useState("");
+
+  // Router
+  const pathname = usePathname();
 
   // Effects
   useEffect(() => {
@@ -33,10 +31,12 @@ const MagnetSizes = ({ data, setData, sizes, loading }: MagnetSizesTypes) => {
   return (
     <section className={classes.container} id="magnet-sizes">
       <h2>Select a Magnet Size</h2>
-      <p>
-        10cm x 10cm is about the size of your palm, whereas 30cm x 30cm is
-        approximately the size of a large dinner plate.
-      </p>
+      {pathname.includes("car") && (
+        <p>
+          10cm x 10cm is about the size of your palm, whereas 30cm x 30cm is
+          approximately the size of a large dinner plate.
+        </p>
+      )}
 
       <Dropdown
         title="Select a magnet size"

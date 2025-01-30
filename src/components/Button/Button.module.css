@@ -56,9 +56,9 @@
 }
 
 .invalid {
-  border: 1px solid var(--red);
-  color: var(--red);
-  background: none;
+  border: none;
+  color: var(--black);
+  background: var(--grey2);
 }
 
 .icon {

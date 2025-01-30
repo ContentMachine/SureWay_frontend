@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { routes } from "@/utilities";
 import dynamic from "next/dynamic";
 import { useToast } from "@/context/ToastContext";
+import { PAYSTACK_PUBLIC_KEY } from "@/config/paystack";
 
 const PaystackButton = dynamic(
   () => import("react-paystack").then((mod) => mod.PaystackButton),
@@ -52,7 +53,7 @@ const Payment = ({ data, setData, price }: PaymentTypes) => {
       showToast("Thanks for buying your magnet from Sureway", "success");
       router.push(`${routes.MAGNETS}#custom-magnets`);
     },
-    publicKey: process?.env?.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY as string,
+    publicKey: PAYSTACK_PUBLIC_KEY as string,
   };
 
   return (

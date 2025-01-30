@@ -15,7 +15,7 @@ const OnboardingTourContextProvider = ({ children }: OnboardingTourTypes) => {
     {
       selector: "#our-services",
       content:
-        "Whether you're looking for personalized fridge magnets, stylish car magnets, elegantly engraved items, or custom sure things, we've got you covered!",
+        "Whether you're looking for personalised fridge magnets, stylish car magnets, elegantly engraved items, or custom sure things, we've got you covered!",
     },
     {
       selector: "#shop-button",
@@ -24,23 +24,21 @@ const OnboardingTourContextProvider = ({ children }: OnboardingTourTypes) => {
     },
     {
       selector: "#contact-us-form",
-      content:
-        "Have questions or need assistance? We're here to help! Whether it's about custom orders, product details, or anything else, feel free to reach out.",
+      content: "Need assistance? We are here to help! Feel free to reach out.",
     },
     {
       selector: "#products-nav",
       content:
-        "Easily browse through our range of custom products using the navigation menu! Whether you're looking for valentine magnets, father's day magnets, or our unique sure things, our categories help you find exactly what you need.",
+        "Use the navigation menu to browse through our product range. Our categories help you find exactly what you need.",
     },
     {
       selector: "#product",
-      content:
-        "Love this magnet? Click ‘Buy’ to start customizing and make it yours today!",
+      content: "⁠Pick your size and click ‘Buy’ to start customising",
     },
     {
       selector: "#product-category",
       content:
-        "Explore our range of magnets, from fridge magnets that add personality to your space to car magnets that make a statement on the go. Whether you're looking for stylish engraved items or unique sure things, we have something for everyone!",
+        "Our Fridge Magnets add personality to your space, our Car Magnets make a statement on the go, and our Engraved Items and unique Sure Things will definitely impress. We have something for everyone!",
     },
   ];
 
@@ -68,9 +66,20 @@ const OnboardingTourContextProvider = ({ children }: OnboardingTourTypes) => {
         }),
         maskArea: (base) => ({ ...base, rx: radius }),
         maskWrapper: (base) => ({ ...base }),
-        badge: (base) => ({ ...base, left: "auto", right: "-0.8125em" }),
+        badge: (base) => ({
+          ...base,
+          left: "auto",
+          right: "-0.8125em",
+          color: "#000",
+        }),
         controls: (base) => ({ ...base, marginTop: 16 }),
-        close: (base) => ({ ...base, right: "auto", left: 16, top: 16 }),
+        close: (base) => ({
+          ...base,
+          right: "auto",
+          left: 16,
+          top: 16,
+          color: "red",
+        }),
       }}
       onClickHighlighted={(e) => {
         e.stopPropagation();
@@ -80,6 +89,7 @@ const OnboardingTourContextProvider = ({ children }: OnboardingTourTypes) => {
         const first = currentStep === 0;
         return (
           <Button
+            type="invalid"
             onClick={() => {
               if (first) {
                 setCurrentStep((s: any) => (steps?.length as any) - 1);

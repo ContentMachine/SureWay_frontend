@@ -78,8 +78,8 @@ const ContactUs = () => {
         />
         <h4>Need Help?</h4>
         <p>
-          Feel free to fill on our data capture form and a member of our team
-          will get back to you within the hour
+          Feel free to fill in our form and a member of our team will get back
+          to you within the 10 - 15 minutes (8am - 8pm)
         </p>
       </div>
 

@@ -88,7 +88,7 @@ const HomeProducts = () => {
           <h4>Our Custom Magnets</h4>
           <p>
             Discover high-quality custom magnets to decorate your space or gift
-            to someone special. Shop unique designs or personalize your own
+            to someone special. Shop unique designs or personalise your own
             today!
           </p>
         </div>
@@ -99,6 +99,10 @@ const HomeProducts = () => {
           isRoute
           id={"products-nav"}
         />
+
+        <p className={classes.mobileText}>
+          Tap the magnets to see the magic 😌{" "}
+        </p>
 
         <div className={classes.products}>
           <ProductsListing

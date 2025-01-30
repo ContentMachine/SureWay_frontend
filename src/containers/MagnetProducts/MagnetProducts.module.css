@@ -1,5 +1,6 @@
 .container {
   padding: 56px 0px;
+  background-color: var(--gray);
 }
 
 .container > h4 {

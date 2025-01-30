@@ -26,7 +26,7 @@ export const productsSummary = [
     caption:
       "For the memories that matter, every magnet tells a story, a story that sticks",
     image:
-      "https://res.cloudinary.com/dfilepe0f/image/upload/v1737468902/fridgeMagnets_lza5t6.svg",
+      "https://res.cloudinary.com/dfilepe0f/image/upload/v1738239673/Fridge_Magnets_mtm4tz.svg",
   },
 
   {

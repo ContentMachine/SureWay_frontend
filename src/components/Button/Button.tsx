@@ -34,7 +34,7 @@ const Button = ({
           : type === "null"
           ? classes.null
           : type === "invalid"
-          ? classes.invalidx
+          ? classes.invalid
           : classes.primary
       } ${className}`}
       onClick={onClick}
