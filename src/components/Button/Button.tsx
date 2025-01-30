@@ -11,6 +11,7 @@ type ButtonPropTypes = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   loading?: boolean;
   icon?: React.ReactNode;
+  id?: string;
 };
 
 const Button = ({
@@ -21,6 +22,7 @@ const Button = ({
   loading,
   className,
   icon,
+  id,
 }: ButtonPropTypes) => {
   return (
     <button
@@ -37,6 +39,7 @@ const Button = ({
       } ${className}`}
       onClick={onClick}
       disabled={disabled}
+      id={id}
     >
       {loading ? (
         <CircularProgress

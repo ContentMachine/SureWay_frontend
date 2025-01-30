@@ -83,6 +83,7 @@ const ProductCard = ({ data, route }: ProductCardTypes) => {
       onMouseLeave={() => {
         setIsHovering(false);
       }}
+      id="product"
     >
       <div>
         <Like />
@@ -91,10 +92,13 @@ const ProductCard = ({ data, route }: ProductCardTypes) => {
       <div className={classes.image}>
         {isHovering ? (
           <Image
-            src={data?.hoverImage || productImage}
+            src={
+              isHovering ? data?.hoverImage : data?.hoverImage || productImage
+            }
             alt="Product"
             width={100}
             height={380}
+            loading="eager"
           />
         ) : (
           <Image

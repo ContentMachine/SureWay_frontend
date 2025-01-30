@@ -1,0 +1,44 @@
+.container {
+  position: relative;
+}
+
+.tourPrompt > svg {
+  float: right;
+  display: block;
+  margin-inline-start: 1rem;
+}
+
+.tourPrompt {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  width: 500px;
+  padding: 1rem;
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.tourPrompt > p {
+  font-family: "Montserrat";
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 150%;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 767px) {
+  .tourPrompt {
+    position: fixed;
+    bottom: 2rem;
+    left: 1rem;
+    right: 2rem;
+    width: 90%;
+  }
+
+  .tourPrompt > p {
+    font-size: 16px;
+    line-height: 150%;
+  }
+}

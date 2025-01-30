@@ -58,7 +58,10 @@ const HomeHero = () => {
                 alt={data?.text}
               />
 
-              <Button onClick={() => router.push("#custom-magnets")}>
+              <Button
+                onClick={() => router.push("#custom-magnets")}
+                id="shop-button"
+              >
                 Shop
               </Button>
             </div>

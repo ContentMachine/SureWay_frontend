@@ -13,6 +13,7 @@ type SectionsNavTypes = {
   setNavItems: Dispatch<SetStateAction<navItemTypes[]>>;
   type?: "secondary" | "tertiary";
   isRoute?: boolean;
+  id?: string;
 };
 
 const SectionsNav = ({
@@ -20,13 +21,14 @@ const SectionsNav = ({
   setNavItems,
   type,
   isRoute,
+  id,
 }: SectionsNavTypes) => {
   // Hooks
   const { updateSearchParams } = useUpdateSearchParams();
 
   return (
     <Suspense fallback={<Loader />}>
-      <section className={classes.container}>
+      <section className={classes.container} id={id}>
         {navItems.map((navItem, index) => {
           return (
             <div

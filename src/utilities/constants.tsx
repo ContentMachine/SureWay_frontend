@@ -11,3 +11,5 @@ export const valentineTexts = [
   "The Best Thing That Ever Happened To Me",
   "Other",
 ];
+
+export const LOCAL_NEW_USER_KEY = "sureway-new-user";

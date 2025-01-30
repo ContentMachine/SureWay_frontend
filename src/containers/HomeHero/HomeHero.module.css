@@ -39,6 +39,7 @@
   width: 50%;
   color: var(--white);
   margin-bottom: 2rem;
+  height: 300px;
 }
 
 .active {

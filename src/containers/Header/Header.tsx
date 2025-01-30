@@ -114,6 +114,7 @@ const Header = ({ isDynamic }: HeaderTypes) => {
                 className={classes.moreOptions}
                 onClick={() => activeToggler(i, navItems, setNavItems)}
                 key={i}
+                id={route?.id}
               >
                 <span>{route?.title}</span>
                 <ArrowDown />

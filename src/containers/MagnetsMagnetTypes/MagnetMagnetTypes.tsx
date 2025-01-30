@@ -23,7 +23,7 @@ const MagnetMagnetTypes = () => {
   );
 
   return (
-    <section className={classes.container}>
+    <section className={classes.container} id="product-category">
       {isLoading ? (
         <Loader />
       ) : (

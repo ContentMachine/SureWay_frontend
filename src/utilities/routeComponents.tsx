@@ -8,6 +8,7 @@ export const routeComponents = [
     properties: null,
     children: null,
     isActive: false,
+    id: "homepage",
   },
   {
     title: "Our Services",
@@ -24,6 +25,7 @@ export const routeComponents = [
       { title: "Sure Things", route: routes.SURE_THINGS },
     ],
     isActive: false,
+    id: "our-services",
   },
   {
     title: "Legal",
@@ -37,6 +39,7 @@ export const routeComponents = [
       { title: "Terms and Conditions", route: routes.TERMS_AND_CONDITIONS },
     ],
     isActive: false,
+    id: "legal",
   },
   {
     title: "Contact Us",
@@ -44,5 +47,6 @@ export const routeComponents = [
     properties: ["isHeaderRoute"],
     children: null,
     isActive: false,
+    id: "contact-us",
   },
 ];

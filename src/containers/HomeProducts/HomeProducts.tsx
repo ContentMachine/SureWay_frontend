@@ -93,7 +93,12 @@ const HomeProducts = () => {
           </p>
         </div>
 
-        <SectionsNav navItems={navItems} setNavItems={setNavItems} isRoute />
+        <SectionsNav
+          navItems={navItems}
+          setNavItems={setNavItems}
+          isRoute
+          id={"products-nav"}
+        />
 
         <div className={classes.products}>
           <ProductsListing

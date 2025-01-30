@@ -83,7 +83,7 @@ const ContactUs = () => {
         </p>
       </div>
 
-      <form>
+      <form id="contact-us-form">
         <Input
           label="Full name"
           isRequired

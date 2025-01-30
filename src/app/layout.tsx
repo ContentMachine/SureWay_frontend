@@ -6,6 +6,7 @@ import MagnetContextProvider from "@/context/MagnetContext";
 import AppContextProvider from "@/context/AppContext";
 import { ToastContextProvider } from "@/context/ToastContext";
 import Script from "next/script";
+import OnboardingTourContextProvider from "@/components/OnboardingTourContext/OnboardingTourContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -59,7 +60,11 @@ export default function RootLayout({
         <UseSWRConfigProvider>
           <ToastContextProvider>
             <AppContextProvider>
-              <MagnetContextProvider>{children}</MagnetContextProvider>
+              <MagnetContextProvider>
+                <OnboardingTourContextProvider>
+                  {children}
+                </OnboardingTourContextProvider>
+              </MagnetContextProvider>
             </AppContextProvider>
           </ToastContextProvider>
         </UseSWRConfigProvider>
