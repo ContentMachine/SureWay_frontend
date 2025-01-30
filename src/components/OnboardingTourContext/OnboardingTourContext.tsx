@@ -105,7 +105,9 @@ const OnboardingTourContextProvider = ({ children }: OnboardingTourTypes) => {
             onClick={() => {
               if (last) {
                 setIsOpen(false);
-                localStorage.setItem(LOCAL_NEW_USER_KEY, "false");
+                if (typeof window !== "undefined") {
+                  localStorage.setItem(LOCAL_NEW_USER_KEY, "false");
+                }
               } else {
                 setCurrentStep((s) =>
                   s === (steps?.length as any) - 1 ? 0 : s + 1

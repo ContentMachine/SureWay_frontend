@@ -19,7 +19,10 @@ const Homepage = () => {
   const [showGuidePrompt, setShowGuidePrompt] = useState(false);
 
   // Local
-  const isNotNewUser = localStorage.getItem(LOCAL_NEW_USER_KEY);
+  const isNotNewUser =
+    typeof window !== "undefined"
+      ? localStorage.getItem(LOCAL_NEW_USER_KEY)
+      : null;
 
   // Hooks
   const { setIsOpen } = useTour();
@@ -46,7 +49,9 @@ const Homepage = () => {
           <Close
             onClick={() => {
               setShowGuidePrompt(false);
-              localStorage.setItem(LOCAL_NEW_USER_KEY, "false");
+              if (typeof window !== "undefined") {
+                localStorage.setItem(LOCAL_NEW_USER_KEY, "false");
+              }
             }}
           />
           <p>
