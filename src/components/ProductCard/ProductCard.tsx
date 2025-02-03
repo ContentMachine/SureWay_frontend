@@ -18,9 +18,10 @@ import { useRouter } from "next/navigation";
 type ProductCardTypes = {
   data: productType;
   route?: string;
+  type?: "magnet" | "product";
 };
 
-const ProductCard = ({ data, route }: ProductCardTypes) => {
+const ProductCard = ({ data, route, type = "magnet" }: ProductCardTypes) => {
   // State
   const [isHovering, setIsHovering] = useState(false);
 
@@ -113,23 +114,29 @@ const ProductCard = ({ data, route }: ProductCardTypes) => {
       <div className={classes.textSection}>
         <p>{data?.name}</p>
         <p>₦{formatCurrency(price || 0)}</p>
-        <Dropdown
-          title="Select a size"
-          options={dimensions}
-          selected={size}
-          setSelected={setSize}
-          maxHeight="120px"
-          isLoading={magnetDimensionsIsLoading}
-        />
+        {type === "magnet" && (
+          <Dropdown
+            title="Select a size"
+            options={dimensions}
+            selected={size}
+            setSelected={setSize}
+            maxHeight="120px"
+            isLoading={magnetDimensionsIsLoading}
+          />
+        )}
       </div>
 
       <Button
-        onClick={() =>
-          router.push(`/magnets/custom-magnets?shape=${data?.shape}&step=2`)
-        }
+        onClick={() => {
+          if (type === "product") {
+            router.push(route as string);
+          } else {
+            router.push(`/magnets/custom-magnets?shape=${data?.shape}&step=2`);
+          }
+        }}
         disabled={!price || !size}
       >
-        Buy
+        {type === "magnet" ? "Buy" : "Add to Cart"}
       </Button>
     </section>
   );

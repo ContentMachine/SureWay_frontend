@@ -4,7 +4,7 @@ export const routes = Object.freeze({
   SURE_THINGS: "/sure-things",
   OUR_SERVICES: "/our-services",
   BRANDING: "/branding",
-  ENGRAVING: "/engraving",
+  ENGRAVING: "/engravings",
   CUSTOM_MAGNETS: "/magnets/custom-magnets",
   MAGNETS: "/magnets",
   ORDER_PROCESSING: "/order-processing",

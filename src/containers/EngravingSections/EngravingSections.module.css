@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  gap: 2rem;
+  padding: 3rem 160px;
+}
+
+.container > section {
+  flex-basis: calc(33.3% - 2rem);
+}

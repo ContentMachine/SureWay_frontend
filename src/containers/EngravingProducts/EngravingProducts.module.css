@@ -1,0 +1,27 @@
+.container {
+  padding: 2rem 160px;
+}
+
+.header > h4 {
+  font-family: "Montserrat";
+  font-size: 60px;
+  font-weight: 500;
+  line-height: 150%;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--black);
+  letter-spacing: -0.2rem;
+}
+
+.header > p {
+  font-family: "Montserrat";
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.03em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin: 2rem auto;
+  max-width: 1000px;
+}

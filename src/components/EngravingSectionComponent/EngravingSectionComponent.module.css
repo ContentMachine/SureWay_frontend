@@ -1,0 +1,62 @@
+.container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.container > h4 {
+  font-family: "Montserrat";
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 140%;
+  margin-top: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  z-index: 1;
+  color: var(--white);
+}
+
+.container > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  background: linear-gradient(
+    180deg,
+    hsla(0, 0%, 100%, 0),
+    hsla(0, 0%, 100%, 0) 20%,
+    rgba(24, 24, 24, 0.5)
+  );
+  z-index: 0;
+}
+
+.container > button {
+  position: relative;
+  top: 100%;
+  width: 80%;
+  margin-inline: auto;
+  transition: all 0.2s ease-in-out;
+  z-index: 1;
+}
+
+.container:hover > button {
+  top: 0%;
+}
+
+.container:hover > h4 {
+  top: -10%;
+}
