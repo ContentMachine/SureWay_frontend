@@ -49,4 +49,22 @@ export const routeComponents = [
     isActive: false,
     id: "contact-us",
   },
+  {
+    title: "Contact Us",
+    route: routes.CONTACT_US,
+    properties: ["rawNavigation"],
+    children: [
+      {
+        title: "+234-090-722-22192",
+        route: "tel:+2349072222192",
+      },
+      { title: "+234-90-722-22194", route: "tel:+2349072222194" },
+      {
+        title: "sureway.online@gmail.com",
+        route: "mailto:sureway.online@gmail.com",
+      },
+    ],
+    isActive: false,
+    id: "contact-us",
+  },
 ];

@@ -142,10 +142,10 @@ const Header = ({ isDynamic }: HeaderTypes) => {
         })}
       </nav>
 
-      <div className={classes.cart}>
+      {/* <div className={classes.cart}>
         <Cart />
         <span>1</span>
-      </div>
+      </div> */}
 
       <HamburgerIcon onClick={handleSidenavOpen} />
 

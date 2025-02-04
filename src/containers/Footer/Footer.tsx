@@ -15,6 +15,20 @@ const Footer = () => {
       </div>
 
       {footerNavItems?.map((data, i) => {
+        if (data?.properties?.includes("rawNavigation")) {
+          return (
+            <div key={i}>
+              <h3>{data?.title}</h3>
+              {data?.children?.map((child) => {
+                return (
+                  <a href={child.route} key={child?.title}>
+                    {child?.title}
+                  </a>
+                );
+              })}
+            </div>
+          );
+        }
         return (
           <div key={i}>
             <h3>{data?.title}</h3>

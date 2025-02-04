@@ -87,6 +87,11 @@ a {
   gap: 1rem;
 }
 
+.errorContainer > img {
+  width: 500px;
+  height: 300px;
+}
+
 .errorContainer > h2 {
   font-family: "Montserrat";
   font-size: 30px;
@@ -98,6 +103,10 @@ a {
 }
 
 @media screen and (max-width: 767px) {
+  .errorContainer > img {
+    width: 90%;
+    height: 250px;
+  }
 }
 
 @media screen and (min-width: 767px) and (max-width: 1024px) {
