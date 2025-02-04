@@ -12,8 +12,12 @@ import {
   usePriceByTypeShapeAndDimension,
 } from "@/hooks/useMagnets";
 import { mutate } from "swr";
-import { formatCurrency } from "@/helpers/formatAmount";
+import {
+  formatCurrency,
+  formatCurrencyWithoutTrailingDecimals,
+} from "@/helpers/formatAmount";
 import { useRouter } from "next/navigation";
+import useUpdateSearchParams from "@/hooks/useUpdateSearchParams";
 
 type ProductCardTypes = {
   data: productType;
@@ -25,8 +29,12 @@ const ProductCard = ({ data, route, type = "magnet" }: ProductCardTypes) => {
   // State
   const [isHovering, setIsHovering] = useState(false);
 
+  // Hooks
+  const { updateSearchParams } = useUpdateSearchParams();
+
   // Router
   const router = useRouter();
+  const section = updateSearchParams("section", undefined, "get");
 
   // States
   const [size, setSize] = useState("");
@@ -75,6 +83,26 @@ const ProductCard = ({ data, route, type = "magnet" }: ProductCardTypes) => {
     }
   }, [dimensions]);
 
+  const image =
+    (data?.images as string[])?.length > 0
+      ? isHovering
+        ? (data?.images as string[])[1]
+        : (data?.images as string[])[0]
+      : isHovering
+      ? data?.hoverImage
+      : data?.image || productImage;
+
+  let startPrice =
+    data?.priceRange &&
+    `₦${formatCurrencyWithoutTrailingDecimals(
+      data?.priceRange?.split("-")[0]
+    )}`;
+  let capPrice =
+    data?.priceRange &&
+    `₦${formatCurrencyWithoutTrailingDecimals(
+      data?.priceRange?.split("-")[1]
+    )}`;
+
   return (
     <section
       className={classes.container}
@@ -94,7 +122,13 @@ const ProductCard = ({ data, route, type = "magnet" }: ProductCardTypes) => {
         {isHovering ? (
           <Image
             src={
-              isHovering ? data?.hoverImage : data?.hoverImage || productImage
+              data?.images?.length
+                ? isHovering
+                  ? data?.images[1]
+                  : data?.images[0]
+                : isHovering
+                ? data?.hoverImage
+                : data?.image || productImage
             }
             alt="Product"
             width={100}
@@ -103,7 +137,7 @@ const ProductCard = ({ data, route, type = "magnet" }: ProductCardTypes) => {
           />
         ) : (
           <Image
-            src={data?.image || productImage}
+            src={image || productImage}
             alt="Product"
             width={100}
             height={380}
@@ -113,7 +147,11 @@ const ProductCard = ({ data, route, type = "magnet" }: ProductCardTypes) => {
 
       <div className={classes.textSection}>
         <p>{data?.name}</p>
-        <p>₦{formatCurrency(price || 0)}</p>
+        <p>
+          {data?.priceRange
+            ? `${startPrice}-${capPrice}`
+            : `₦${formatCurrency(price || 0)}`}
+        </p>
         {type === "magnet" && (
           <Dropdown
             title="Select a size"
@@ -128,15 +166,17 @@ const ProductCard = ({ data, route, type = "magnet" }: ProductCardTypes) => {
 
       <Button
         onClick={() => {
-          if (type === "product") {
-            router.push(route as string);
+          if (type !== "magnet") {
+            if (section) {
+              router.push(`/engravings/${section}/${data?.slug}`);
+            }
           } else {
             router.push(`/magnets/custom-magnets?shape=${data?.shape}&step=2`);
           }
         }}
-        disabled={!price || !size}
+        disabled={type === "magnet" ? !price || !size : false}
       >
-        {type === "magnet" ? "Buy" : "Add to Cart"}
+        {type === "magnet" ? "Buy" : "View Details"}
       </Button>
     </section>
   );

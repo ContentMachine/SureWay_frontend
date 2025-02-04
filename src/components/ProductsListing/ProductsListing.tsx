@@ -8,7 +8,8 @@ type ProductsListingType = {
   title?: string;
   products?: productType[];
   id?: string;
-  loading: boolean;
+  loading?: boolean;
+  type?: "magnet" | "product";
 };
 
 const ProductsListing = ({
@@ -16,6 +17,7 @@ const ProductsListing = ({
   products,
   id,
   loading,
+  type,
 }: ProductsListingType) => {
   return (
     <section className={classes.container} id={id}>
@@ -35,6 +37,7 @@ const ProductsListing = ({
                 data={data}
                 route={`${routes.CUSTOM_MAGNETS}?step=2`}
                 key={data?._id}
+                type={type}
               />
             );
           })}

@@ -19,7 +19,7 @@ export type magnetDataType = {
   phone: string;
   customText: string;
   achievement: string;
-  image: File | string | null;
+  image: File | string | null | string[];
   _id?: string;
 };
 
@@ -31,6 +31,8 @@ export type productType = {
   slug: string;
   shape: string;
   category: string;
+  images?: string[];
+  priceRange?: string;
 };
 
 export type magnetTypeTypes = {
@@ -74,3 +76,5 @@ export type legalNoticesType = {
   list?: string[];
   paragraph: { text?: string; list?: string[] | null }[];
 };
+
+export type engravedProductType = "merchandise" | "works-of-art" | "branding";

@@ -12,6 +12,7 @@ import Image from "next/image";
 import logo from "../../assets/Images/logo.svg";
 import HamburgerIcon from "@/assets/SvgIcons/HamburgerIcon";
 import Sidenav from "../Sidenav/Sidenav";
+import Delivery from "@/assets/SvgIcons/Delivery";
 
 type HeaderTypes = {
   isDynamic?: boolean;
@@ -140,6 +141,11 @@ const Header = ({ isDynamic }: HeaderTypes) => {
           );
         })}
       </nav>
+
+      <div className={classes.cart}>
+        <Cart />
+        <span>1</span>
+      </div>
 
       <HamburgerIcon onClick={handleSidenavOpen} />
 
