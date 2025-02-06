@@ -10,6 +10,7 @@ import { requestHandler } from "@/helpers/requestHandler";
 import { inputChangeHandler } from "@/helpers/inputChangeHandler";
 import { useToast } from "@/context/ToastContext";
 import useError from "@/hooks/useError";
+import { usePathname } from "next/navigation";
 
 const ContactUs = () => {
   // States
@@ -32,6 +33,9 @@ const ContactUs = () => {
 
   // Hooks
   const { errorFlowFunction } = useError();
+
+  // Route
+  const pathname = usePathname();
 
   // Effects
   useEffect(() => {
@@ -108,14 +112,16 @@ const ContactUs = () => {
           value={contactUsData?.phone}
         />
 
-        <Dropdown
-          label="Do you require assistance with LASAA Permit for the purpose of advertising (Highly recommended for trouble-free life)"
-          title="Select"
-          options={["Yes", "No"]}
-          isRequired
-          selected={assistance}
-          setSelected={setAssistance}
-        />
+        {pathname.includes("magnets") && (
+          <Dropdown
+            label="Do you require assistance with LASAA Permit for the purpose of advertising (Highly recommended for trouble-free life)"
+            title="Select"
+            options={["Yes", "No"]}
+            isRequired
+            selected={assistance}
+            setSelected={setAssistance}
+          />
+        )}
 
         <Button
           disabled={
